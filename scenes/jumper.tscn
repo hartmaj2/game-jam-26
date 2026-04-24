@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dj62nkty0gyva"]
+
+[ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jumper.gd" id="1_qi757"]
+[ext_resource type="Texture2D" uid="uid://c7tv7d3bb4ep5" path="res://icon.svg" id="1_tdonl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi757"]
+radius = 61.008198
+
+[node name="Jumper" type="CharacterBody2D" unique_id=287651784]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_qi757")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1826528933]
+texture = ExtResource("1_tdonl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
+shape = SubResource("CircleShape2D_qi757")
