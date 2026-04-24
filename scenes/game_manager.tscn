@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dp3ibkbm0gvt6"]
+
+[ext_resource type="Script" uid="uid://bbx82dl1tyami" path="res://scripts/game_manager.gd" id="1_hwd4i"]
+
+[node name="GameManager" type="Node2D" unique_id=1018969776]
+script = ExtResource("1_hwd4i")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=699553937]
+offset_right = 1920.0
+offset_bottom = 1080.0
