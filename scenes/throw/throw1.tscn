@@ -9,6 +9,10 @@
 radius = 44.0
 height = 208.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_my54g"]
+radius = 43.0
+height = 206.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omid4"]
 size = Vector2(507, 1018)
 
@@ -19,7 +23,7 @@ size = Vector2(2019, 79)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075]
 position = Vector2(307, 954)
-collision_mask = 10
+collision_mask = 2
 script = ExtResource("1_liry6")
 rock_scene = ExtResource("3_omid4")
 
@@ -30,6 +34,14 @@ texture = ExtResource("1_q61l2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=820353051]
 position = Vector2(-2, 0)
 shape = SubResource("CapsuleShape2D_omid4")
+
+[node name="PickupArea" type="Area2D" parent="Player" unique_id=2039975705]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickupArea" unique_id=1789325696]
+position = Vector2(-2, 1)
+shape = SubResource("CapsuleShape2D_my54g")
 
 [node name="Rock" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
 position = Vector2(423, -18)
@@ -57,3 +69,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1193647301]
 position = Vector2(4, 13)
 shape = SubResource("RectangleShape2D_my54g")
+
+[connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
