@@ -5,10 +5,6 @@
 [node name="GameManager" type="Node2D" unique_id=1018969776]
 script = ExtResource("1_hwd4i")
 
-[node name="Canvas" type="CanvasLayer" parent="." unique_id=1548910305]
-
-[node name="Fade" type="ColorRect" parent="Canvas" unique_id=699553937]
+[node name="Fade" type="ColorRect" parent="." unique_id=699553937]
 offset_right = 1920.0
 offset_bottom = 1080.0
-mouse_filter = 2
-color = Color(1, 1, 1, 0)

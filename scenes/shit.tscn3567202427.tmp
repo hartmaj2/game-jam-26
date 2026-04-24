@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://imnye6uvg7ly"]
+
+[ext_resource type="Script" uid="uid://405aiyw8mi30" path="res://scripts/shit.gd" id="1_2sqth"]
+
+[node name="Node2D" type="Node2D" unique_id=246316726]
+script = ExtResource("1_2sqth")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1554742993]
+offset_right = 1917.0
+offset_bottom = 1078.0
+color = Color(1, 0.14901961, 1, 1)
