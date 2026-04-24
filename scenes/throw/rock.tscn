@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cfuprq1mv7nbh"]
+
+[ext_resource type="Script" uid="uid://b5memhlunlw8q" path="res://scripts/throw/rock.gd" id="1_1bxqv"]
+[ext_resource type="Texture2D" uid="uid://dhu217v04bv27" path="res://assets/img/throw/stone.png" id="1_7ro2l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_my54g"]
+radius = 20.0
+height = 54.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bxqv"]
+radius = 21.0
+height = 54.0
+
+[node name="Rock" type="RigidBody2D" unique_id=1930867971]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_1bxqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2140420580]
+scale = Vector2(2, 2)
+texture = ExtResource("1_7ro2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952421957]
+shape = SubResource("CapsuleShape2D_my54g")
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=2075445204]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=1980472986]
+shape = SubResource("CapsuleShape2D_1bxqv")

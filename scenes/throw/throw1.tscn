@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bm0688v3vbraw"]
+
+[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="1_liry6"]
+[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman1.png" id="1_q61l2"]
+[ext_resource type="Texture2D" uid="uid://bt7erojbtgkcf" path="res://assets/img/throw/tower.png" id="3_720jk"]
+[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
+radius = 44.0
+height = 208.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omid4"]
+size = Vector2(507, 1018)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
+size = Vector2(2019, 79)
+
+[node name="Throw1" type="Node2D" unique_id=1793107038]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075]
+position = Vector2(307, 954)
+collision_mask = 10
+script = ExtResource("1_liry6")
+rock_scene = ExtResource("3_omid4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=291546741]
+position = Vector2(-2, 2)
+texture = ExtResource("1_q61l2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=820353051]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_omid4")
+
+[node name="Rock" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
+position = Vector2(423, -18)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462]
+position = Vector2(991.99994, 803)
+scale = Vector2(0.72, 0.72)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=750386743]
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("3_720jk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=686396905]
+position = Vector2(1.5, 2)
+scale = Vector2(0.72, 0.72)
+shape = SubResource("RectangleShape2D_omid4")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=955624488]
+position = Vector2(989, 1094)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1193647301]
+position = Vector2(4, 13)
+shape = SubResource("RectangleShape2D_my54g")
