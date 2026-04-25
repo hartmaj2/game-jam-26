@@ -11,7 +11,7 @@ var nearby_rocks: Array[Node] = []
 var rocks_picked: int = 0
 
 var throw_speed := 1_250
-var aim_angle := 1.5 # radians
+var aim_angle := deg_to_rad(20)
 var min_angle := deg_to_rad(-90)
 var max_angle := deg_to_rad(90)
 var angle_speed := 0.5
@@ -28,23 +28,24 @@ func _physics_process(delta: float) -> void:
 func _process(delta):
 	if Input.is_action_pressed("aim_up"):
 		aim_angle -= angle_speed * delta
-		print("aim angle: ", aim_angle)
+		#print("aim angle: ", aim_angle)
 	if Input.is_action_pressed("aim_down"):
 		aim_angle += angle_speed * delta
-		print("aim angle: ", aim_angle)
+		#print("aim angle: ", aim_angle)
 	aim_angle = clamp(aim_angle, min_angle, max_angle)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("throw"):
-		print("throw")
+		#print("throw")
 		throw_rock()
 	if event.is_action_pressed("pickup"):
-		print("pickup")
+		#print("pickup")
 		pickup_nearest_rock()
 	if event.is_action_pressed("debug_print"):
 		print("---DEBUG---")
-		print("nearby rocks: ",nearby_rocks)
-		print("rocks picked: " ,rocks_picked)
+		print("mouse pos: ",get_global_mouse_position())
+		#print("nearby rocks: ",nearby_rocks)
+		#print("rocks picked: " ,rocks_picked)
 
 func update_trajectory():
 	trajectory.global_position = Vector2.ZERO
@@ -58,28 +59,31 @@ func update_trajectory():
 	for i in range(180):
 		vel += gravity * dt
 		pos += vel * dt
-		if i % 3 == 0:
+		if i % 5 == 0:
 			points.append(pos)
-		points.append(pos)
 
 	trajectory.points = points
 	
 # THROWING ROCKS
 	
 func throw_rock():
+	if rocks_picked < 1:
+		#print("No rocks to throw")
+		return
+	rocks_picked -= 1
 	var rock = rock_scene.instantiate()
 	get_tree().current_scene.add_child(rock)
 	var dir = Vector2.UP.rotated(aim_angle).normalized()
-	rock.initiate_rock(global_position,throw_speed,dir)
+	rock.initiate_rock(global_position,throw_speed,dir,"player")
 	
 # HANDLING PICKUPS
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	print("entered")
+	#print("entered")
 	if area.is_in_group("rocks"):
 		nearby_rocks.append(area)
 
 func _on_pickup_area_area_exited(area: Area2D) -> void:
-	print("exited")
+	#print("exited")
 	if area.is_in_group("rocks"):
 		nearby_rocks.erase(area)
 
@@ -94,7 +98,7 @@ func pickup_nearest_rock() -> void:
 	rocks_picked += 1
 
 func take_damage(amount: int = 1):
-	print("Player took damage: ", amount)
+	#print("Player took damage: ", amount)
 	health -= amount
 	if health <= 0:
 		queue_free()
