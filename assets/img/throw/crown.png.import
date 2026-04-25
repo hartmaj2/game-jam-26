@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2wpejuf0j5gr"
-path="res://.godot/imported/stickman_rock3.png-fab52c83de3825694a9aa6f534cdd898.ctex"
+uid="uid://d1ynmqg2k8pin"
+path="res://.godot/imported/crown.png-9346b183b3fbebec721ba8e3c447a3af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/throw/stickman_rock3.png"
-dest_files=["res://.godot/imported/stickman_rock3.png-fab52c83de3825694a9aa6f534cdd898.ctex"]
+source_file="res://assets/img/throw/crown.png"
+dest_files=["res://.godot/imported/crown.png-9346b183b3fbebec721ba8e3c447a3af.ctex"]
 
 [params]
 
