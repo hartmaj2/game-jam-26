@@ -1,22 +1,27 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const SPEED = 500.0
+const JUMP_VELOCITY = -700.0
 const COYOTE_INIT = 0.2
 var coyote = COYOTE_INIT
 @onready var hop = $Hop
 @onready var impact = $Impact
+var falling = 0
+var drop = false
 
 func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
-	if coyote <= 0 and floored:
+	if coyote < 0 and floored:
 		impact.play()
-		GM.trigger_shake(-15*coyote)
+		GM.trigger_shake(falling+falling*float(drop), max(float(drop),0.5))
+		print(falling)
+		drop = false
 	if floored: coyote = COYOTE_INIT
 	else:
-		coyote -= delta*float((coyote>=-5))
+		coyote -= delta*float((coyote>=0))
 		velocity += get_gravity() * delta
+		falling = velocity.y/100
 		
 
 	# Handle jump.
@@ -37,5 +42,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Sprite2D.animation = "idle"
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if not floored: $Sprite2D.animation = "jump"
+	if not floored:
+		$Sprite2D.animation = "jump"
+		if Input.is_action_pressed("aim_down"):
+			velocity+=get_gravity()*3*delta
+			drop = true
 	move_and_slide()
