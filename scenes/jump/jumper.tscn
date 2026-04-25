@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dj62nkty0gyva"]
+
+[ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jump/jumper.gd" id="1_qi757"]
+[ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="3_1spwc"]
+[ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="4_nq2w0"]
+[ext_resource type="Texture2D" uid="uid://eoh0nrf1q4rm" path="res://assets/img/jump/walking/1.PNG" id="15_sxi6w"]
+[ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="16_3woja"]
+[ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="17_8m2s7"]
+[ext_resource type="Texture2D" uid="uid://clr1hosuilc57" path="res://assets/img/jump/walking/4.PNG" id="18_58asi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4wil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sxi6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8m2s7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sxi6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8m2s7")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_sxi6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3woja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8m2s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_58asi")
+}],
+"loop": true,
+"name": &"left",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orusn"]
+size = Vector2(69, 297)
+
+[sub_resource type="Gradient" id="Gradient_qi757"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1spwc"]
+gradient = SubResource("Gradient_qi757")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.49565217, 0.523913)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_dppjr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79471546, 0.5751634), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Jumper" type="CharacterBody2D" unique_id=287651784]
+light_mask = 3
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+script = ExtResource("1_qi757")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2067367883]
+sprite_frames = SubResource("SpriteFrames_u4wil")
+animation = &"jump"
+autoplay = "idle"
+frame_progress = 0.54123116
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
+position = Vector2(-6.5, -1.5)
+shape = SubResource("RectangleShape2D_orusn")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=449053715]
+scale = Vector2(100, 100)
+range_item_cull_mask = 2
+shadow_item_cull_mask = 0
+texture = SubResource("GradientTexture2D_1spwc")
+texture_scale = 0.01
+
+[node name="Hop" type="AudioStreamPlayer" parent="." unique_id=302695555]
+stream = ExtResource("3_1spwc")
+
+[node name="Impact" type="AudioStreamPlayer" parent="." unique_id=1320073865]
+stream = ExtResource("4_nq2w0")
+
+[node name="LeftParty" type="CPUParticles2D" parent="." unique_id=146441343]
+position = Vector2(-32, 140)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.85
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_dppjr")
+
+[node name="RightParty" type="CPUParticles2D" parent="." unique_id=1664918592]
+position = Vector2(14, 142)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.85
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_dppjr")
