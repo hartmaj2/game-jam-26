@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfy6xvlbh23ub"]
 
 [ext_resource type="Script" uid="uid://dr4remfgt38c1" path="res://scripts/epilogue.gd" id="1_kmtq4"]
-[ext_resource type="Texture2D" uid="uid://b74jkgrbsqmhd" path="res://assets/img/prologue/prologue.jpg" id="1_nocep"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_kmtq4"]
 
 [node name="Epilogue" type="Node2D" unique_id=1296033417]
 script = ExtResource("1_kmtq4")
@@ -10,7 +10,7 @@ script = ExtResource("1_kmtq4")
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_nocep")
+texture = ExtResource("2_kmtq4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1472096499]
 position = Vector2(960, 540)
