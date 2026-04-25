@@ -36,8 +36,11 @@ size = Vector2(20, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
 size = Vector2(360, 720)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
-radius = 50.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_igx8a"]
+radius = 122.06556
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eurq2"]
+radius = 423.28833
 
 [node name="Throw1" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_rw6rq")
@@ -202,14 +205,14 @@ shape = SubResource("RectangleShape2D_rw6rq")
 [node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/EnterThrowingFight" unique_id=283124648]
-position = Vector2(4000, 950)
-shape = SubResource("CircleShape2D_mfv0q")
+position = Vector2(4020, 750)
+shape = SubResource("CircleShape2D_igx8a")
 
 [node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
-position = Vector2(9000, 950)
-shape = SubResource("CircleShape2D_mfv0q")
+position = Vector2(6315, 651)
+shape = SubResource("CircleShape2D_eurq2")
 
 [node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
 visible = false

@@ -31,7 +31,10 @@ var wall = null
 
 func _ready() -> void:
 	var enemies = get_tree().get_nodes_in_group("enemy")
-	enemy_count = enemies.size()
+	for enemy in enemies:
+		if enemy.is_harmless:
+			continue
+		enemy_count += 1
 	for enemy in enemies:
 		if not enemy.is_connected("enemy_died", Callable(self, "_on_enemy_died")):
 			#print("connected to enemy signal")
@@ -144,6 +147,8 @@ func _on_pickup_area_area_exited(area: Area2D) -> void:
 func kill_all_enemies():
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
+		if enemy.is_harmless:
+			continue
 		enemy.die()
 
 func pickup_nearest_rock() -> void:
@@ -172,12 +177,15 @@ func take_damage(amount: int = 1):
 		GM.death()
 
 func _on_enemy_died():
-	#print("enemy died")
+	print("enemy died", enemy_count - 1, " remaining")
 	enemy_count -= 1
 	if enemy_count == 0:
 		hide_label()
 		get_rid_of_rocks()
 		wall.open_tower()
+		var enemies = get_tree().get_nodes_in_group("enemy")
+		for enemy in enemies:
+			enemy.is_active = false
 
 func show_label():
 	var enemies = get_tree().get_nodes_in_group("enemy")
