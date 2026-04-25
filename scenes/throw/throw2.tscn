@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
 [ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="5_ef380"]
 [ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_345kk"]
-[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
+[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
+[ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="7_pv6vb"]
+[ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="8_3a3r6"]
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="8_fau2y"]
 [ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="9_2pq3j"]
 
@@ -78,6 +80,12 @@ limit_right = 9599
 limit_bottom = 1080
 position_smoothing_speed = 20.0
 script = ExtResource("6_345kk")
+
+[node name="Hop" type="AudioStreamPlayer" parent="Player" unique_id=1150086614]
+stream = ExtResource("7_pv6vb")
+
+[node name="Impact" type="AudioStreamPlayer" parent="Player" unique_id=1255509545]
+stream = ExtResource("8_3a3r6")
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 

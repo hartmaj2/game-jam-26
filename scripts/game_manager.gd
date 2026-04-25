@@ -3,11 +3,11 @@ var controllable = true
 @onready var fade = $Canvas/Fade
 @onready var map = $Canvas/Map
 @onready var path_follower = $Canvas/Map/Path1/PathFollow2D
-const fade_time = 0.5
-var current_index = 0
+const fade_time = 0.2
+var current_index = -1
 
 var jumps = ["res://scenes/jump/jump1.tscn", "res://scenes/jump/jump2.tscn"]
-var throws = ["res://scenes/throw/throw1.tscn","res://scenes/throw/throw2.tscn"]
+var throws = ["res://scenes/throw/throw2.tscn","res://scenes/throw/throw3.tscn","res://scenes/throw/throw3.tscn"]
 var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
@@ -23,9 +23,9 @@ func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	fading = decay
 	
 func to_tutorial():
-	current_index = 0
+	current_index = -1
 	path_follower.progress_ratio = 0
-	path_follower.reparent(paths[current_index])
+	path_follower.reparent(paths[current_index+1])
 	controllable = false
 	fade.texture = cave
 	var tw = get_tree().create_tween()
@@ -79,7 +79,9 @@ func fade_out():
 	controllable = true
 	
 func to_map():
+	
 	print(path_follower.get_parent())
+	print(current_index)
 	controllable = false
 	var tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",1,fade_time)
@@ -90,8 +92,9 @@ func to_map():
 	tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
-	path_follower.reparent(paths[1-current_index])
 	current_index+=1
+	path_follower.reparent(paths[min(1,current_index+1)])
+	
 	path_follower.progress_ratio = 0
 	controllable = true
 	#fade_out()

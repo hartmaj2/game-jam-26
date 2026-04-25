@@ -1,62 +1,229 @@
-[gd_scene format=4 uid="uid://dmynavl5aah63"]
+[gd_scene format=3 uid="uid://bm0688v3vbraw"]
 
-[ext_resource type="PackedScene" uid="uid://dj62nkty0gyva" path="res://scenes/jump/jumper.tscn" id="1_c13y7"]
-[ext_resource type="Script" uid="uid://d14thnkwwvxsq" path="res://scripts/tutorial.gd" id="1_ph3nu"]
-[ext_resource type="Texture2D" uid="uid://drhi6s3e7kg2y" path="res://assets/img/tutorial/tut_para.JPG" id="2_4kmhl"]
-[ext_resource type="Texture2D" uid="uid://bdglrx54fhpgm" path="res://assets/img/jump/tiles.png" id="2_8ho6b"]
+[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/tutorial.gd" id="1_tbcdj"]
+[ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_ej4tf"]
+[ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_0hilk"]
+[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_wr8iv"]
+[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_e13mp"]
+[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="6_vrdqu"]
+[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
+[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="8_ikfo1"]
+[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="9_dwom6"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
+[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="11_15kfc"]
+[ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="12_7a100"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ph3nu"]
-texture = ExtResource("2_8ho6b")
-texture_region_size = Vector2i(60, 60)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-1:1/0/modulate = Color(1, 1, 1, 0)
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
+radius = 44.0
+height = 208.0
 
-[sub_resource type="TileSet" id="TileSet_4kmhl"]
-tile_size = Vector2i(60, 60)
-physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_ph3nu")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_my54g"]
+radius = 43.0
+height = 206.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph3nu"]
-size = Vector2(72, 139)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
+points = PackedVector2Array(-20, -280, 30, -280, 80, -130, 80, 700, -70, 700, -70, -130)
 
-[node name="Tutorial" type="Node2D" unique_id=1558878512]
-script = ExtResource("1_ph3nu")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
+size = Vector2(9600, 20)
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1741825846]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl1dt"]
+size = Vector2(20, 1080)
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=1557035201]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrcs"]
+size = Vector2(20, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
+size = Vector2(360, 720)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igx8a"]
+radius = 122.06556
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eurq2"]
+radius = 423.28833
+
+[node name="Throw1" type="Node2D" unique_id=1793107038]
+script = ExtResource("1_tbcdj")
+start_at_wall = false
+
+[node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=349661175]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Sky" unique_id=677343907]
+offset_top = -1950.0
+offset_right = 3840.0
+offset_bottom = 2370.0
+texture = ExtResource("2_ej4tf")
+
+[node name="Parallax_Clouds" type="Parallax2D" parent="." unique_id=1568022681]
+scroll_scale = Vector2(0.15, 1)
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Clouds" unique_id=662657225]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_4kmhl")
+pivot_offset = Vector2(0, 850)
+texture = ExtResource("3_0hilk")
 
-[node name="Jumper" parent="." unique_id=287651784 instance=ExtResource("1_c13y7")]
-position = Vector2(951, 914)
+[node name="Parallax_Trees" type="Parallax2D" parent="." unique_id=1223095688]
+scroll_scale = Vector2(0.2, 1)
 
-[node name="Camera2D" type="Camera2D" parent="Jumper" unique_id=1148188621]
-offset = Vector2(20, -340)
-limit_top = 880
-limit_bottom = 880
+[node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=1025018210]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_wr8iv")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2078841832]
-position = Vector2(0, 20)
-tile_map_data = PackedByteArray("AAAAABAAAQABAAEAAAABABAAAQABAAEAAAACABAAAQABAAEAAAADABAAAQABAAEAAAAEABAAAQABAAEAAAAFABAAAQABAAEAAAAGABAAAQABAAEAAAAHABAAAQABAAEAAAAIABAAAQABAAEAAAAJABAAAQABAAEAAAAKABAAAQABAAEAAAALABAAAQABAAEAAAAMABAAAQABAAEAAAANABAAAQABAAEAAAAOABAAAQABAAEAAAAPABAAAQABAAEAAAAQABAAAQABAAEAAAARABAAAQABAAEAAAASABAAAQABAAEAAAATABAAAQABAAEAAAAUABAAAQABAAEAAAAVABAAAQABAAEAAAAWABAAAQABAAEAAAAXABAAAQABAAEAAAAYABAAAQABAAEAAAAZABAAAQABAAEAAAAaABAAAQABAAEAAAAbABAAAQABAAEAAAAcABAAAQABAAEAAAAdABAAAQABAAEAAAAeABAAAQABAAEAAAAfABAAAQABAAEAAAAfABEAAQABAAEAAAAeABEAAQABAAEAAAAdABEAAQABAAEAAAAcABEAAQABAAEAAAAbABEAAQABAAEAAAAaABEAAQABAAEAAAAZABEAAQABAAEAAAAYABEAAQABAAEAAAAXABEAAQABAAEAAAAWABEAAQABAAEAAAAVABEAAQABAAEAAAAUABEAAQABAAEAAAATABEAAQABAAEAAAASABEAAQABAAEAAAARABEAAQABAAEAAAAQABEAAQABAAEAAAAHABEAAQABAAEAAAAGABEAAQABAAEAAAAFABEAAQABAAEAAAAEABEAAQABAAEAAAADABEAAQABAAEAAAACABEAAQABAAEAAAABABEAAQABAAEAAAAAABEAAQABAAEAAAAIABEAAQABAAEAAAAJABEAAQABAAEAAAAKABEAAQABAAEAAAALABEAAQABAAEAAAAMABEAAQABAAEAAAANABEAAQABAAEAAAAOABEAAQABAAEAAAAPABEAAQABAAEAAAAgABAAAQABAAEAAAAhABAAAQABAAEAAAAjABAAAQABAAEAAAAkABAAAQABAAEAAAAiABAAAQABAAEAAAAhABEAAQABAAEAAAAgABEAAQABAAEAAAAiABEAAQABAAEAAAAjABEAAQABAAEAAAAkABEAAQABAAEAAAAlABEAAQABAAEAAAAmABEAAQABAAEAAAAlABAAAQABAAEAAAAmABAAAQABAAEAAAAnABAAAQABAAEAAAAoABAAAQABAAEAAAApABAAAQABAAEAAAAqABAAAQABAAEAAAArABAAAQABAAEAAAAsABAAAQABAAEAAAAtABAAAQABAAEAAAAuABAAAQABAAEAAAAvABAAAQABAAEAAAAwABAAAQABAAEAAAAxABAAAQABAAEAAAAyABAAAQABAAEAAAAzABAAAQABAAEAAAA0ABAAAQABAAEAAAA0ABEAAQABAAEAAAA1ABEAAQABAAEAAAA2ABEAAQABAAEAAAAzABEAAQABAAEAAAAyABEAAQABAAEAAAAxABEAAQABAAEAAAAwABEAAQABAAEAAAAnABEAAQABAAEAAAAoABEAAQABAAEAAAApABEAAQABAAEAAAAqABEAAQABAAEAAAArABEAAQABAAEAAAAsABEAAQABAAEAAAAtABEAAQABAAEAAAAuABEAAQABAAEAAAAvABEAAQABAAEAAABKABAAAQABAAEAAABJABAAAQABAAEAAABIABAAAQABAAEAAABHABAAAQABAAEAAABGABAAAQABAAEAAABFABAAAQABAAEAAABEABAAAQABAAEAAABDABAAAQABAAEAAABCABAAAQABAAEAAABBABAAAQABAAEAAABAABAAAQABAAEAAAA/ABAAAQABAAEAAAA+ABAAAQABAAEAAAA9ABAAAQABAAEAAAA8ABAAAQABAAEAAAA7ABAAAQABAAEAAAA7ABEAAQABAAEAAAA6ABEAAQABAAEAAAA5ABEAAQABAAEAAAA4ABEAAQABAAEAAAA3ABEAAQABAAEAAAA3ABAAAQABAAEAAAA2ABAAAQABAAEAAAA4ABAAAQABAAEAAAA5ABAAAQABAAEAAAA6ABAAAQABAAEAAAA1ABAAAQABAAEAAAA/ABEAAQABAAEAAABAABEAAQABAAEAAABBABEAAQABAAEAAABCABEAAQABAAEAAABDABEAAQABAAEAAABEABEAAQABAAEAAABFABEAAQABAAEAAABGABEAAQABAAEAAABHABEAAQABAAEAAABIABEAAQABAAEAAABJABEAAQABAAEAAAA9ABEAAQABAAEAAAA8ABEAAQABAAEAAAA+ABEAAQABAAEAAABLABAAAQABAAEAAABMABAAAQABAAEAAABNABAAAQABAAEAAABOABAAAQABAAEAAABPABAAAQABAAEAAABQABAAAQABAAEAAABRABAAAQABAAEAAABSABAAAQABAAEAAABTABAAAQABAAEAAABUABAAAQABAAEAAABVABAAAQABAAEAAABWABAAAQABAAEAAABXABAAAQABAAEAAABYABAAAQABAAEAAABZABAAAQABAAEAAABaABAAAQABAAEAAABbABAAAQABAAEAAABcABAAAQABAAEAAABdABAAAQABAAEAAABeABAAAQABAAEAAABfABAAAQABAAEAAABgABAAAQABAAEAAABhABAAAQABAAEAAABiABAAAQABAAEAAABjABAAAQABAAEAAABkABAAAQABAAEAAABlABAAAQABAAEAAABmABAAAQABAAEAAABnABAAAQABAAEAAABoABAAAQABAAEAAABrABAAAQABAAEAAABsABAAAQABAAEAAABtABAAAQABAAEAAABqABAAAQABAAEAAABpABAAAQABAAEAAABoABEAAQABAAEAAABnABEAAQABAAEAAABmABEAAQABAAEAAABlABEAAQABAAEAAABkABEAAQABAAEAAABjABEAAQABAAEAAABiABEAAQABAAEAAABhABEAAQABAAEAAABgABEAAQABAAEAAABfABEAAQABAAEAAABeABEAAQABAAEAAABdABEAAQABAAEAAABcABEAAQABAAEAAABbABEAAQABAAEAAABaABEAAQABAAEAAABZABEAAQABAAEAAABYABEAAQABAAEAAABXABEAAQABAAEAAABLABEAAQABAAEAAABKABEAAQABAAEAAABMABEAAQABAAEAAABNABEAAQABAAEAAABOABEAAQABAAEAAABPABEAAQABAAEAAABQABEAAQABAAEAAABRABEAAQABAAEAAABSABEAAQABAAEAAABTABEAAQABAAEAAABUABEAAQABAAEAAABVABEAAQABAAEAAABWABEAAQABAAEAAABpABEAAQABAAEAAABqABEAAQABAAEAAABrABEAAQABAAEAAABsABEAAQABAAEAAABtABEAAQABAAEAAABuABEAAQABAAEAAABvABEAAQABAAEAAABwABEAAQABAAEAAABxABEAAQABAAEAAAByABAAAQABAAEAAABzABAAAQABAAEAAAB0ABAAAQABAAEAAAB1ABAAAQABAAEAAAB2ABAAAQABAAEAAAB3ABAAAQABAAEAAAB4ABAAAQABAAEAAAB5ABAAAQABAAEAAAB6ABAAAQABAAEAAAB7ABAAAQABAAEAAAB8ABAAAQABAAEAAAB9ABAAAQABAAEAAAB+ABAAAQABAAEAAAB/ABAAAQABAAEAAACAABAAAQABAAEAAACBABAAAQABAAEAAACCABAAAQABAAEAAACBABEAAQABAAEAAACAABEAAQABAAEAAAB/ABEAAQABAAEAAAB+ABEAAQABAAEAAAB9ABEAAQABAAEAAAB8ABEAAQABAAEAAAB7ABEAAQABAAEAAAB6ABEAAQABAAEAAAB5ABEAAQABAAEAAAB4ABEAAQABAAEAAAB3ABEAAQABAAEAAAB2ABEAAQABAAEAAAB1ABEAAQABAAEAAAB0ABEAAQABAAEAAABzABEAAQABAAEAAAByABEAAQABAAEAAABvABAAAQABAAEAAABwABAAAQABAAEAAABxABAAAQABAAEAAABuABAAAQABAAEAAACfABAAAQABAAEAAACeABAAAQABAAEAAACdABAAAQABAAEAAACcABAAAQABAAEAAACbABAAAQABAAEAAACaABAAAQABAAEAAACZABAAAQABAAEAAACYABAAAQABAAEAAACXABAAAQABAAEAAACWABAAAQABAAEAAACVABAAAQABAAEAAACUABAAAQABAAEAAACTABAAAQABAAEAAACSABAAAQABAAEAAACRABAAAQABAAEAAACQABAAAQABAAEAAACPABAAAQABAAEAAACOABAAAQABAAEAAACNABAAAQABAAEAAACMABAAAQABAAEAAACLABAAAQABAAEAAACKABAAAQABAAEAAACJABAAAQABAAEAAACIABAAAQABAAEAAACHABAAAQABAAEAAACGABAAAQABAAEAAACFABAAAQABAAEAAACEABAAAQABAAEAAACDABAAAQABAAEAAACCABEAAQABAAEAAACDABEAAQABAAEAAACEABEAAQABAAEAAACFABEAAQABAAEAAACGABEAAQABAAEAAACHABEAAQABAAEAAACIABEAAQABAAEAAACJABEAAQABAAEAAACKABEAAQABAAEAAACLABEAAQABAAEAAACMABEAAQABAAEAAACNABEAAQABAAEAAACZABEAAQABAAEAAACYABEAAQABAAEAAACXABEAAQABAAEAAACWABEAAQABAAEAAACVABEAAQABAAEAAACUABEAAQABAAEAAACTABEAAQABAAEAAACSABEAAQABAAEAAACRABEAAQABAAEAAACQABEAAQABAAEAAACPABEAAQABAAEAAACOABEAAQABAAEAAACaABEAAQABAAEAAACbABEAAQABAAEAAACcABEAAQABAAEAAACdABEAAQABAAEAAACeABEAAQABAAEAAACfABEAAQABAAEAAAA=")
-tile_set = SubResource("TileSet_4kmhl")
+[node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=122608356]
 
-[node name="End" type="Area2D" parent="." unique_id=1374026538]
-position = Vector2(1059, 930)
-collision_layer = 0
-collision_mask = 2
+[node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=2099266772]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_e13mp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="End" unique_id=1936787200]
-shape = SubResource("RectangleShape2D_ph3nu")
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075 groups=["player"]]
+position = Vector2(400, 880)
+collision_mask = 10
+script = ExtResource("6_vrdqu")
+rock_scene = ExtResource("7_cmspm")
 
-[connection signal="body_entered" from="End" to="." method="_on_end_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=291546741]
+position = Vector2(-2, 2)
+texture = ExtResource("8_ikfo1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=820353051]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_omid4")
+
+[node name="PickupArea" type="Area2D" parent="Player" unique_id=2039975705]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickupArea" unique_id=1789325696]
+position = Vector2(-2, 1)
+shape = SubResource("CapsuleShape2D_my54g")
+
+[node name="Trajectory" type="Line2D" parent="Player" unique_id=1784486280]
+visible = false
+width = 3.0
+default_color = Color(0.69411767, 0, 0, 0.627451)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1625199504]
+limit_left = -1
+limit_top = 0
+limit_right = 9599
+limit_bottom = 1080
+position_smoothing_speed = 20.0
+script = ExtResource("9_dwom6")
+
+[node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
+
+[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("7_cmspm")]
+position = Vector2(4341, 952)
+
+[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("7_cmspm")]
+position = Vector2(4482, 952)
+
+[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("7_cmspm")]
+position = Vector2(4204.617, 952)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=767239893]
+
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("10_bl2xa")]
+position = Vector2(5208, 880)
+wall = NodePath("../../Wall")
+is_king = false
+
+[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("10_bl2xa")]
+position = Vector2(5390.625, 880)
+
+[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("10_bl2xa")]
+position = Vector2(5585.555, 880)
+is_king = false
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462 groups=["wall"]]
+position = Vector2(4800, 550)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("11_15kfc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=750386743]
+texture = ExtResource("12_7a100")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=686396905]
+position = Vector2(-5.0000005, 36.999992)
+scale = Vector2(0.72, 0.72)
+shape = SubResource("ConvexPolygonShape2D_4jtqv")
+
+[node name="EnemyWallTop" type="Node2D" parent="Wall" unique_id=936026313]
+position = Vector2(0, -160)
+
+[node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
+
+[node name="Bottom" type="StaticBody2D" parent="Bounds" unique_id=955624488 groups=["floor"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom" unique_id=1193647301]
+position = Vector2(4800, 990)
+shape = SubResource("RectangleShape2D_my54g")
+
+[node name="LeftFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1267544720]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftFightBarrier" unique_id=429855713]
+position = Vector2(3840, 540)
+shape = SubResource("RectangleShape2D_rl1dt")
+
+[node name="RightFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1683984710]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightFightBarrier" unique_id=140447480]
+position = Vector2(5760, 540)
+shape = SubResource("RectangleShape2D_lfrcs")
+
+[node name="LeftCave" type="StaticBody2D" parent="Bounds" unique_id=769643632]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftCave" unique_id=99405067]
+position = Vector2(0, 720)
+shape = SubResource("RectangleShape2D_rw6rq")
+
+[node name="RightCave" type="StaticBody2D" parent="Bounds" unique_id=135647580]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightCave" unique_id=2125337852]
+position = Vector2(9600, 720)
+shape = SubResource("RectangleShape2D_rw6rq")
+
+[node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
+
+[node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/EnterThrowingFight" unique_id=283124648]
+position = Vector2(4020, 750)
+shape = SubResource("CircleShape2D_igx8a")
+
+[node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
+position = Vector2(6315, 651)
+shape = SubResource("CircleShape2D_eurq2")
+
+[node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
+visible = false
+offset_left = 3912.0
+offset_top = 64.0
+offset_right = 4498.0
+offset_bottom = 162.22852
+theme_override_font_sizes/font_size = 60
+text = "Press J to pick rocks"
+
+[connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
+[connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
+[connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]

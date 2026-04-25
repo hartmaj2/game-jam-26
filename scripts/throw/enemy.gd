@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var debug = false
+
 signal enemy_died
 
 @export var speed: float = 200.0
@@ -29,8 +31,24 @@ const king_texture = preload(path_base + "_king.png")
 func _ready():
 	var trigger_area = get_tree().current_scene.get_node("TriggerAreas/EnterThrowingFight")
 	trigger_area.connect("body_entered", Callable(self, "_on_enter_throwing_fight_body_entered"))
-	print(trigger_area)
+	#print(trigger_area)
+	if GM.current_index == 2 or debug:
+		setup_lava_timer()
 
+func setup_lava_timer():
+	#print("creating timer")
+	var timer = Timer.new()
+	timer.wait_time = randf_range(5,10)
+	timer.autostart = true
+	timer.one_shot = false
+	add_child(timer)
+
+	timer.timeout.connect(_on_lava_timeout)
+
+func _on_lava_timeout():
+	var rock = rock_scene.instantiate()
+	get_tree().current_scene.add_child(rock)
+	throw_at_player(rock,true)
 
 func _physics_process(_delta: float) -> void:
 	if not is_active:
@@ -70,7 +88,7 @@ func find_throw_direction():
 	var g = Vector2(0, ProjectSettings.get_setting("physics/2d/default_gravity"))
 	var dt = 1.0 / 60.0
 
-	for angle in range(-60, 60, 5):
+	for angle in range(-60,-5, 5):
 		var dir = Vector2.UP.rotated(deg_to_rad(angle))
 		var vel = dir * throw_speed
 		var pos = global_position
@@ -78,7 +96,7 @@ func find_throw_direction():
 
 		# check wall collision
 		if will_hit_wall(dir):
-			print("will hit wall with angle: ", angle)
+			#print("will hit wall with angle: ", angle)
 			continue
 
 		for i in range(180):
@@ -89,13 +107,13 @@ func find_throw_direction():
 			if dist < min_dist:
 				min_dist = dist
 		
-		print("angle: ", angle, " min dist: ", min_dist)
+		#print("angle: ", angle, " min dist: ", min_dist)
 		if min_dist < best_dist:
 			best_dist = min_dist
 			best_dir = dir
-			print("new best angle: ", angle, " dist: ", min_dist)
+			#print("new best angle: ", angle, " dist: ", min_dist)
 
-	print("best angle: ", rad_to_deg(best_dir.angle_to(Vector2.UP)))
+	#print("best angle: ", rad_to_deg(best_dir.angle_to(Vector2.UP)))
 	return best_dir
 
 func will_hit_wall(dir):
@@ -123,10 +141,10 @@ func will_hit_wall(dir):
 
 	return false
 
-func throw_at_player(rock: Node2D):
+func throw_at_player(rock: Node2D, is_lava : bool = false):
 	# var dir = (target_player.global_position - global_position).normalized()
 	var dir = find_throw_direction()
-	rock.initiate_rock(global_position, throw_speed, dir,"enemy")
+	rock.initiate_rock(global_position, throw_speed, dir,"enemy",is_lava)
 	has_rock = false
 	await get_tree().create_timer(0.2).timeout
 	can_pick_up = true
