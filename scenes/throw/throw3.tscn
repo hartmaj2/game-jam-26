@@ -1,16 +1,14 @@
-[gd_scene format=3 uid="uid://bneewpq4vvfce"]
+[gd_scene format=3 uid="uid://t636rfy1ob3"]
 
-[ext_resource type="Script" uid="uid://c20mysv78v5v6" path="res://scripts/throw/throw_2.gd" id="1_rr2ot"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
-[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="3_ylkys"]
-[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
-[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="5_ef380"]
-[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_345kk"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
-[ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="7_pv6vb"]
-[ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="8_3a3r6"]
-[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="8_fau2y"]
-[ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="9_2pq3j"]
+[ext_resource type="Script" uid="uid://et6aunegovvv" path="res://scripts/throw/throw_3.gd" id="1_b4vjv"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_mmche"]
+[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="3_wfewx"]
+[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_cmjri"]
+[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="5_5hl8k"]
+[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_pvgyl"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
+[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="8_irkt5"]
+[ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="9_xett7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
 radius = 44.0
@@ -38,23 +36,23 @@ size = Vector2(360, 720)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
 radius = 50.0
 
-[node name="Throw2" type="Node2D" unique_id=1793107038]
-script = ExtResource("1_rr2ot")
+[node name="Throw3" type="Node2D" unique_id=1793107038]
+script = ExtResource("1_b4vjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(3840, 540)
 scale = Vector2(2, 0.5)
-texture = ExtResource("2_x6bfp")
+texture = ExtResource("2_mmche")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075 groups=["player"]]
 position = Vector2(400, 880)
 collision_mask = 10
-script = ExtResource("3_ylkys")
-rock_scene = ExtResource("4_8rivp")
+script = ExtResource("3_wfewx")
+rock_scene = ExtResource("4_cmjri")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=291546741]
 position = Vector2(-2, 2)
-texture = ExtResource("5_ef380")
+texture = ExtResource("5_5hl8k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=820353051]
 position = Vector2(-2, 0)
@@ -79,49 +77,39 @@ limit_top = 0
 limit_right = 9599
 limit_bottom = 1080
 position_smoothing_speed = 20.0
-script = ExtResource("6_345kk")
-
-[node name="Hop" type="AudioStreamPlayer" parent="Player" unique_id=1150086614]
-stream = ExtResource("7_pv6vb")
-
-[node name="Impact" type="AudioStreamPlayer" parent="Player" unique_id=1255509545]
-stream = ExtResource("8_3a3r6")
+script = ExtResource("6_pvgyl")
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
-[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_8rivp")]
+[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_cmjri")]
 position = Vector2(3750, 952)
 
-[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("4_8rivp")]
-position = Vector2(2880, 360)
-
-[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_8rivp")]
+[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_cmjri")]
 position = Vector2(3600, 952)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=767239893]
 
-[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_4r5fs")]
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_xrg28")]
 position = Vector2(3208, 880)
 wall = NodePath("../../Wall")
 is_king = false
 
-[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_4r5fs")]
+[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_xrg28")]
 position = Vector2(3390.625, 880)
 
-[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_4r5fs")]
+[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_xrg28")]
 position = Vector2(3585.555, 880)
 speed = 50.0
 is_king = false
-is_harmless = true
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462 groups=["wall"]]
 position = Vector2(2880, 550)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("8_fau2y")
+script = ExtResource("8_irkt5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=750386743]
-texture = ExtResource("9_2pq3j")
+texture = ExtResource("9_xett7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=686396905]
 position = Vector2(-5.0000005, 36.999992)
@@ -189,12 +177,12 @@ shape = SubResource("CircleShape2D_mfv0q")
 
 [node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
 visible = false
-offset_left = 3912.0
-offset_top = 64.0
-offset_right = 4498.0
-offset_bottom = 162.22852
+offset_left = 2045.0
+offset_top = 128.0
+offset_right = 2631.0
+offset_bottom = 226.22852
 theme_override_font_sizes/font_size = 60
-text = "Press E to pick rocks"
+text = "Press J to pick rocks"
 
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
