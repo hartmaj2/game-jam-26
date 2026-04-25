@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 var is_thrown := false
+var was_thrown_recently := false
 var thrown_by := ""
 
 # Called when the node enters the scene tree for the first time.
@@ -26,11 +27,14 @@ func initiate_rock(position : Vector2, speed : float, direction : Vector2, who :
 	await get_tree().create_timer(0.2).timeout
 	thrown_by = who
 	is_thrown = true
+	was_thrown_recently = true
 
 
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("floor"):
 		is_thrown = false
+		await get_tree().create_timer(0.5).timeout
+		was_thrown_recently = false
 	if not is_thrown:
 		return
 	#print("this rock was thrown by: ",thrown_by)
@@ -39,8 +43,14 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 		if thrown_by == "enemy":
 			return
 		body.take_damage(1)
+		await get_tree().create_timer(0.5).timeout
+		was_thrown_recently = false
+		return
 	if body.is_in_group("player"):
 		if thrown_by == "player":
 			return
 		is_thrown = false
 		body.take_damage(1)
+		await get_tree().create_timer(0.5).timeout
+		was_thrown_recently = false
+		return

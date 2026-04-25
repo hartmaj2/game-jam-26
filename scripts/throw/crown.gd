@@ -1,5 +1,4 @@
-extends Area2D
-
+extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,10 +9,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		activate_barriers()
-
-func activate_barriers():
-	pass
+func show_crown(pos : Vector2):
+	global_position = pos
+	print("crown is here")

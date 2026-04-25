@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bpuqkhll2utcp"]
+
+[ext_resource type="Script" uid="uid://es6o2vdp8koj" path="res://scripts/throw/enemy.gd" id="1_p5u0l"]
+[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="2_kfndj"]
+[ext_resource type="Texture2D" uid="uid://cg68pn1s2oxyl" path="res://assets/img/throw/stickman2.png" id="3_aqj7x"]
+[ext_resource type="PackedScene" uid="uid://biu2w8nshcxid" path="res://scenes/throw/crown.tscn" id="3_kfndj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl1dt"]
+radius = 35.0
+height = 200.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfrcs"]
+radius = 35.0
+height = 200.0
+
+[node name="Enemy1" type="CharacterBody2D" unique_id=1419214293 groups=["enemy"]]
+collision_mask = 10
+script = ExtResource("1_p5u0l")
+rock_scene = ExtResource("2_kfndj")
+crown_scene = ExtResource("3_kfndj")
+is_king = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1191956435]
+texture = ExtResource("3_aqj7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370466014]
+shape = SubResource("CapsuleShape2D_rl1dt")
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=919845691]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=571303794]
+shape = SubResource("CapsuleShape2D_lfrcs")
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]

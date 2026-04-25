@@ -2,20 +2,18 @@
 
 ## Throwing game
 
-# Janek
-- [x] fix trajectory
-- [ ] trajektorie jako tečky
-- [ ] limit player ammo
-- [ ] add finishing screen when no enemies left
-  - open gate
+- [ ] remove trajectory when starting game
+- [ ] enemy not throwing right after death
+- [x] fix enemy throwing above itself
+
 - [ ] health bar
-- [ ] add special enemy
-  - has more lives
-  - changes sprite to lying down
-  - when player reaches the body - end game
+- [ ] trajektorie jako tečky
+
+# Janek
+- [ ] end game when all players dead
 
 # Hanka
-- [ ] rozšířit mapu 
+- [ ] 
 
 ## Map scene
 
