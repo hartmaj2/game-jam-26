@@ -1,7 +1,7 @@
 extends Node2D
 var def_off = Vector2(0, -340)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var offset = Vector2(0,0)
 	var current_strength = GM.current_strength/4
 	if current_strength > 0.0:
@@ -13,5 +13,5 @@ func _physics_process(delta: float) -> void:
 	GM.current_strength -=GM.fading*2*float(current_strength>0)
 
 
-func _on_end_body_entered(body: Node2D) -> void:
+func _on_end_body_entered(_body: Node2D) -> void:
 	GM.to_cave()
