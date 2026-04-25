@@ -69,7 +69,6 @@ position = Vector2(960, 540)
 light_mask = 2
 scroll_scale = Vector2(1.5, 1.5)
 scroll_offset = Vector2(2054, 628)
-follow_viewport = false
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="Parallax2D2" unique_id=304141807]
 light_mask = 2
