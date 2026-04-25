@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$Label.global_position = global_position + Vector2(pickup_label_offset_x,pickup_label_offset_y)
 	$Label.rotation = 0
-	print("collected",was_collected)
+	#print("collected",was_collected)
 	
 
 func _input(event: InputEvent) -> void:
@@ -35,7 +35,7 @@ func show_crown(pos : Vector2):
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	print("somebody entered")
 	if body.is_in_group("player"):
-		print("player entered")
+		#print("player entered")
 		player_nearby = true	
 		$Label.visible = true
 
@@ -44,4 +44,4 @@ func _on_pickup_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_nearby = false
 		$Label.visible = false
-		print("player exited")
+		#print("player exited")
