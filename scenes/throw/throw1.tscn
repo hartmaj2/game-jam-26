@@ -55,6 +55,7 @@ texture = ExtResource("2_mfv0q")
 [node name="Parallax_Clouds" type="Parallax2D" parent="." unique_id=1568022681]
 scroll_scale = Vector2(0.15, 1)
 repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(-20, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Clouds" unique_id=662657225]
 offset_right = 40.0
