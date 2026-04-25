@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+const JUMP_VELOCITY = -800.0
+const GRAVITY = 25
+
 @export var speed: float = 600.0
 @export var rock_scene: PackedScene
 @export var health: int = 1
@@ -43,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	velocity.x = direction * speed
-	velocity.y = 0.0  # no vertical movement
+	velocity.y += GRAVITY
 	
 	move_and_slide()
 	update_trajectory()
@@ -82,6 +85,10 @@ func _input(event: InputEvent) -> void:
 		kill_all_enemies()
 		#print("nearby rocks: ",nearby_rocks)
 		#print("rocks picked: " ,rocks_picked)
+
+	# Handle jump.
+	if Input.is_action_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
 func get_rid_of_rocks():
 	while rocks_picked > 0:
