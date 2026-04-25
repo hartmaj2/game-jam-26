@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bneewpq4vvfce"]
 
 [ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/throw/throw_1.gd" id="1_clwxy"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/cave.jpg" id="2_x6bfp"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
 [ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="3_ylkys"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
 [ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="5_ef380"]
@@ -83,13 +83,13 @@ script = ExtResource("6_345kk")
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
 [node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_8rivp")]
-position = Vector2(2341, 952)
+position = Vector2(3750, 952)
 
 [node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("4_8rivp")]
-position = Vector2(2482, 952)
+position = Vector2(2880, 360)
 
 [node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_8rivp")]
-position = Vector2(2204.617, 952)
+position = Vector2(3600, 952)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=767239893]
 
@@ -103,7 +103,9 @@ position = Vector2(3390.625, 880)
 
 [node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_4r5fs")]
 position = Vector2(3585.555, 880)
+speed = 50.0
 is_king = false
+is_harmless = true
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462 groups=["wall"]]
 position = Vector2(2880, 550)
