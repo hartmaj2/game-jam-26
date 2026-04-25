@@ -13,6 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if is_thrown:
+		pass
 		#print("thrown by ",thrown_by)
 	if linear_velocity.length() < 10:
 		is_thrown = false

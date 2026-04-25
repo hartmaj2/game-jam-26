@@ -7,7 +7,7 @@ const fade_time = 1.5
 var current = 0
 
 var jumps = ["res://scenes/jump1.tscn"]
-var throws = ["res://scenes/throw1.tscn"]
+var throws = ["res://scenes/throw/throw1.tscn"]
 var current_scene = jumps[0]
 
 var death_screen = preload("res://assets/img/death.jpg")
