@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://bm0688v3vbraw"]
 
-[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="1_liry6"]
-[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="1_q61l2"]
-[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/throw/throw_1.gd" id="1_rw6rq"]
-[ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_mfv0q"]
-[ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_eurq2"]
-[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="3_mfv0q"]
-[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
-[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="3_ub7db"]
-[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_4jtqv"]
-[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="6_rw6rq"]
-[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_mfv0q"]
-[ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="8_4jtqv"]
+[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/tutorial.gd" id="1_tbcdj"]
+[ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_ej4tf"]
+[ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_0hilk"]
+[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_wr8iv"]
+[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_e13mp"]
+[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="6_vrdqu"]
+[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
+[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="8_ikfo1"]
+[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="9_dwom6"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
+[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="11_15kfc"]
+[ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="12_7a100"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
 radius = 44.0
@@ -43,7 +43,7 @@ radius = 122.06556
 radius = 423.28833
 
 [node name="Throw1" type="Node2D" unique_id=1793107038]
-script = ExtResource("1_rw6rq")
+script = ExtResource("1_tbcdj")
 start_at_wall = false
 
 [node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=349661175]
@@ -53,7 +53,7 @@ scroll_scale = Vector2(0.1, 1)
 offset_top = -1950.0
 offset_right = 3840.0
 offset_bottom = 2370.0
-texture = ExtResource("2_mfv0q")
+texture = ExtResource("2_ej4tf")
 
 [node name="Parallax_Clouds" type="Parallax2D" parent="." unique_id=1568022681]
 scroll_scale = Vector2(0.15, 1)
@@ -64,7 +64,7 @@ autoscroll = Vector2(-20, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(0, 850)
-texture = ExtResource("3_eurq2")
+texture = ExtResource("3_0hilk")
 
 [node name="Parallax_Trees" type="Parallax2D" parent="." unique_id=1223095688]
 scroll_scale = Vector2(0.2, 1)
@@ -72,24 +72,24 @@ scroll_scale = Vector2(0.2, 1)
 [node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=1025018210]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("3_ub7db")
+texture = ExtResource("4_wr8iv")
 
 [node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=122608356]
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=2099266772]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("3_mfv0q")
+texture = ExtResource("5_e13mp")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075 groups=["player"]]
 position = Vector2(400, 880)
 collision_mask = 10
-script = ExtResource("1_liry6")
-rock_scene = ExtResource("3_omid4")
+script = ExtResource("6_vrdqu")
+rock_scene = ExtResource("7_cmspm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=291546741]
 position = Vector2(-2, 2)
-texture = ExtResource("1_q61l2")
+texture = ExtResource("8_ikfo1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=820353051]
 position = Vector2(-2, 0)
@@ -114,30 +114,30 @@ limit_top = 0
 limit_right = 9599
 limit_bottom = 1080
 position_smoothing_speed = 20.0
-script = ExtResource("6_4jtqv")
+script = ExtResource("9_dwom6")
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
-[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("3_omid4")]
+[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("7_cmspm")]
 position = Vector2(4341, 952)
 
-[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("3_omid4")]
+[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("7_cmspm")]
 position = Vector2(4482, 952)
 
-[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("3_omid4")]
+[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("7_cmspm")]
 position = Vector2(4204.617, 952)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=767239893]
 
-[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_mfv0q")]
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("10_bl2xa")]
 position = Vector2(5208, 880)
 wall = NodePath("../../Wall")
 is_king = false
 
-[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_mfv0q")]
+[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("10_bl2xa")]
 position = Vector2(5390.625, 880)
 
-[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_mfv0q")]
+[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("10_bl2xa")]
 position = Vector2(5585.555, 880)
 is_king = false
 
@@ -145,10 +145,10 @@ is_king = false
 position = Vector2(4800, 550)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("6_rw6rq")
+script = ExtResource("11_15kfc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=750386743]
-texture = ExtResource("8_4jtqv")
+texture = ExtResource("12_7a100")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=686396905]
 position = Vector2(-5.0000005, 36.999992)
