@@ -162,3 +162,7 @@ func _on_enemy_died():
 	if enemy_count == 0:
 		get_rid_of_rocks()
 		wall.open_tower()
+
+func hide_label():
+	if nearby_rocks.size() == 0:
+		get_tree().current_scene.get_node("PickRockLabel").visible = false

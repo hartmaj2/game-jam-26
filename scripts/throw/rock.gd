@@ -29,8 +29,20 @@ func initiate_rock(position : Vector2, speed : float, direction : Vector2, who :
 	is_thrown = true
 	was_thrown_recently = true
 
+func show_label():
+	print("show label")
+	get_tree().current_scene.get_node("PickRockLabel").visible = true
+
+func _on_pickup_area_body_exited(body: Node2D) -> void:
+	#print("somebody exited")
+	if body.is_in_group("player"):
+		get_tree().get_first_node_in_group("player").hide_label()
 
 func _on_pickup_area_body_entered(body: Node2D) -> void:
+	# check if should show label
+	if body.is_in_group("player"):
+		show_label()
+	
 	if body.is_in_group("floor"):
 		is_thrown = false
 		await get_tree().create_timer(0.5).timeout

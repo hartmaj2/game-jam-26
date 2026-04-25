@@ -25,6 +25,7 @@ func _input(event: InputEvent) -> void:
 	#print("pickup triggered in crown")
 	if event.is_action_pressed("pickup") and player_nearby and not was_collected:
 		was_collected = true
+		$Label.visible = false
 		get_tree().current_scene.disable_right_wall_and_camera_limits()
 		GM.to_map()
 		

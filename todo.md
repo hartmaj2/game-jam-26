@@ -2,9 +2,8 @@
 
 ## Throwing game
 
-- [x] remove trajectory when starting game
-- [x] enemy not throwing right after death
-- [x] fix enemy throwing above itself
+- [ ] press e to pick up for rocks
+- [ ] enemies throw rocks back when close to wall
 
 - [ ] health bar
 - [ ] trajektorie jako tečky
