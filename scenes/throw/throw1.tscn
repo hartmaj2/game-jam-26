@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="1_liry6"]
 [ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="1_q61l2"]
 [ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/throw/throw_1.gd" id="1_rw6rq"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_4jtqv"]
-[ext_resource type="Texture2D" uid="uid://bt7erojbtgkcf" path="res://assets/img/throw/tower.png" id="3_720jk"]
+[ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_mfv0q"]
+[ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_eurq2"]
+[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="3_mfv0q"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
+[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="3_ub7db"]
 [ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_4jtqv"]
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="6_rw6rq"]
 [ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_mfv0q"]
@@ -39,11 +41,41 @@ radius = 50.0
 
 [node name="Throw1" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_rw6rq")
+start_at_wall = false
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
-position = Vector2(4800, 540)
-scale = Vector2(2.5, 0.5)
-texture = ExtResource("2_4jtqv")
+[node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=349661175]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Sky" unique_id=677343907]
+offset_top = -1950.0
+offset_right = 3840.0
+offset_bottom = 2370.0
+texture = ExtResource("2_mfv0q")
+
+[node name="Parallax_Clouds" type="Parallax2D" parent="." unique_id=1568022681]
+scroll_scale = Vector2(0.15, 1)
+repeat_size = Vector2(3840, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Clouds" unique_id=662657225]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(0, 850)
+texture = ExtResource("3_eurq2")
+
+[node name="Parallax_Trees" type="Parallax2D" parent="." unique_id=1223095688]
+scroll_scale = Vector2(0.2, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=1025018210]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ub7db")
+
+[node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=122608356]
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=2099266772]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_mfv0q")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075 groups=["player"]]
 position = Vector2(400, 880)
