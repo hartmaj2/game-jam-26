@@ -36,6 +36,7 @@ func to_tutorial():
 	fade_out()
 
 func to_epilogue():
+	await get_tree().create_timer(0.2).timeout # to not have the error appear
 	get_tree().change_scene_to_file("res://scenes/epilogue.tscn")
 
 func to_prologue():
