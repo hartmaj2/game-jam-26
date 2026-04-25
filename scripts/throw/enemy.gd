@@ -21,6 +21,7 @@ var wall_top_y := 400.0 # hotfix for wall collision, provisional
 var wall_top = null
 
 @export var is_king = false
+@export var is_harmless = false
 const path_base = "res://assets/img/throw/stickman2"
 const normal_texture = preload(path_base + ".png")
 const king_texture = preload(path_base + "_king.png")
@@ -128,6 +129,8 @@ func die():
 	enemy_died.emit()
 	if is_king:
 		call_deferred("drop_crown")
+	if is_harmless:
+		GM.death()
 	queue_free()
 
 func take_damage(amount: int = 1):
@@ -141,7 +144,7 @@ func drop_crown():
 	crown.show_crown(global_position)
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	if not can_pick_up:
+	if not can_pick_up or is_harmless:
 		return
 
 	if area.is_in_group("rocks") and not has_rock:
