@@ -42,6 +42,7 @@ func damage_body_from_group(body, group : String) -> bool:
 		is_thrown = false
 		linear_velocity = Vector2(0,0)
 		body.take_damage(1)
+		GM.trigger_shake(10,0.5)
 		await get_tree().create_timer(0.5).timeout
 		was_thrown_recently = false
 		return true
@@ -54,6 +55,8 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 		get_tree().get_first_node_in_group("player").show_label()
 	
 	if body.is_in_group("floor"):
+		if is_thrown:
+			GM.trigger_shake(10,0.5)
 		is_thrown = false
 		await get_tree().create_timer(0.5).timeout
 		was_thrown_recently = false

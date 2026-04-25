@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 const JUMP_VELOCITY = -800.0
 const GRAVITY = 25
+@onready var hop = $Hop
+@onready var impact = $Impact
+var just_jumped = false
 
 @export var speed: float = 600.0
 @export var rock_scene: PackedScene
@@ -47,12 +50,26 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var direction := Input.get_axis("move_left", "move_right")
-	
 	velocity.x = direction * speed
 	velocity.y += GRAVITY
-	
 	move_and_slide()
 	update_trajectory()
+
+	var floored = is_on_floor()
+	#print("floored: ", floored, " just_jumped: ", just_jumped)
+	if floored and just_jumped:
+		impact.play()
+		GM.trigger_shake(10,0.5)
+		just_jumped = false
+		# $LeftParty.emitting = true
+		# $RightParty.emitting = true
+
+	# Handle jump.
+	if Input.is_action_pressed("ui_accept") and GM.controllable:
+		just_jumped = true
+		velocity.y = JUMP_VELOCITY
+		hop.play()
+
 
 func _process(delta):
 	set_sprite()
@@ -87,11 +104,7 @@ func _input(event: InputEvent) -> void:
 		print("mouse pos: ",get_global_mouse_position())
 		kill_all_enemies()
 		#print("nearby rocks: ",nearby_rocks)
-		#print("rocks picked: " ,rocks_picked)
-
-	# Handle jump.
-	if Input.is_action_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		#print("rocks picked: " ,rocks_picked) 
 
 func get_rid_of_rocks():
 	while rocks_picked > 0:
