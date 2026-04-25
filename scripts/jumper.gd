@@ -14,9 +14,13 @@ var impact = preload("res://assets/sounds/sfx/impact1.mp3")
 
 # The current strength of the shake
 var current_strength: float = 0.0
+	
 
-func _process(delta: float) -> void:
-	# If there is active shake, apply it and fade it out
+# Call this function to trigger a shake!
+func trigger_shake(strength: float = 15.0) -> void:
+	current_strength = strength
+	
+func apply_shake():
 	var offset = Vector2(0,0)
 	if current_strength > 0.0:
 		offset = Vector2(
@@ -24,11 +28,7 @@ func _process(delta: float) -> void:
 			randf_range(-current_strength, current_strength)
 		)
 	$Camera2D.offset = offset
-	current_strength -=0.5
-
-# Call this function to trigger a shake!
-func apply_shake(strength: float = 15.0) -> void:
-	current_strength = strength
+	current_strength -=0.5*float(current_strength>0)
 
 
 func _physics_process(delta: float) -> void:
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	if coyote < 0 and floored:
 		sfx.stream = impact
 		sfx.play()
-		apply_shake()
+		trigger_shake()
 	if floored: coyote = COYOTE_INIT
 	else:
 		coyote -= delta*float((coyote>=0))
@@ -49,6 +49,7 @@ func _physics_process(delta: float) -> void:
 		coyote = 0
 		sfx.stream = hop
 		sfx.play()
+		current_strength = 0
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -65,5 +66,5 @@ func _physics_process(delta: float) -> void:
 		$Sprite2D.animation = "idle"
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if not floored: $Sprite2D.animation = "jump"
-
+	apply_shake()
 	move_and_slide()
