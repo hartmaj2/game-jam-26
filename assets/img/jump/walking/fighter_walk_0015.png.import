@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpywwu6wpuc6a"
-path="res://.godot/imported/fighter_walk_0010.png-b4e3b8909c740719e2195efe7358d61e.ctex"
+uid="uid://bspm70nl1vchs"
+path="res://.godot/imported/fighter_walk_0015.png-e0e30531e61f0607b3e01c0a49fe8bf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/jump/walking/fighter_walk_0010.png"
-dest_files=["res://.godot/imported/fighter_walk_0010.png-b4e3b8909c740719e2195efe7358d61e.ctex"]
+source_file="res://assets/img/jump/walking/fighter_walk_0015.png"
+dest_files=["res://.godot/imported/fighter_walk_0015.png-e0e30531e61f0607b3e01c0a49fe8bf0.ctex"]
 
 [params]
 

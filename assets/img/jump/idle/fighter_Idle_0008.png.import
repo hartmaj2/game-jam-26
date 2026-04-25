@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck51ivdjqdhoe"
-path="res://.godot/imported/fighter_Idle_0001.png-deb2f346b502a1800661b3096a9796bc.ctex"
+uid="uid://2s1voq870uk"
+path="res://.godot/imported/fighter_Idle_0008.png-4dea85ea00ea5af056af0f149d6f9d9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/jump/idle/fighter_Idle_0001.png"
-dest_files=["res://.godot/imported/fighter_Idle_0001.png-deb2f346b502a1800661b3096a9796bc.ctex"]
+source_file="res://assets/img/jump/idle/fighter_Idle_0008.png"
+dest_files=["res://.godot/imported/fighter_Idle_0008.png-4dea85ea00ea5af056af0f149d6f9d9b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnd8sexcla278"
-path="res://.godot/imported/fighter_jump_0046.png-2fa3fc374f453da519e788f0905c5ffc.ctex"
+uid="uid://eoh0nrf1q4rm"
+path="res://.godot/imported/1.PNG-07b7a12e7ae38367beed256413044192.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/jump/jumping/fighter_jump_0046.png"
-dest_files=["res://.godot/imported/fighter_jump_0046.png-2fa3fc374f453da519e788f0905c5ffc.ctex"]
+source_file="res://assets/img/jump/walking/1.PNG"
+dest_files=["res://.godot/imported/1.PNG-07b7a12e7ae38367beed256413044192.ctex"]
 
 [params]
 
