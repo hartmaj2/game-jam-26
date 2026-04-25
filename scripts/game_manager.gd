@@ -24,6 +24,7 @@ func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	
 func to_tutorial():
 	current_index = 0
+	path_follower.progress_ratio = 0
 	path_follower.reparent(paths[current_index])
 	controllable = false
 	fade.texture = cave
