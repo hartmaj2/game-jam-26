@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bt7erojbtgkcf" path="res://assets/img/throw/tower.png" id="3_720jk"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
 [ext_resource type="Script" uid="uid://es6o2vdp8koj" path="res://scripts/throw/enemy.gd" id="5_rl1dt"]
+[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_4jtqv"]
 [ext_resource type="Texture2D" uid="uid://cg68pn1s2oxyl" path="res://assets/img/throw/stickman2.png" id="6_lfrcs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
@@ -83,6 +84,8 @@ limit_left = -1
 limit_top = 0
 limit_right = 9599
 limit_bottom = 1080
+position_smoothing_speed = 20.0
+script = ExtResource("6_4jtqv")
 
 [node name="Rock1" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
 position = Vector2(4341, 1017)

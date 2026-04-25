@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 const path_base = "res://assets/img/throw/stickman_rock"
 var sprites = [preload(path_base + "0.png"),preload(path_base + "1.png"),preload(path_base + "2.png"),preload(path_base + "3.png")]
+var input_locked := false
 
 const MAX_ROCKS_PICKED = 3
 var nearby_rocks: Array[Node] = []
@@ -28,6 +29,11 @@ func _ready() -> void:
 	#print(enemy_count)
 
 func _physics_process(delta: float) -> void:
+	if input_locked:
+		velocity.x = 0
+		move_and_slide()
+		return
+		
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	velocity.x = direction * speed
