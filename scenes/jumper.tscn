@@ -1,10 +1,74 @@
 [gd_scene format=3 uid="uid://dj62nkty0gyva"]
 
 [ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jumper.gd" id="1_qi757"]
-[ext_resource type="Texture2D" uid="uid://c7tv7d3bb4ep5" path="res://icon.svg" id="1_tdonl"]
+[ext_resource type="Texture2D" uid="uid://dekjvb1pgmknv" path="res://assets/img/spriteFrame.png" id="2_qi757"]
+[ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="3_1spwc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1spwc"]
+atlas = ExtResource("2_qi757")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq2w0"]
+atlas = ExtResource("2_qi757")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi757"]
+atlas = ExtResource("2_qi757")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orusn"]
+atlas = ExtResource("2_qi757")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb7no"]
+atlas = ExtResource("2_qi757")
+region = Rect2(0, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krg22"]
+atlas = ExtResource("2_qi757")
+region = Rect2(32, 64, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4wil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1spwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq2w0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi757")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orusn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb7no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orusn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krg22")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qi757"]
-radius = 61.008198
+radius = 26.076809
 
 [sub_resource type="Gradient" id="Gradient_qi757"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -19,12 +83,13 @@ fill_to = Vector2(0, 0)
 
 [node name="Jumper" type="CharacterBody2D" unique_id=287651784]
 light_mask = 3
-scale = Vector2(0.5, 0.5)
 collision_layer = 3
 script = ExtResource("1_qi757")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1826528933]
-texture = ExtResource("1_tdonl")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2067367883]
+sprite_frames = SubResource("SpriteFrames_u4wil")
+animation = &"left"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
 shape = SubResource("CircleShape2D_qi757")
@@ -35,3 +100,6 @@ range_item_cull_mask = 2
 shadow_item_cull_mask = 0
 texture = SubResource("GradientTexture2D_1spwc")
 texture_scale = 0.01
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=302695555]
+stream = ExtResource("3_1spwc")
