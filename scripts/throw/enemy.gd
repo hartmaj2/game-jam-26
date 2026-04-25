@@ -14,8 +14,16 @@ var target_player: Node2D = null
 var wall_x := 1050.0 # hotfix for wall collision, provisional
 var wall_top_y := 400.0 # hotfix for wall collision, provisional
 
+@onready var wall_top = $"../Wall/EnemyWallTop"
+
 func _ready():
 	target_player = get_tree().get_first_node_in_group("player")
+
+	#var wall_top = wall.global_position + Vector2(0,- wall_height / 2) 
+	wall_x = wall_top.global_position.x
+	wall_top_y = wall_top.global_position.y
+	print("wall_top:",wall_top)
+	
 
 func _physics_process(delta: float) -> void:	
 	velocity.x = direction * speed
@@ -52,7 +60,7 @@ func find_throw_direction():
 
 		# check wall collision
 		if will_hit_wall(dir):
-			print("will hit wall with angle: ", angle)
+			#print("will hit wall with angle: ", angle)
 			continue
 
 		for i in range(180):

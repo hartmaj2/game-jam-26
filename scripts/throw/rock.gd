@@ -4,6 +4,8 @@ var is_thrown := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	linear_damp = 0
+	linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
 	pass # Replace with function body.
 
 

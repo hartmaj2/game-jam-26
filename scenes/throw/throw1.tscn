@@ -81,6 +81,9 @@ position = Vector2(1.5, 2)
 scale = Vector2(0.72, 0.72)
 shape = SubResource("RectangleShape2D_omid4")
 
+[node name="EnemyWallTop" type="Node2D" parent="Wall" unique_id=936026313]
+position = Vector2(-1.3887746, -629.1666)
+
 [node name="Enemy" type="CharacterBody2D" parent="." unique_id=894114597 groups=["enemy"]]
 position = Vector2(1355, 969)
 collision_mask = 10
