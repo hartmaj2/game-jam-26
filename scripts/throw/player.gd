@@ -101,8 +101,11 @@ func update_trajectory():
 	for i in range(180):
 		vel += gravity * dt
 		pos += vel * dt
-		if i % 5 == 0:
+		if i % 1 == 0:
 			points.append(pos)
+		if pos.y > 1000:
+			#points.append(Vector2(pos.x,1000))
+			break
 
 	trajectory.points = points
 	
