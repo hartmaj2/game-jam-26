@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://lipu42ohomt7" path="res://scripts/prologue.gd" id="1_x1kem"]
 [ext_resource type="Texture2D" uid="uid://b74jkgrbsqmhd" path="res://assets/img/prologue/prologue.jpg" id="2_8byya"]
 
-[node name="IntroLevel" type="Node2D" unique_id=1364128692]
+[node name="Prologue" type="Node2D" unique_id=1364128692]
 script = ExtResource("1_x1kem")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2130167154]
@@ -16,10 +16,9 @@ texture = ExtResource("2_8byya")
 position = Vector2(960, 540)
 
 [node name="Label" type="Label" parent="." unique_id=1658879132]
-offset_left = 409.0
-offset_top = 980.0
-offset_right = 1456.0
-offset_bottom = 1257.0
+offset_left = 364.0
+offset_top = 643.0
+offset_right = 1411.0
+offset_bottom = 920.0
 theme_override_font_sizes/font_size = 100
-text = "PRESS SPACE TO PLAY
-"
+text = "PRESS SPACE TO PLAY"

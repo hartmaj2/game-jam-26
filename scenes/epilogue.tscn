@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dfy6xvlbh23ub"]
+
+[ext_resource type="Script" uid="uid://dr4remfgt38c1" path="res://scripts/epilogue.gd" id="1_kmtq4"]
+[ext_resource type="Texture2D" uid="uid://b74jkgrbsqmhd" path="res://assets/img/prologue/prologue.jpg" id="1_nocep"]
+
+[node name="Epilogue" type="Node2D" unique_id=1296033417]
+script = ExtResource("1_kmtq4")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1464313182]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_nocep")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1472096499]
+position = Vector2(960, 540)
+
+[node name="Label" type="Label" parent="." unique_id=445334288]
+offset_left = 397.0
+offset_top = 808.0
+offset_right = 1444.0
+offset_bottom = 1085.0
+theme_override_font_sizes/font_size = 100
+text = "PRESS SPACE TO PLAY"
