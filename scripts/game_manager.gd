@@ -7,7 +7,7 @@ const fade_time = 0.5
 var current_index = 0
 
 var jumps = ["res://scenes/jump/jump1.tscn", "res://scenes/jump/jump2.tscn"]
-var throws = ["res://scenes/throw/throw1.tscn","res://scenes/throw/throw2.tscn"]
+var throws = ["res://scenes/throw/throw1.tscn","res://scenes/throw/throw2.tscn","res://scenes/throw/throw3.tscn"]
 var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
