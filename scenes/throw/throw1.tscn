@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="1_liry6"]
 [ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman1.png" id="1_q61l2"]
+[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scenes/throw/throw_1.gd" id="1_rw6rq"]
 [ext_resource type="Texture2D" uid="uid://bt7erojbtgkcf" path="res://assets/img/throw/tower.png" id="3_720jk"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
 [ext_resource type="Script" uid="uid://es6o2vdp8koj" path="res://scripts/throw/enemy.gd" id="5_rl1dt"]
 [ext_resource type="Texture2D" uid="uid://cg68pn1s2oxyl" path="res://assets/img/throw/stickman2.png" id="6_lfrcs"]
+[ext_resource type="Script" uid="uid://doif7g58eyacj" path="res://scripts/throw/enter_throwing_fight.gd" id="8_4jtqv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
 radius = 44.0
@@ -27,15 +29,22 @@ radius = 35.0
 height = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
-size = Vector2(2019, 79)
+size = Vector2(9600, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rl1dt"]
-size = Vector2(20, 1149)
+size = Vector2(20, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrcs"]
-size = Vector2(20, 1155)
+size = Vector2(20, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
+size = Vector2(360, 360)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
+radius = 50.0
 
 [node name="Throw1" type="Node2D" unique_id=1793107038]
+script = ExtResource("1_rw6rq")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075 groups=["player"]]
 position = Vector2(307, 954)
@@ -63,11 +72,19 @@ shape = SubResource("CapsuleShape2D_my54g")
 width = 3.0
 default_color = Color(0.69411767, 0, 0, 0.627451)
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1625199504]
+limit_left = 0
+limit_top = 0
+limit_right = 9600
+limit_bottom = 1080
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [node name="Rock" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
-position = Vector2(1352, 396)
+position = Vector2(5102, 279)
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462]
-position = Vector2(991.99994, 803)
+position = Vector2(4800, 803)
 scale = Vector2(0.72, 0.72)
 collision_layer = 2
 collision_mask = 0
@@ -82,7 +99,7 @@ scale = Vector2(0.72, 0.72)
 shape = SubResource("RectangleShape2D_omid4")
 
 [node name="Enemy" type="CharacterBody2D" parent="." unique_id=894114597 groups=["enemy"]]
-position = Vector2(1355, 969)
+position = Vector2(5208, 971)
 collision_mask = 10
 script = ExtResource("5_rl1dt")
 rock_scene = ExtResource("3_omid4")
@@ -103,31 +120,56 @@ shape = SubResource("CapsuleShape2D_lfrcs")
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
 
 [node name="Bottom" type="StaticBody2D" parent="Bounds" unique_id=955624488 groups=["floor"]]
-position = Vector2(989, 1094)
 collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom" unique_id=1193647301]
-position = Vector2(4, 13)
+position = Vector2(4800, 1080)
 shape = SubResource("RectangleShape2D_my54g")
 
-[node name="Left" type="StaticBody2D" parent="Bounds" unique_id=1267544720]
+[node name="LeftFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1267544720]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Left" unique_id=429855713]
-position = Vector2(0, 564.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftFightBarrier" unique_id=429855713]
+position = Vector2(3840, 540)
 shape = SubResource("RectangleShape2D_rl1dt")
 
-[node name="Right" type="StaticBody2D" parent="Bounds" unique_id=1683984710]
-position = Vector2(1920, 0)
+[node name="RightFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1683984710]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Right" unique_id=140447480]
-position = Vector2(0, 567.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightFightBarrier" unique_id=140447480]
+position = Vector2(5760, 540)
 shape = SubResource("RectangleShape2D_lfrcs")
+
+[node name="LeftCave" type="StaticBody2D" parent="Bounds" unique_id=769643632]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftCave" unique_id=99405067]
+position = Vector2(0, 900)
+shape = SubResource("RectangleShape2D_rw6rq")
+
+[node name="RightCave" type="StaticBody2D" parent="Bounds" unique_id=135647580]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightCave" unique_id=2125337852]
+position = Vector2(9600, 900)
+shape = SubResource("RectangleShape2D_rw6rq")
+
+[node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
+
+[node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
+script = ExtResource("8_4jtqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/EnterThrowingFight" unique_id=283124648]
+position = Vector2(4000, 1000)
+shape = SubResource("CircleShape2D_mfv0q")
 
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
 [connection signal="area_entered" from="Enemy/PickupArea" to="Enemy" method="_on_pickup_area_area_entered"]
+[connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
+[connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="TriggerAreas/EnterThrowingFight" method="_on_body_entered"]

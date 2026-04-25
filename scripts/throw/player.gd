@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 300.0
+@export var speed: float = 600.0
 @export var rock_scene: PackedScene
 @export var health: int = 3
 
