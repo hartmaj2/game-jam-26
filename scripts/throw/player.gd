@@ -44,6 +44,7 @@ func _ready() -> void:
 			enemy.connect("enemy_died", Callable(self, "_on_enemy_died"))
 
 func _physics_process(delta: float) -> void:
+	print(GM.controllable)
 	if input_locked:
 		velocity.x = 0
 		move_and_slide()
@@ -61,17 +62,17 @@ func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
 	#print("floored: ", floored, " just_jumped: ", just_jumped)
 	if floored and just_jumped:
-		impact.play()
+		#impact.play()
 		GM.trigger_shake(10,0.5)
 		just_jumped = false
 		# $LeftParty.emitting = true
 		# $RightParty.emitting = true
 
 	# Handle jump.
-	if Input.is_action_pressed("ui_accept") and GM.controllable:
+	if Input.is_action_pressed("ui_accept") and GM.controllable and floored:
 		just_jumped = true
 		velocity.y = JUMP_VELOCITY
-		hop.play()
+		#hop.play()
 
 
 func _process(delta):

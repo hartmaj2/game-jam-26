@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var debug = true
+var debug = false
 
 signal enemy_died
 
