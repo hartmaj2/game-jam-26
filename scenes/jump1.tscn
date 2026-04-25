@@ -63,9 +63,6 @@ tile_set = SubResource("TileSet_85k56")
 light_mask = 2
 position = Vector2(960, 540)
 
-[node name="Camera2D" type="Camera2D" parent="Jumper" unique_id=409922942]
-limit_left = 600
-
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=469034189]
 light_mask = 2
 scroll_scale = Vector2(1.5, 1.5)

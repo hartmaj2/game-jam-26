@@ -103,3 +103,6 @@ texture_scale = 0.01
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=302695555]
 stream = ExtResource("3_1spwc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1850856852]
+limit_left = 600

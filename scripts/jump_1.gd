@@ -9,6 +9,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_end_body_entered(body: Node2D) -> void: GM.from_cave()
+func _on_end_body_entered(body: Node2D) -> void: GM.to_map()
 
 func _on_death_body_entered(body: Node2D) -> void: GM.death()

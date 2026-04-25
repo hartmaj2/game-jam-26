@@ -10,13 +10,33 @@ var hop = preload("res://assets/sounds/sfx/hop.wav")
 var impact = preload("res://assets/sounds/sfx/impact1.mp3")
 
 
+@export var fade_speed: float = 5.0
+
+# The current strength of the shake
+var current_strength: float = 0.0
+
+func _process(delta: float) -> void:
+	# If there is active shake, apply it and fade it out
+	var offset = Vector2(0,0)
+	if current_strength > 0.0:
+		offset = Vector2(
+			randf_range(-current_strength, current_strength),
+			randf_range(-current_strength, current_strength)
+		)
+	$Camera2D.offset = offset
+	current_strength -=0.5
+
+# Call this function to trigger a shake!
+func apply_shake(strength: float = 15.0) -> void:
+	current_strength = strength
+
+
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	#print(delta)
 	var floored = is_on_floor()
 	if coyote < 0 and floored:
 		sfx.stream = impact
 		sfx.play()
+		apply_shake()
 	if floored: coyote = COYOTE_INIT
 	else:
 		coyote -= delta*float((coyote>=0))

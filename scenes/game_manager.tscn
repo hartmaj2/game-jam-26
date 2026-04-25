@@ -3,6 +3,22 @@
 [ext_resource type="Script" uid="uid://bbx82dl1tyami" path="res://scripts/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="AudioStream" uid="uid://c0gu2mid4v6vq" path="res://assets/sounds/music/adventure.ogg" id="2_glms7"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/cave.jpg" id="2_udu3i"]
+[ext_resource type="Texture2D" uid="uid://c7tv7d3bb4ep5" path="res://icon.svg" id="3_oo155"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_udu3i"]
+load_path = "res://.godot/imported/map.jpg-1d147e29e470ca7b34d773a0d12dc4c7.ctex"
+
+[sub_resource type="Curve2D" id="Curve2D_eaq8r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 522, 370, 0, 0, 0, 0, 604, 476, 0, 0, 0, 0, 658, 726, 0, 0, 0, 0, 730, 948, 0, 0, 0, 0, 934, 972, 0, 0, 0, 0, 1066, 846, 0, 0, 0, 0, 1104, 648, 0, 0, 0, 0, 1228, 514, 0, 0, 0, 0, 1448, 486)
+}
+point_count = 9
+
+[sub_resource type="Curve2D" id="Curve2D_oo155"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1442, 492, 0, 0, 0, 0, 1530, 602, 0, 0, 0, 0, 1496, 792, 0, 0, 0, 0, 1394, 918, 0, 0, 0, 0, 1348, 1088, 0, 0, 0, 0, 1384, 1260, 0, 0, 0, 0, 1552, 1340, 0, 0, 0, 0, 1694, 1206)
+}
+point_count = 8
 
 [node name="GameManager" type="Node2D" unique_id=1018969776]
 script = ExtResource("1_hwd4i")
@@ -16,6 +32,26 @@ offset_bottom = 1080.0
 scale = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("2_udu3i")
+
+[node name="Map" type="TextureRect" parent="Canvas" unique_id=775689534]
+modulate = Color(1, 1, 1, 0)
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_udu3i")
+
+[node name="Path1" type="Path2D" parent="Canvas/Map" unique_id=1847382740]
+curve = SubResource("Curve2D_eaq8r")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Canvas/Map/Path1" unique_id=1151325459]
+position = Vector2(522, 370)
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Canvas/Map/Path1/PathFollow2D" unique_id=926754341]
+texture = ExtResource("3_oo155")
+
+[node name="Path2" type="Path2D" parent="Canvas/Map" unique_id=1962255004]
+curve = SubResource("Curve2D_oo155")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=761979931]
 stream = ExtResource("2_glms7")
