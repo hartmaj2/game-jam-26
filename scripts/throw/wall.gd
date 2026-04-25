@@ -7,6 +7,7 @@ var texture_open = preload("res://assets/img/wall.png")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Sprite2D.texture = texture_closed
+	z_index += 10
 	pass # Replace with function body.
 
 

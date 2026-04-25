@@ -35,7 +35,7 @@ func show_crown(pos : Vector2):
 
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	print("somebody entered")
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not was_collected:
 		#print("player entered")
 		player_nearby = true	
 		$Label.visible = true
