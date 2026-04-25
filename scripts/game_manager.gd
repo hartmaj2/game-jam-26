@@ -3,7 +3,7 @@ var controllable = true
 @onready var fade = $Canvas/Fade
 @onready var map = $Canvas/Map
 @onready var path_follower = $Canvas/Map/Path1/PathFollow2D
-const fade_time = 0.5
+const fade_time = 0.2
 var current_index = -1
 
 var jumps = ["res://scenes/jump/jump1.tscn", "res://scenes/jump/jump2.tscn"]
@@ -92,9 +92,9 @@ func to_map():
 	tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
-	
-	path_follower.reparent(paths[min(1,current_index+1)])
 	current_index+=1
+	path_follower.reparent(paths[min(1,current_index+1)])
+	
 	path_follower.progress_ratio = 0
 	controllable = true
 	#fade_out()

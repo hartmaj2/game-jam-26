@@ -18,11 +18,11 @@ func next():
 	
 
 func vulkan():
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.1).timeout
 	var tw = get_tree().create_tween()
 	#tw.set_parallel(true)
-	tw.tween_property($Camera2D,"position",Vector2(960, 1080+540), 2)
-	tw.tween_property($Camera2D,"zoom",Vector2(2,2), 2)
+	tw.tween_property($Camera2D,"position",Vector2(960, 1080+540), 0.1)
+	tw.tween_property($Camera2D,"zoom",Vector2(2,2), 0.1)
 	await  tw.finished
 	next()
 
