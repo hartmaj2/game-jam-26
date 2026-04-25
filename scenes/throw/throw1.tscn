@@ -80,7 +80,7 @@ limit_bottom = 1080
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Rock" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
+[node name="Rock1" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
 position = Vector2(4341, 1017)
 
 [node name="Rock2" parent="." unique_id=1371884244 instance=ExtResource("3_omid4")]
@@ -107,23 +107,62 @@ shape = SubResource("RectangleShape2D_omid4")
 [node name="EnemyWallTop" type="Node2D" parent="Wall" unique_id=936026313]
 position = Vector2(-1.3887746, -629.1666)
 
-[node name="Enemy" type="CharacterBody2D" parent="." unique_id=894114597 groups=["enemy"]]
+[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=894114597 groups=["enemy"]]
 position = Vector2(5208, 971)
 collision_mask = 10
 script = ExtResource("5_rl1dt")
 rock_scene = ExtResource("3_omid4")
+is_king = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy" unique_id=2062317929]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy1" unique_id=2062317929]
 texture = ExtResource("6_lfrcs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=346919275]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1" unique_id=346919275]
 shape = SubResource("CapsuleShape2D_rl1dt")
 
-[node name="PickupArea" type="Area2D" parent="Enemy" unique_id=2146112850]
+[node name="PickupArea" type="Area2D" parent="Enemy1" unique_id=2146112850]
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/PickupArea" unique_id=910617007]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1/PickupArea" unique_id=910617007]
+shape = SubResource("CapsuleShape2D_lfrcs")
+
+[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=1145978469 groups=["enemy"]]
+position = Vector2(5379.778, 976.9235)
+collision_mask = 10
+script = ExtResource("5_rl1dt")
+rock_scene = ExtResource("3_omid4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy2" unique_id=1000531947]
+texture = ExtResource("6_lfrcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2" unique_id=1151060483]
+shape = SubResource("CapsuleShape2D_rl1dt")
+
+[node name="PickupArea" type="Area2D" parent="Enemy2" unique_id=1372905749]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/PickupArea" unique_id=1885461057]
+shape = SubResource("CapsuleShape2D_lfrcs")
+
+[node name="Enemy3" type="CharacterBody2D" parent="." unique_id=290120157 groups=["enemy"]]
+position = Vector2(5563.546, 968.7561)
+collision_mask = 10
+script = ExtResource("5_rl1dt")
+rock_scene = ExtResource("3_omid4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy3" unique_id=954894170]
+texture = ExtResource("6_lfrcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3" unique_id=1298491494]
+shape = SubResource("CapsuleShape2D_rl1dt")
+
+[node name="PickupArea" type="Area2D" parent="Enemy3" unique_id=214899472]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/PickupArea" unique_id=436024006]
 shape = SubResource("CapsuleShape2D_lfrcs")
 
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
@@ -179,6 +218,8 @@ shape = SubResource("CircleShape2D_mfv0q")
 
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
-[connection signal="area_entered" from="Enemy/PickupArea" to="Enemy" method="_on_pickup_area_area_entered"]
+[connection signal="area_entered" from="Enemy1/PickupArea" to="Enemy1" method="_on_pickup_area_area_entered"]
+[connection signal="area_entered" from="Enemy2/PickupArea" to="Enemy2" method="_on_pickup_area_area_entered"]
+[connection signal="area_entered" from="Enemy3/PickupArea" to="Enemy3" method="_on_pickup_area_area_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="TriggerAreas/EnterThrowingFight" method="_on_body_entered"]

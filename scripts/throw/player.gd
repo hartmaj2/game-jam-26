@@ -21,6 +21,12 @@ var min_angle := deg_to_rad(-90)
 var max_angle := deg_to_rad(90)
 var angle_speed := 0.5
 
+var enemy_count := 0
+
+func _ready() -> void:
+	enemy_count = get_tree().get_nodes_in_group("enemy").size()
+	#print(enemy_count)
+
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	
