@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		move_and_slide()
 		return
-		
+
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	velocity.x = direction * speed
@@ -93,6 +93,8 @@ func throw_rock():
 		#print("No rocks to throw")
 		return
 	rocks_picked -= 1
+	if rocks_picked == 0:
+		trajectory.visible = false
 	var rock = rock_scene.instantiate()
 	get_tree().current_scene.add_child(rock)
 	var dir = Vector2.UP.rotated(aim_angle).normalized()
@@ -118,6 +120,7 @@ func pickup_nearest_rock() -> void:
 
 	rock.get_parent().queue_free()
 	rocks_picked += 1
+	trajectory.visible = true
 
 func take_damage(amount: int = 1):
 	#print("Player took damage: ", amount)

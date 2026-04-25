@@ -76,6 +76,7 @@ position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_my54g")
 
 [node name="Trajectory" type="Line2D" parent="Player" unique_id=1784486280]
+visible = false
 width = 3.0
 default_color = Color(0.69411767, 0, 0, 0.627451)
 
