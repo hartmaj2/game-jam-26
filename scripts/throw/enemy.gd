@@ -22,7 +22,7 @@ func _ready():
 	#var wall_top = wall.global_position + Vector2(0,- wall_height / 2) 
 	wall_x = wall_top.global_position.x
 	wall_top_y = wall_top.global_position.y
-	print("wall_top:",wall_top)
+	#print("wall_top:",wall_top)
 	
 
 func _physics_process(delta: float) -> void:	
@@ -101,7 +101,7 @@ func will_hit_wall(dir):
 func throw_at_player(rock: Node2D):
 	# var dir = (target_player.global_position - global_position).normalized()
 	var dir = find_throw_direction()
-	rock.initiate_rock(global_position, throw_speed, dir)
+	rock.initiate_rock(global_position, throw_speed, dir,"enemy")
 	has_rock = false
 	await get_tree().create_timer(0.2).timeout
 	can_pick_up = true

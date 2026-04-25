@@ -68,22 +68,22 @@ func update_trajectory():
 	
 func throw_rock():
 	if rocks_picked < 1:
-		print("No rocks to throw")
+		#print("No rocks to throw")
 		return
 	rocks_picked -= 1
 	var rock = rock_scene.instantiate()
 	get_tree().current_scene.add_child(rock)
 	var dir = Vector2.UP.rotated(aim_angle).normalized()
-	rock.initiate_rock(global_position,throw_speed,dir)
+	rock.initiate_rock(global_position,throw_speed,dir,"player")
 	
 # HANDLING PICKUPS
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	print("entered")
+	#print("entered")
 	if area.is_in_group("rocks"):
 		nearby_rocks.append(area)
 
 func _on_pickup_area_area_exited(area: Area2D) -> void:
-	print("exited")
+	#print("exited")
 	if area.is_in_group("rocks"):
 		nearby_rocks.erase(area)
 
