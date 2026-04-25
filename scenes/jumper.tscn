@@ -18,12 +18,12 @@ fill_from = Vector2(0.49565217, 0.523913)
 fill_to = Vector2(0, 0)
 
 [node name="Jumper" type="CharacterBody2D" unique_id=287651784]
+light_mask = 3
 scale = Vector2(0.5, 0.5)
 collision_layer = 3
 script = ExtResource("1_qi757")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1826528933]
-light_mask = 2
 texture = ExtResource("1_tdonl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
@@ -32,6 +32,7 @@ shape = SubResource("CircleShape2D_qi757")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=449053715]
 position = Vector2(-7.0000305, 64.000015)
 scale = Vector2(106.64063, 106.25)
-shadow_enabled = true
+range_item_cull_mask = 2
+shadow_item_cull_mask = 0
 texture = SubResource("GradientTexture2D_1spwc")
 texture_scale = 0.01
