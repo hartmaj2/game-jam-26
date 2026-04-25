@@ -18,8 +18,8 @@ height = 208.0
 radius = 43.0
 height = 206.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_omid4"]
-size = Vector2(507, 1018)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
+points = PackedVector2Array(-260.5713, -510.10803, 5.7871094, -615.35486, 262.1914, -508.17896, 260.417, 511.18835, -246.91309, 509.2594)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(9600, 20)
@@ -102,9 +102,9 @@ scale = Vector2(0.72, 0.72)
 texture = ExtResource("3_720jk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=686396905]
-position = Vector2(1.5, 2)
+position = Vector2(-5.5556645, -2.7777815)
 scale = Vector2(0.72, 0.72)
-shape = SubResource("RectangleShape2D_omid4")
+shape = SubResource("ConvexPolygonShape2D_4jtqv")
 
 [node name="EnemyWallTop" type="Node2D" parent="Wall" unique_id=936026313]
 position = Vector2(-1.3887746, -629.1666)
