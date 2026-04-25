@@ -68,7 +68,7 @@ func find_throw_direction():
 		for i in range(180):
 			vel += g * dt
 			pos += vel * dt
-
+						
 			var dist = pos.distance_to(target_player.global_position)
 			if dist < best_dist:
 				best_dist = dist
@@ -119,6 +119,9 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 		return
 
 	if area.is_in_group("rocks") and not has_rock:
+		var rock = area.get_parent()
+		if rock.is_thrown or rock.was_thrown_recently:
+			return
 		has_rock = true
 		can_pick_up = false
 		throw_at_player(area.get_parent())
