@@ -177,6 +177,15 @@ shape = SubResource("CircleShape2D_mfv0q")
 position = Vector2(9000, 950)
 shape = SubResource("CircleShape2D_mfv0q")
 
+[node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
+visible = false
+offset_left = 3912.0
+offset_top = 64.0
+offset_right = 4498.0
+offset_bottom = 162.22852
+theme_override_font_sizes/font_size = 60
+text = "Press E to pick rocks"
+
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
