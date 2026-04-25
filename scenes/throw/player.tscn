@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://cngj3psmuserp"]
+
+[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="1_ic21p"]
+[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="2_34rwq"]
+[ext_resource type="Texture2D" uid="uid://eoh0nrf1q4rm" path="res://assets/img/jump/walking/1.PNG" id="3_0kksi"]
+[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="3_vlhfn"]
+[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="4_ef6wi"]
+[ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="4_up8u8"]
+[ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="5_0kksi"]
+[ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="5_g5kdh"]
+[ext_resource type="Texture2D" uid="uid://clr1hosuilc57" path="res://assets/img/jump/walking/4.PNG" id="6_7bxlc"]
+[ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="6_up8u8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfykx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0kksi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_up8u8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0kksi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_up8u8")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0kksi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g5kdh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_up8u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7bxlc")
+}],
+"loop": true,
+"name": &"left",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
+radius = 44.0
+height = 208.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_my54g"]
+radius = 43.0
+height = 206.0
+
+[node name="Player" type="CharacterBody2D" unique_id=599943824 groups=["player"]]
+collision_mask = 10
+script = ExtResource("1_ic21p")
+rock_scene = ExtResource("2_34rwq")
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=137237869]
+sprite_frames = SubResource("SpriteFrames_rfykx")
+animation = &"left"
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=139832300]
+visible = false
+position = Vector2(-2, 2)
+texture = ExtResource("3_vlhfn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1934991740]
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_omid4")
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=983700221]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=343294604]
+position = Vector2(-2, 1)
+shape = SubResource("CapsuleShape2D_my54g")
+
+[node name="Trajectory" type="Line2D" parent="." unique_id=34103122]
+visible = false
+width = 3.0
+default_color = Color(0.69411767, 0, 0, 0.627451)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1604395605]
+limit_left = -1
+limit_top = 0
+limit_right = 9599
+limit_bottom = 1080
+position_smoothing_speed = 20.0
+script = ExtResource("4_ef6wi")
+
+[node name="Hop" type="AudioStreamPlayer" parent="." unique_id=1958127882]
+stream = ExtResource("5_0kksi")
+
+[node name="Impact" type="AudioStreamPlayer" parent="." unique_id=1121576692]
+stream = ExtResource("6_up8u8")
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]

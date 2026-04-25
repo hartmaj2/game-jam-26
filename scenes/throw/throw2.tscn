@@ -2,23 +2,11 @@
 
 [ext_resource type="Script" uid="uid://c20mysv78v5v6" path="res://scripts/throw/throw_2.gd" id="1_rr2ot"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
-[ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="3_ylkys"]
+[ext_resource type="PackedScene" uid="uid://cngj3psmuserp" path="res://scenes/throw/player.tscn" id="3_7l3cx"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
-[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="5_ef380"]
-[ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_345kk"]
 [ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
-[ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="7_pv6vb"]
-[ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="8_3a3r6"]
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="8_fau2y"]
 [ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="9_2pq3j"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
-radius = 44.0
-height = 208.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_my54g"]
-radius = 43.0
-height = 206.0
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
 points = PackedVector2Array(-16.667, -280, 30, -280, 80, -130, 80, 700, -70, 700, -70, -130)
@@ -46,46 +34,7 @@ position = Vector2(3840, 540)
 scale = Vector2(2, 0.5)
 texture = ExtResource("2_x6bfp")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075 groups=["player"]]
-position = Vector2(400, 880)
-collision_mask = 10
-script = ExtResource("3_ylkys")
-rock_scene = ExtResource("4_8rivp")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=291546741]
-position = Vector2(-2, 2)
-texture = ExtResource("5_ef380")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=820353051]
-position = Vector2(-2, 0)
-shape = SubResource("CapsuleShape2D_omid4")
-
-[node name="PickupArea" type="Area2D" parent="Player" unique_id=2039975705]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickupArea" unique_id=1789325696]
-position = Vector2(-2, 1)
-shape = SubResource("CapsuleShape2D_my54g")
-
-[node name="Trajectory" type="Line2D" parent="Player" unique_id=1784486280]
-visible = false
-width = 3.0
-default_color = Color(0.69411767, 0, 0, 0.627451)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1625199504]
-limit_left = -1
-limit_top = 0
-limit_right = 9599
-limit_bottom = 1080
-position_smoothing_speed = 20.0
-script = ExtResource("6_345kk")
-
-[node name="Hop" type="AudioStreamPlayer" parent="Player" unique_id=1150086614]
-stream = ExtResource("7_pv6vb")
-
-[node name="Impact" type="AudioStreamPlayer" parent="Player" unique_id=1255509545]
-stream = ExtResource("8_3a3r6")
+[node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_7l3cx")]
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
@@ -196,7 +145,5 @@ offset_bottom = 162.22852
 theme_override_font_sizes/font_size = 60
 text = "Press E to pick rocks"
 
-[connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
-[connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
