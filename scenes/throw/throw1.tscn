@@ -218,7 +218,7 @@ offset_top = 64.0
 offset_right = 4498.0
 offset_bottom = 162.22852
 theme_override_font_sizes/font_size = 60
-text = "Press E to pick rocks"
+text = "Press J to pick rocks"
 
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]

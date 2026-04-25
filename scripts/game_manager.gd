@@ -6,8 +6,8 @@ var controllable = true
 const fade_time = 0.5
 var current_index = 0
 
-var jumps = ["res://scenes/jump/jump1.tscn"]
-var throws = ["res://scenes/throw/throw1.tscn"]
+var jumps = ["res://scenes/jump/jump1.tscn", "res://scenes/jump/jump2.tscn"]
+var throws = ["res://scenes/throw/throw1.tscn","res://scenes/throw/throw2.tscn"]
 var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
@@ -36,6 +36,7 @@ func to_tutorial():
 	fade_out()
 
 func to_epilogue():
+	await get_tree().create_timer(0.2).timeout # to not have the error appear
 	get_tree().change_scene_to_file("res://scenes/epilogue.tscn")
 
 func to_prologue():
@@ -78,17 +79,19 @@ func fade_out():
 	controllable = true
 	
 func to_map():
+	print(path_follower.get_parent())
 	controllable = false
 	var tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",1,fade_time)
 	await tw.finished
 	tw = get_tree().create_tween()
-	tw.tween_property(path_follower, "progress_ratio", 1.0, 3.0)
+	tw.tween_property(path_follower, "progress_ratio", 1.0, 0.5)
 	await tw.finished
 	tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
 	path_follower.reparent(paths[1-current_index])
+	current_index+=1
 	path_follower.progress_ratio = 0
 	controllable = true
 	#fade_out()

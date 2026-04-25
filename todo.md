@@ -2,14 +2,10 @@
 
 ## Throwing game
 
-- [ ] press e to pick up for rocks
-- [ ] enemies throw rocks back when close to wall
-
 - [ ] health bar
 - [ ] trajektorie jako tečky
 
 # Janek
-- [x] end game when all players dead
 
 # Hanka
 - [ ] 
