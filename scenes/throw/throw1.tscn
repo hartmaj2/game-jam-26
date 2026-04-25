@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman1.png" id="1_q61l2"]
 [ext_resource type="Texture2D" uid="uid://bt7erojbtgkcf" path="res://assets/img/throw/tower.png" id="3_720jk"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
+[ext_resource type="Script" uid="uid://es6o2vdp8koj" path="res://scripts/throw/enemy.gd" id="5_rl1dt"]
+[ext_resource type="Texture2D" uid="uid://cg68pn1s2oxyl" path="res://assets/img/throw/stickman2.png" id="6_lfrcs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
 radius = 44.0
@@ -16,14 +18,28 @@ height = 206.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omid4"]
 size = Vector2(507, 1018)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl1dt"]
+radius = 35.0
+height = 200.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfrcs"]
+radius = 35.0
+height = 200.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(2019, 79)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl1dt"]
+size = Vector2(20, 1149)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrcs"]
+size = Vector2(20, 1155)
+
 [node name="Throw1" type="Node2D" unique_id=1793107038]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1672303075 groups=["player"]]
 position = Vector2(307, 954)
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_liry6")
 rock_scene = ExtResource("3_omid4")
 
@@ -43,8 +59,12 @@ collision_mask = 8
 position = Vector2(-2, 1)
 shape = SubResource("CapsuleShape2D_my54g")
 
+[node name="Trajectory" type="Line2D" parent="Player" unique_id=1784486280]
+width = 3.0
+default_color = Color(0.69411767, 0, 0, 0.627451)
+
 [node name="Rock" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
-position = Vector2(423, -18)
+position = Vector2(1352, 396)
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462]
 position = Vector2(991.99994, 803)
@@ -61,14 +81,53 @@ position = Vector2(1.5, 2)
 scale = Vector2(0.72, 0.72)
 shape = SubResource("RectangleShape2D_omid4")
 
-[node name="Ground" type="StaticBody2D" parent="." unique_id=955624488]
+[node name="Enemy" type="CharacterBody2D" parent="." unique_id=894114597 groups=["enemy"]]
+position = Vector2(1355, 969)
+collision_mask = 10
+script = ExtResource("5_rl1dt")
+rock_scene = ExtResource("3_omid4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy" unique_id=2062317929]
+texture = ExtResource("6_lfrcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy" unique_id=346919275]
+shape = SubResource("CapsuleShape2D_rl1dt")
+
+[node name="PickupArea" type="Area2D" parent="Enemy" unique_id=2146112850]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/PickupArea" unique_id=910617007]
+shape = SubResource("CapsuleShape2D_lfrcs")
+
+[node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
+
+[node name="Bottom" type="StaticBody2D" parent="Bounds" unique_id=955624488 groups=["floor"]]
 position = Vector2(989, 1094)
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1193647301]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom" unique_id=1193647301]
 position = Vector2(4, 13)
 shape = SubResource("RectangleShape2D_my54g")
 
+[node name="Left" type="StaticBody2D" parent="Bounds" unique_id=1267544720]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Left" unique_id=429855713]
+position = Vector2(0, 564.5)
+shape = SubResource("RectangleShape2D_rl1dt")
+
+[node name="Right" type="StaticBody2D" parent="Bounds" unique_id=1683984710]
+position = Vector2(1920, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Right" unique_id=140447480]
+position = Vector2(0, 567.5)
+shape = SubResource("RectangleShape2D_lfrcs")
+
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
+[connection signal="area_entered" from="Enemy/PickupArea" to="Enemy" method="_on_pickup_area_area_entered"]
