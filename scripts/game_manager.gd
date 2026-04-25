@@ -15,9 +15,10 @@ var village = preload("res://assets/img/village.jpg")
 var cave = preload("res://assets/img/cave.jpg")
 @onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2]
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var fading: float = 0.5
+var current_strength: float = 0.0
+func trigger_shake(strength: float = 15.0) -> void:
+	current_strength = strength
 
 
 func to_cave():
