@@ -1,16 +1,71 @@
 [gd_scene format=3 uid="uid://bgamwljj1fn5d"]
 
 [ext_resource type="Script" uid="uid://lipu42ohomt7" path="res://scripts/prologue.gd" id="1_x1kem"]
-[ext_resource type="Texture2D" uid="uid://b74jkgrbsqmhd" path="res://assets/img/prologue/prologue.jpg" id="2_8byya"]
+[ext_resource type="Texture2D" uid="uid://cfr2bp5mi01f" path="res://assets/img/prologue/Backgrounds.JPG" id="2_470yy"]
+[ext_resource type="Texture2D" uid="uid://b5avyedil6wco" path="res://assets/img/prologue/Parallax_Clouds_1.PNG" id="3_l6q3c"]
+[ext_resource type="Texture2D" uid="uid://bjvhmf3il2uwy" path="res://assets/img/prologue/Parallax_Clouds_2.PNG" id="4_oigyj"]
+[ext_resource type="Texture2D" uid="uid://doi008hlydver" path="res://assets/img/prologue/Parallax_Clouds_3.PNG" id="5_e3ep0"]
+[ext_resource type="Texture2D" uid="uid://bcrjvn5b5se3t" path="res://assets/img/prologue/Parallax_Clouds_4.PNG" id="6_18dgh"]
+[ext_resource type="Texture2D" uid="uid://dqm8hoyntdpam" path="res://assets/img/prologue/Vulcane_Smoke.PNG" id="7_3qt1a"]
 
 [node name="Prologue" type="Node2D" unique_id=1364128692]
 script = ExtResource("1_x1kem")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2130167154]
+[node name="Background" type="TextureRect" parent="." unique_id=2130167154]
+offset_right = 3840.0
+offset_bottom = 4320.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_470yy")
+
+[node name="Make_Clouds_Invisible_Again" type="Node2D" parent="." unique_id=360197577]
+
+[node name="Cloud_1" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=1291889518]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_1" unique_id=1511308403]
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_8byya")
+texture = ExtResource("3_l6q3c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cloud_2" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=287525365]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-45, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_2" unique_id=64330695]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_oigyj")
+
+[node name="Cloud_3" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=2010821314]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-32.5, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_3" unique_id=1928044857]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_e3ep0")
+
+[node name="Cloud_4" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=1969738094]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_4" unique_id=1920075894]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_18dgh")
+
+[node name="Smoke" type="TextureRect" parent="." unique_id=205138586]
+visible = false
+offset_right = 3840.0
+offset_bottom = 4320.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_3qt1a")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1633737785]
 position = Vector2(960, 540)
