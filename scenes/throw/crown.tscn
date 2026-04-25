@@ -35,7 +35,7 @@ offset_top = -85.0
 offset_right = 182.0
 offset_bottom = -40.0
 theme_override_font_sizes/font_size = 32
-text = "Press E to collect crown"
+text = "Press J to collect crown"
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
 [connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]
