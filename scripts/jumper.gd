@@ -5,16 +5,11 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 const COYOTE_INIT = 0.2
 var coyote = COYOTE_INIT
-@onready var sfx = $AudioStreamPlayer
-var hop = preload("res://assets/sounds/sfx/hop.wav")
-var impact = preload("res://assets/sounds/sfx/impact1.mp3")
-
-
-@export var fade_speed: float = 5.0
-
-# The current strength of the shake
+@onready var hop = $Hop
+@onready var impact = $Impact
+var fading: float = 0.5
 var current_strength: float = 0.0
-	
+
 
 # Call this function to trigger a shake!
 func trigger_shake(strength: float = 15.0) -> void:
@@ -28,32 +23,28 @@ func apply_shake():
 			randf_range(-current_strength, current_strength)
 		)
 	$Camera2D.offset = offset
-	current_strength -=0.5*float(current_strength>0)
+	current_strength -=fading*float(current_strength>0)
 
 
 func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
-	if coyote < 0 and floored:
-		sfx.stream = impact
-		sfx.play()
-		trigger_shake()
+	if coyote <= 0 and floored:
+		impact.play()
+		trigger_shake(-15*coyote)
 	if floored: coyote = COYOTE_INIT
 	else:
-		coyote -= delta*float((coyote>=0))
+		coyote -= delta*float((coyote>=-5))
 		velocity += get_gravity() * delta
 		
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and coyote > 0 and GM.controllable:
+	if Input.is_action_pressed("ui_accept") and coyote > 0 and GM.controllable:
 		velocity.y = JUMP_VELOCITY
 		coyote = 0
-		sfx.stream = hop
-		sfx.play()
-		current_strength = 0
+		hop.play() 
+		#current_strength /= 2
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left", "move_right")
 	if direction and GM.controllable:
 		velocity.x = direction * SPEED
 		if direction > 0:

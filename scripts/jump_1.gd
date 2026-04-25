@@ -1,16 +1,5 @@
 extends Node2D
 
+func _on_end_body_entered(_body: Node2D) -> void: GM.from_cave()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _on_end_body_entered(body: Node2D) -> void: 
-	#GM.to_map()
-	GM.from_cave()
-
-func _on_death_body_entered(body: Node2D) -> void: GM.death()
+func _on_death_body_entered(_body: Node2D) -> void: GM.death()

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jumper.gd" id="1_qi757"]
 [ext_resource type="Texture2D" uid="uid://dekjvb1pgmknv" path="res://assets/img/spriteFrame.png" id="2_qi757"]
 [ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="3_1spwc"]
+[ext_resource type="AudioStream" uid="uid://3cx554dfluir" path="res://assets/sounds/sfx/impact1.mp3" id="4_nq2w0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1spwc"]
 atlas = ExtResource("2_qi757")
@@ -101,8 +102,11 @@ shadow_item_cull_mask = 0
 texture = SubResource("GradientTexture2D_1spwc")
 texture_scale = 0.01
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=302695555]
+[node name="Hop" type="AudioStreamPlayer" parent="." unique_id=302695555]
 stream = ExtResource("3_1spwc")
+
+[node name="Impact" type="AudioStreamPlayer" parent="." unique_id=1320073865]
+stream = ExtResource("4_nq2w0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1850856852]
 limit_left = 600

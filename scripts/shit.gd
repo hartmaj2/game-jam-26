@@ -5,11 +5,8 @@ extends Node2D
 func _ready() -> void:
 	GM.current = 0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"): GM.to_cave()
 
 func _on_button_pressed() -> void:
 	GM.to_cave()

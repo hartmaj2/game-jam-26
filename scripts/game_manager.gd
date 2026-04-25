@@ -3,7 +3,7 @@ var controllable = true
 @onready var fade = $Canvas/Fade
 @onready var map = $Canvas/Map
 @onready var path_follower = $Canvas/Map/Path1/PathFollow2D
-const fade_time = 1.5
+const fade_time = 0.5
 var current = 0
 
 var jumps = ["res://scenes/jump1.tscn"]
@@ -19,10 +19,6 @@ var cave = preload("res://assets/img/cave.jpg")
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func to_cave():
 	controllable = false
@@ -54,9 +50,10 @@ func death():
 	fade_out()
 
 func fade_out():
-	controllable = true
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",0,fade_time)
+	await tw.finished
+	controllable = true
 	
 func to_map():
 	controllable = false

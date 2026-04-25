@@ -61,7 +61,7 @@ tile_set = SubResource("TileSet_85k56")
 
 [node name="Jumper" parent="." unique_id=287651784 instance=ExtResource("2_73gf7")]
 light_mask = 2
-position = Vector2(960, 540)
+position = Vector2(961, 513)
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=469034189]
 light_mask = 2
