@@ -47,22 +47,9 @@ func set_sprite():
 		$Sprite2D.texture = king_texture
 	else:
 		$Sprite2D.texture = normal_texture
-		
-
-# func _draw():
-# 	var width = 80
-# 	var height = 10
-
-# 	var top_left_world = Vector2(wall_x - width / 2, wall_top_y)
-# 	var top_left = to_local(top_left_world)
-
-# 	draw_rect(Rect2(top_left, Vector2(width, height)), Color.DARK_GRAY)
-
-# func _process(delta):
-# 	queue_redraw()
 
 func find_throw_direction():
-	var best_dir = Vector2(0, -1)
+	var best_dir = Vector2(-1, -2)
 	var best_dist = INF
 
 	var g = Vector2(0, ProjectSettings.get_setting("physics/2d/default_gravity"))
@@ -85,7 +72,7 @@ func find_throw_direction():
 			var dist = pos.distance_to(target_player.global_position)
 			if dist < best_dist:
 				best_dist = dist
-				best_dir = dir
+				#best_dir = dir
 
 	return best_dir
 
