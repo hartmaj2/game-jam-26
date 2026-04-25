@@ -44,7 +44,6 @@ script = ExtResource("1_85k56")
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=964479993]
 light_mask = 0
 scroll_scale = Vector2(0.25, 0.25)
-scroll_offset = Vector2(960, 540)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Parallax2D" unique_id=300645053]
 light_mask = 2
@@ -54,20 +53,17 @@ tile_set = SubResource("TileSet_o8xrq")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1264461926]
 modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
 light_mask = 2
-position = Vector2(960, 540)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAAAP3/AAAAAAAAAAABAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAPz/AAAAAAAAAAAAAPz/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAIAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAP7/AAAAAAAAAAAIAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAJAP7/AAAAAAAAAAAKAP7/AAAAAAAAAAD//wAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_85k56")
 
 [node name="Jumper" parent="." unique_id=287651784 instance=ExtResource("2_73gf7")]
 light_mask = 2
-position = Vector2(960, 540)
 
 [node name="Camera2D" type="Camera2D" parent="Jumper" unique_id=409922942]
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=469034189]
 light_mask = 2
 scroll_scale = Vector2(1.5, 1.5)
-scroll_offset = Vector2(960, 540)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="Parallax2D2" unique_id=304141807]
 light_mask = 2
@@ -75,7 +71,7 @@ tile_map_data = PackedByteArray("AAD5/wQAAAAAAAAAAAD5/wMAAAAAAAAAAAD5/wIAAAAAAAA
 tile_set = SubResource("TileSet_pcrib")
 
 [node name="End" type="Area2D" parent="." unique_id=1585923708]
-position = Vector2(1786, 253)
+position = Vector2(826, -287)
 collision_layer = 0
 collision_mask = 2
 
@@ -83,7 +79,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_o8xrq")
 
 [node name="Death" type="Area2D" parent="." unique_id=1240941555]
-position = Vector2(1374, 358)
+position = Vector2(414, -182)
 collision_layer = 0
 collision_mask = 2
 
