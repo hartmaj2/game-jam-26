@@ -42,7 +42,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		move_and_slide()
 		return
-
+	
+	if not GM.controllable: # if not controllable, don't update player position
+		return
+		
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	velocity.x = direction * speed
