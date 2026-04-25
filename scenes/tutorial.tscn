@@ -38,7 +38,7 @@ offset_bottom = 40.0
 texture = ExtResource("2_4kmhl")
 
 [node name="Jumper" parent="." unique_id=287651784 instance=ExtResource("1_c13y7")]
-position = Vector2(960, 880)
+position = Vector2(956, 831)
 
 [node name="Camera2D" type="Camera2D" parent="Jumper" unique_id=1148188621]
 offset = Vector2(0, -340)

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 500.0
-const JUMP_VELOCITY = -700.0
+const JUMP_VELOCITY = -800.0
 const COYOTE_INIT = 0.2
 var coyote = COYOTE_INIT
 @onready var hop = $Hop
@@ -16,10 +16,13 @@ func _physics_process(delta: float) -> void:
 		impact.play()
 		GM.trigger_shake(falling+falling*float(drop), max(float(drop),0.5))
 		drop = false
+		$LeftParty.emitting = true
+		$RightParty.emitting = true
 	if floored: coyote = COYOTE_INIT
 	else:
 		coyote -= delta*float((coyote>=0))
-		velocity += get_gravity() * delta
+		var decay = get_gravity() * delta
+		velocity +=  decay+1.2*float(drop)*decay
 		falling = velocity.y/100
 		
 
@@ -34,10 +37,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		if direction > 0:
 			$Sprite2D.animation = "left"
-			$Sprite2D.flip_h = true
+			$Sprite2D.flip_h = false
 		elif direction < 0:
 			$Sprite2D.animation = "left"
-			$Sprite2D.flip_h = false
+			$Sprite2D.flip_h = true
 	else:
 		$Sprite2D.animation = "idle"
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -46,4 +49,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("aim_down"):
 			velocity+=get_gravity()*3*delta
 			drop = true
+			
+			velocity.y = max(velocity.y, 0)
 	move_and_slide()
