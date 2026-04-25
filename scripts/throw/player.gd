@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	print(GM.controllable)
 	if input_locked:
 		velocity.x = 0
+		velocity.y += GRAVITY
 		move_and_slide()
 		return
 	
@@ -62,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
 	#print("floored: ", floored, " just_jumped: ", just_jumped)
 	if floored and just_jumped:
-		#impact.play()
+		impact.play()
 		GM.trigger_shake(10,0.5)
 		just_jumped = false
 		# $LeftParty.emitting = true
@@ -72,7 +73,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_accept") and GM.controllable and floored:
 		just_jumped = true
 		velocity.y = JUMP_VELOCITY
-		#hop.play()
+		hop.play()
 
 
 func _process(delta):
