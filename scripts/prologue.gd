@@ -29,7 +29,7 @@ func vulkan():
 func shit1():
 	cam.position = Vector2(960,540)
 	cam.zoom = Vector2(1,1)
-	GM.to_cave()
+	GM.to_tutorial()
 	#texture.scale = Vector2(1,1)
 	#print(texture.texture)
 	#print()

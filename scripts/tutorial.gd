@@ -11,3 +11,7 @@ func _physics_process(delta: float) -> void:
 		)
 	$Jumper/Camera2D.offset = offset+def_off
 	GM.current_strength -=GM.fading*2*float(current_strength>0)
+
+
+func _on_end_body_entered(body: Node2D) -> void:
+	GM.to_cave()

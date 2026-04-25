@@ -8,6 +8,7 @@ var current = 0
 
 var jumps = ["res://scenes/jump/jump1.tscn"]
 var throws = ["res://scenes/throw/throw1.tscn"]
+var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
 var death_screen = preload("res://assets/img/trans/death.jpg")
@@ -21,7 +22,17 @@ func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	current_strength = strength
 	fading = decay
 	
-
+func to_tutorial():
+	controllable = false
+	fade.texture = cave
+	var tw = get_tree().create_tween()
+	tw.tween_property(fade, "modulate:a",1,fade_time)
+	await tw.finished
+	current_scene = jumps[current]
+	get_tree().change_scene_to_file(tut)
+	fade_out()
+	
+	
 
 func to_cave():
 	controllable = false
