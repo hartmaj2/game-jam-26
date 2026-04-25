@@ -25,7 +25,7 @@ func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 func to_tutorial():
 	current_index = -1
 	path_follower.progress_ratio = 0
-	path_follower.reparent(paths[current_index])
+	path_follower.reparent(paths[current_index+1])
 	controllable = false
 	fade.texture = cave
 	var tw = get_tree().create_tween()
@@ -79,7 +79,7 @@ func fade_out():
 	controllable = true
 	
 func to_map():
-	current_index += 1
+	
 	print(path_follower.get_parent())
 	print(current_index)
 	controllable = false
@@ -93,8 +93,8 @@ func to_map():
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
 	
-	path_follower.reparent(paths[max(1,current_index)])
-	
+	path_follower.reparent(paths[min(1,current_index+1)])
+	current_index+=1
 	path_follower.progress_ratio = 0
 	controllable = true
 	#fade_out()
