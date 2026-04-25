@@ -8,7 +8,7 @@ var current_index = -1
 
 var jumps = ["res://scenes/jump/jump1.tscn", "res://scenes/jump/jump2.tscn"]
 var throws = ["res://scenes/throw/throw2.tscn","res://scenes/throw/throw2.tscn"]
-var tut = "res://scenes/throw/throw1.tscn"
+var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
 var death_screen = preload("res://assets/img/trans/death.jpg")
