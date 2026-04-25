@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
+var in_water = false
+
 const JUMP_VELOCITY = -800.0
 const GRAVITY = 25
 @onready var hop = $Hop
 @onready var impact = $Impact
 var just_jumped = false
 
-@export var speed: float = 600.0
+@export var MAX_SPEED: float = 600.0
+var speed = MAX_SPEED
 @export var rock_scene: PackedScene
 @export var health: int = 1
 
@@ -55,6 +58,10 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	var direction := Input.get_axis("move_left", "move_right")
+	speed = MAX_SPEED
+	if direction != 0 and in_water and is_on_floor():
+		$WaterLeftParty.emitting = true
+		speed *= 0.2
 	velocity.x = direction * speed
 	velocity.y += GRAVITY
 	move_and_slide()
@@ -213,3 +220,9 @@ func show_label():
 func hide_label():
 	if nearby_rocks.size() == 0 or enemy_count == 0:
 		get_tree().current_scene.get_node("PickRockLabel").visible = false
+		
+func _on_water_body_entered(body: Node2D) -> void:
+	in_water = true
+
+func _on_water_body_exited(body: Node2D) -> void:
+	in_water = false

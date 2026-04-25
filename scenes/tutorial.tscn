@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://cxnbjxae78lnu"]
+[gd_scene format=3 uid="uid://bm0688v3vbraw"]
 
 [ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/tutorial.gd" id="1_tbcdj"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_ej4tf"]
 [ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_0hilk"]
 [ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_wr8iv"]
 [ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_e13mp"]
-[ext_resource type="PackedScene" uid="uid://cngj3psmuserp" path="res://scenes/throw/player.tscn" id="6_0epgs"]
+[ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="6_0epgs"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="11_15kfc"]
 [ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="12_7a100"]
 
@@ -33,6 +33,9 @@ height = 874.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ej4tf"]
 radius = 21.0
 height = 1058.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0epgs"]
+size = Vector2(173, 60)
 
 [node name="Throw1" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_tbcdj")
@@ -176,6 +179,12 @@ position = Vector2(7484, 982)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ej4tf")
 
+[node name="Water" type="Area2D" parent="TriggerAreas" unique_id=382979567]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/Water" unique_id=1716419682]
+position = Vector2(2841, 949)
+shape = SubResource("RectangleShape2D_0epgs")
+
 [node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
 visible = false
 offset_left = 3912.0
@@ -187,4 +196,5 @@ text = "Press J to pick rocks"
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
-
+[connection signal="body_entered" from="TriggerAreas/Water" to="Player" method="_on_water_body_entered"]
+[connection signal="body_exited" from="TriggerAreas/Water" to="Player" method="_on_water_body_exited"]
