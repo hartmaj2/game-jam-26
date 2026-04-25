@@ -47,7 +47,7 @@ func _on_enter_throwing_fight_body_entered(body: Node2D) -> void:
 
 
 func _on_enter_cave_body_entered(body: Node2D) -> void:
-	GM.to_cave()
+	GM.to_epilogue()
 
 
 func _on_enter_map_scene_body_entered(body: Node2D) -> void:

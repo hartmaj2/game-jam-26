@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bneewpq4vvfce"]
 
-[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/throw/throw_1.gd" id="1_clwxy"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/cave.jpg" id="2_x6bfp"]
+[ext_resource type="Script" uid="uid://c20mysv78v5v6" path="res://scripts/throw/throw_2.gd" id="1_rr2ot"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
 [ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="3_ylkys"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
 [ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="5_ef380"]
 [ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_345kk"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="8_fau2y"]
 [ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="9_2pq3j"]
 
@@ -36,9 +36,8 @@ size = Vector2(360, 720)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
 radius = 50.0
 
-[node name="Throw1" type="Node2D" unique_id=1793107038]
-script = ExtResource("1_clwxy")
-start_at_wall = false
+[node name="Throw2" type="Node2D" unique_id=1793107038]
+script = ExtResource("1_rr2ot")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(3840, 540)
