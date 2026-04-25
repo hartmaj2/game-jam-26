@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 600.0
 @export var rock_scene: PackedScene
-@export var health: int = 3
+@export var health: int = 1
 
 @onready var pickup_area: Area2D = $PickupArea
 @onready var trajectory: Line2D = $Trajectory
@@ -101,4 +101,4 @@ func take_damage(amount: int = 1):
 	#print("Player took damage: ", amount)
 	health -= amount
 	if health <= 0:
-		queue_free()
+		GM.death()

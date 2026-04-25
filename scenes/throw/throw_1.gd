@@ -7,7 +7,7 @@ extends Node2D
 func _ready():
 	# tunr off barrier collisions at the start
 	left_wall.get_node("CollisionShape2D").disabled = true
-	right_wall.get_node("CollisionShape2D").disabled = true
+	# right_wall.get_node("CollisionShape2D").disabled = true
 
 
 func _on_enter_throwing_fight_body_entered(body: Node2D) -> void:
