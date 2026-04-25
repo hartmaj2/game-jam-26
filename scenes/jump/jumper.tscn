@@ -1,21 +1,8 @@
 [gd_scene format=3 uid="uid://dj62nkty0gyva"]
 
 [ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jump/jumper.gd" id="1_qi757"]
-[ext_resource type="Texture2D" uid="uid://ck51ivdjqdhoe" path="res://assets/img/jump/idle/fighter_Idle_0001.png" id="2_dppjr"]
-[ext_resource type="Texture2D" uid="uid://s6nmhnygkqqn" path="res://assets/img/jump/idle/fighter_Idle_0002.png" id="3_0t606"]
 [ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="3_1spwc"]
-[ext_resource type="Texture2D" uid="uid://c0mo4e364arul" path="res://assets/img/jump/idle/fighter_Idle_0003.png" id="4_4h4ht"]
 [ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="4_nq2w0"]
-[ext_resource type="Texture2D" uid="uid://dsop5p7djcqcv" path="res://assets/img/jump/idle/fighter_Idle_0004.png" id="5_5olug"]
-[ext_resource type="Texture2D" uid="uid://bc0ep8podylak" path="res://assets/img/jump/idle/fighter_Idle_0005.png" id="6_jhx61"]
-[ext_resource type="Texture2D" uid="uid://dcqk52ni1awf2" path="res://assets/img/jump/idle/fighter_Idle_0006.png" id="7_3nxbs"]
-[ext_resource type="Texture2D" uid="uid://dniv17jyywcb3" path="res://assets/img/jump/idle/fighter_Idle_0007.png" id="8_f1g3s"]
-[ext_resource type="Texture2D" uid="uid://2s1voq870uk" path="res://assets/img/jump/idle/fighter_Idle_0008.png" id="9_jewxq"]
-[ext_resource type="Texture2D" uid="uid://070mkltg3g3h" path="res://assets/img/jump/jumping/fighter_jump_0043.png" id="10_ymnw4"]
-[ext_resource type="Texture2D" uid="uid://b7463eile1fjb" path="res://assets/img/jump/jumping/fighter_jump_0044.png" id="11_uimnq"]
-[ext_resource type="Texture2D" uid="uid://bdjs6o3mmeuyp" path="res://assets/img/jump/jumping/fighter_jump_0045.png" id="12_533qw"]
-[ext_resource type="Texture2D" uid="uid://dnd8sexcla278" path="res://assets/img/jump/jumping/fighter_jump_0046.png" id="13_tvpm8"]
-[ext_resource type="Texture2D" uid="uid://crcw20c32mvvs" path="res://assets/img/jump/jumping/fighter_jump_0047.png" id="14_jl2ta"]
 [ext_resource type="Texture2D" uid="uid://eoh0nrf1q4rm" path="res://assets/img/jump/walking/1.PNG" id="15_sxi6w"]
 [ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="16_3woja"]
 [ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="17_8m2s7"]
@@ -25,52 +12,25 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_dppjr")
+"texture": ExtResource("15_sxi6w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_0t606")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_4h4ht")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_5olug")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_jhx61")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3nxbs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_f1g3s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_jewxq")
+"texture": ExtResource("17_8m2s7")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 15.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_ymnw4")
+"texture": ExtResource("15_sxi6w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_uimnq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_533qw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_tvpm8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_jl2ta")
+"texture": ExtResource("17_8m2s7")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump",
-"speed": 15.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -110,14 +70,15 @@ point_count = 3
 
 [node name="Jumper" type="CharacterBody2D" unique_id=287651784]
 light_mask = 3
+scale = Vector2(0.5, 0.5)
 collision_layer = 3
 script = ExtResource("1_qi757")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2067367883]
 sprite_frames = SubResource("SpriteFrames_u4wil")
-animation = &"left"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.6855074
+frame_progress = 0.54123116
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
 position = Vector2(-6.5, -1.5)
@@ -137,7 +98,7 @@ stream = ExtResource("3_1spwc")
 stream = ExtResource("4_nq2w0")
 
 [node name="LeftParty" type="CPUParticles2D" parent="." unique_id=146441343]
-position = Vector2(-21, 123)
+position = Vector2(-32, 140)
 emitting = false
 amount = 20
 one_shot = true
@@ -152,7 +113,7 @@ scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_dppjr")
 
 [node name="RightParty" type="CPUParticles2D" parent="." unique_id=1664918592]
-position = Vector2(14, 122)
+position = Vector2(14, 142)
 emitting = false
 amount = 20
 one_shot = true
