@@ -24,9 +24,15 @@ var angle_speed := 0.5
 
 var enemy_count := 0
 
+var wall = null
+
 func _ready() -> void:
-	enemy_count = get_tree().get_nodes_in_group("enemy").size()
-	#print(enemy_count)
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	enemy_count = enemies.size()
+	for enemy in enemies:
+		if not enemy.is_connected("enemy_died", Callable(self, "_on_enemy_died")):
+			#print("connected to enemy signal")
+			enemy.connect("enemy_died", Callable(self, "_on_enemy_died"))
 
 func _physics_process(delta: float) -> void:
 	if input_locked:
@@ -44,6 +50,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta):
 	set_sprite()
+	setup_references()
 	if Input.is_action_pressed("aim_up"):
 		aim_angle -= angle_speed * delta
 		#print("aim angle: ", aim_angle)
@@ -51,6 +58,10 @@ func _process(delta):
 		aim_angle += angle_speed * delta
 		#print("aim angle: ", aim_angle)
 	aim_angle = clamp(aim_angle, min_angle, max_angle)
+	
+func setup_references():
+	if wall == null:
+		wall = get_tree().get_first_node_in_group("wall")
 
 func set_sprite():
 	var i = max(MAX_ROCKS_PICKED,rocks_picked)
@@ -127,3 +138,9 @@ func take_damage(amount: int = 1):
 	health -= amount
 	if health <= 0:
 		GM.death()
+
+func _on_enemy_died():
+	#print("enemy died")
+	enemy_count -= 1
+	if enemy_count == 0:
+		wall.open_tower()

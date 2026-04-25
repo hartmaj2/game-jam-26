@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://csakut7om6683" path="res://scripts/throw/player.gd" id="1_liry6"]
 [ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="1_q61l2"]
-[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scenes/throw/throw_1.gd" id="1_rw6rq"]
+[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/throw/throw_1.gd" id="1_rw6rq"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/cave.jpg" id="2_4jtqv"]
 [ext_resource type="Texture2D" uid="uid://bt7erojbtgkcf" path="res://assets/img/throw/tower.png" id="3_720jk"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
-[ext_resource type="Script" uid="uid://es6o2vdp8koj" path="res://scripts/throw/enemy.gd" id="5_rl1dt"]
 [ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_4jtqv"]
-[ext_resource type="Texture2D" uid="uid://cg68pn1s2oxyl" path="res://assets/img/throw/stickman2.png" id="6_lfrcs"]
+[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="6_rw6rq"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_mfv0q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
 radius = 44.0
@@ -20,14 +20,6 @@ height = 206.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omid4"]
 size = Vector2(507, 1018)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl1dt"]
-radius = 35.0
-height = 200.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfrcs"]
-radius = 35.0
-height = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(9600, 20)
@@ -46,7 +38,6 @@ radius = 50.0
 
 [node name="Throw1" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_rw6rq")
-start_at_wall = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(4800, 540)
@@ -88,20 +79,23 @@ limit_bottom = 1080
 position_smoothing_speed = 20.0
 script = ExtResource("6_4jtqv")
 
-[node name="Rock1" parent="." unique_id=1930867971 instance=ExtResource("3_omid4")]
+[node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
+
+[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("3_omid4")]
 position = Vector2(4341, 1017)
 
-[node name="Rock2" parent="." unique_id=1371884244 instance=ExtResource("3_omid4")]
+[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("3_omid4")]
 position = Vector2(4482, 1010)
 
-[node name="Rock3" parent="." unique_id=1558709691 instance=ExtResource("3_omid4")]
+[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("3_omid4")]
 position = Vector2(4204.617, 1007.6484)
 
-[node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462]
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462 groups=["wall"]]
 position = Vector2(4800, 803)
 scale = Vector2(0.72, 0.72)
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("6_rw6rq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=750386743]
 scale = Vector2(0.72, 0.72)
@@ -115,63 +109,19 @@ shape = SubResource("RectangleShape2D_omid4")
 [node name="EnemyWallTop" type="Node2D" parent="Wall" unique_id=936026313]
 position = Vector2(-1.3887746, -629.1666)
 
-[node name="Enemy1" type="CharacterBody2D" parent="." unique_id=894114597 groups=["enemy"]]
+[node name="Enemies" type="Node2D" parent="." unique_id=767239893]
+
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_mfv0q")]
 position = Vector2(5208, 971)
-collision_mask = 10
-script = ExtResource("5_rl1dt")
-rock_scene = ExtResource("3_omid4")
-is_king = true
+wall = NodePath("../../Wall")
+is_king = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy1" unique_id=2062317929]
-texture = ExtResource("6_lfrcs")
+[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_mfv0q")]
+position = Vector2(5390.6245, 982.7971)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1" unique_id=346919275]
-shape = SubResource("CapsuleShape2D_rl1dt")
-
-[node name="PickupArea" type="Area2D" parent="Enemy1" unique_id=2146112850]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1/PickupArea" unique_id=910617007]
-shape = SubResource("CapsuleShape2D_lfrcs")
-
-[node name="Enemy2" type="CharacterBody2D" parent="." unique_id=1145978469 groups=["enemy"]]
-position = Vector2(5379.778, 976.9235)
-collision_mask = 10
-script = ExtResource("5_rl1dt")
-rock_scene = ExtResource("3_omid4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy2" unique_id=1000531947]
-texture = ExtResource("6_lfrcs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2" unique_id=1151060483]
-shape = SubResource("CapsuleShape2D_rl1dt")
-
-[node name="PickupArea" type="Area2D" parent="Enemy2" unique_id=1372905749]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/PickupArea" unique_id=1885461057]
-shape = SubResource("CapsuleShape2D_lfrcs")
-
-[node name="Enemy3" type="CharacterBody2D" parent="." unique_id=290120157 groups=["enemy"]]
-position = Vector2(5563.546, 968.7561)
-collision_mask = 10
-script = ExtResource("5_rl1dt")
-rock_scene = ExtResource("3_omid4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy3" unique_id=954894170]
-texture = ExtResource("6_lfrcs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3" unique_id=1298491494]
-shape = SubResource("CapsuleShape2D_rl1dt")
-
-[node name="PickupArea" type="Area2D" parent="Enemy3" unique_id=214899472]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/PickupArea" unique_id=436024006]
-shape = SubResource("CapsuleShape2D_lfrcs")
+[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_mfv0q")]
+position = Vector2(5585.5547, 967.71326)
+is_king = false
 
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
 
@@ -237,9 +187,6 @@ shape = SubResource("CircleShape2D_mfv0q")
 
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
-[connection signal="area_entered" from="Enemy1/PickupArea" to="Enemy1" method="_on_pickup_area_area_entered"]
-[connection signal="area_entered" from="Enemy2/PickupArea" to="Enemy2" method="_on_pickup_area_area_entered"]
-[connection signal="area_entered" from="Enemy3/PickupArea" to="Enemy3" method="_on_pickup_area_area_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterMapScene" to="." method="_on_enter_map_scene_body_entered"]

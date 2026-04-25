@@ -4,7 +4,7 @@
 
 - [ ] remove trajectory when starting game
 - [ ] enemy not throwing right after death
-- [ ] fix enemy throwing above itself
+- [x] fix enemy throwing above itself
 
 - [ ] health bar
 - [ ] trajektorie jako tečky

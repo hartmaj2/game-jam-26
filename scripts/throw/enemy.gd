@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
+signal enemy_died
+
 @export var speed: float = 200.0
 @export var rock_scene: PackedScene
+@export var crown_scene : PackedScene
+@export var wall : StaticBody2D
 @export var throw_speed: float = 1200.0
 @export var health: int = 1
 
@@ -14,7 +18,7 @@ var target_player: Node2D = null
 var wall_x := 1050.0 # hotfix for wall collision, provisional
 var wall_top_y := 400.0 # hotfix for wall collision, provisional
 
-@onready var wall_top = $"../Wall/EnemyWallTop"
+var wall_top = null
 
 @export var is_king = false
 const path_base = "res://assets/img/throw/stickman2"
@@ -22,13 +26,7 @@ const normal_texture = preload(path_base + ".png")
 const king_texture = preload(path_base + "_king.png")
 
 func _ready():
-	target_player = get_tree().get_first_node_in_group("player")
-
-	#var wall_top = wall.global_position + Vector2(0,- wall_height / 2) 
-	wall_x = wall_top.global_position.x
-	wall_top_y = wall_top.global_position.y
-	#print("wall_top:",wall_top)
-	
+	pass
 
 func _physics_process(delta: float) -> void:	
 	velocity.x = direction * speed
@@ -39,7 +37,17 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		direction *= -1
 
+func setup_references():
+	if target_player == null:
+		target_player = get_tree().get_first_node_in_group("player")
+	if wall_top == null:
+		wall_top = get_tree().get_first_node_in_group("wall").get_node("EnemyWallTop")
+		#print("wall top: ", wall_top.global_position)
+		wall_x = wall_top.global_position.x
+		wall_top_y = wall_top.global_position.y
+
 func _process(delta: float) -> void:
+	setup_references()
 	set_sprite()
 
 func set_sprite():
@@ -108,11 +116,21 @@ func throw_at_player(rock: Node2D):
 	await get_tree().create_timer(0.2).timeout
 	can_pick_up = true
 
+func die():
+	enemy_died.emit()
+	if is_king:
+		call_deferred("drop_crown")
+	queue_free()
+
 func take_damage(amount: int = 1):
 	health -= amount
 	if health <= 0:
-		queue_free()
+		die()
 
+func drop_crown():
+	var crown = crown_scene.instantiate()
+	get_tree().current_scene.add_child(crown)
+	crown.show_crown(global_position)
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
 	if not can_pick_up:
