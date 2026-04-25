@@ -16,6 +16,11 @@ var wall_top_y := 400.0 # hotfix for wall collision, provisional
 
 @onready var wall_top = $"../Wall/EnemyWallTop"
 
+@export var is_king = false
+const path_base = "res://assets/img/throw/stickman2"
+const normal_texture = preload(path_base + ".png")
+const king_texture = preload(path_base + "_king.png")
+
 func _ready():
 	target_player = get_tree().get_first_node_in_group("player")
 
@@ -33,6 +38,16 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_wall():
 		direction *= -1
+
+func _process(delta: float) -> void:
+	set_sprite()
+
+func set_sprite():
+	if is_king:
+		$Sprite2D.texture = king_texture
+	else:
+		$Sprite2D.texture = normal_texture
+		
 
 # func _draw():
 # 	var width = 80

@@ -7,6 +7,11 @@ extends CharacterBody2D
 @onready var pickup_area: Area2D = $PickupArea
 @onready var trajectory: Line2D = $Trajectory
 
+
+const path_base = "res://assets/img/throw/stickman_rock"
+var sprites = [preload(path_base + "0.png"),preload(path_base + "1.png"),preload(path_base + "2.png"),preload(path_base + "3.png")]
+
+const MAX_ROCKS_PICKED = 3
 var nearby_rocks: Array[Node] = []
 var rocks_picked: int = 0
 
@@ -15,6 +20,12 @@ var aim_angle := deg_to_rad(20)
 var min_angle := deg_to_rad(-90)
 var max_angle := deg_to_rad(90)
 var angle_speed := 0.5
+
+var enemy_count := 0
+
+func _ready() -> void:
+	enemy_count = get_tree().get_nodes_in_group("enemy").size()
+	#print(enemy_count)
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
@@ -26,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	update_trajectory()
 
 func _process(delta):
+	set_sprite()
 	if Input.is_action_pressed("aim_up"):
 		aim_angle -= angle_speed * delta
 		#print("aim angle: ", aim_angle)
@@ -33,6 +45,10 @@ func _process(delta):
 		aim_angle += angle_speed * delta
 		#print("aim angle: ", aim_angle)
 	aim_angle = clamp(aim_angle, min_angle, max_angle)
+
+func set_sprite():
+	var i = max(MAX_ROCKS_PICKED,rocks_picked)
+	$Sprite2D.texture = sprites[rocks_picked]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("throw"):
@@ -67,7 +83,7 @@ func update_trajectory():
 # THROWING ROCKS
 	
 func throw_rock():
-	if rocks_picked < 1:
+	if rocks_picked == 0:
 		#print("No rocks to throw")
 		return
 	rocks_picked -= 1
