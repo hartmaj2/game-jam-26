@@ -1,8 +1,8 @@
 extends StaticBody2D
 
 
-var texture_closed = preload("res://assets/img/throw/tower.png")
-var texture_open = preload("res://assets/img/throw/tower_open.png")
+var texture_closed = preload("res://assets/img/wall.png")
+var texture_open = preload("res://assets/img/wall.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
