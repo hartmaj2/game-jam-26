@@ -9,7 +9,6 @@ signal enemy_died
 @export var throw_speed: float = 1300.0
 @export var health: int = 1
 
-
 var direction: int = [-1, 1].pick_random() # Randomly choose left or right
 var has_rock := false
 var can_pick_up := true
@@ -17,8 +16,9 @@ var target_player: Node2D = null
 
 var wall_x := 1050.0 # hotfix for wall collision, provisional
 var wall_top_y := 400.0 # hotfix for wall collision, provisional
-
 var wall_top = null
+
+var is_active = false
 
 @export var is_king = false
 @export var is_harmless = false
@@ -27,9 +27,15 @@ const normal_texture = preload(path_base + ".png")
 const king_texture = preload(path_base + "_king.png")
 
 func _ready():
-	pass
+	var trigger_area = get_tree().current_scene.get_node("TriggerAreas/EnterThrowingFight")
+	trigger_area.connect("body_entered", Callable(self, "_on_enter_throwing_fight_body_entered"))
+	print(trigger_area)
 
-func _physics_process(delta: float) -> void:	
+
+func _physics_process(_delta: float) -> void:
+	if not is_active:
+		return
+
 	velocity.x = direction * speed
 	velocity.y = 0.0  # no vertical movement
 	
@@ -154,3 +160,8 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 		has_rock = true
 		can_pick_up = false
 		throw_at_player(area.get_parent())
+
+
+func _on_enter_throwing_fight_body_entered(_body: Node2D) -> void:
+	await get_tree().create_timer(0.5).timeout
+	is_active = true
