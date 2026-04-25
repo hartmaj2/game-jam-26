@@ -44,7 +44,7 @@ func _ready() -> void:
 			enemy.connect("enemy_died", Callable(self, "_on_enemy_died"))
 
 func _physics_process(delta: float) -> void:
-	print(GM.controllable)
+	#print(GM.controllable)
 	if input_locked:
 		velocity.x = 0
 		move_and_slide()

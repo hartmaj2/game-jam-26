@@ -227,15 +227,4 @@ text = "Press J to pick rocks"
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
-[node name="Water" type="Area2D" parent="." unique_id=852962557]
-position = Vector2(2844, 913)
-collision_layer = 0
-collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Water" unique_id=939738147]
-position = Vector2(-4.003418, -161.2948)
-shape = SubResource("RectangleShape2D_4kmhl")
-
-[connection signal="body_entered" from="End" to="." method="_on_end_body_entered"]
-[connection signal="body_entered" from="Water" to="Jumper" method="_on_water_body_entered"]
-[connection signal="body_exited" from="Water" to="Jumper" method="_on_water_body_exited"]
