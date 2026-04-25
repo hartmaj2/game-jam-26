@@ -143,10 +143,15 @@ func pickup_nearest_rock() -> void:
 	if enemy_count == 0:
 		return
 
-	var rock := nearby_rocks[0]
-	nearby_rocks.erase(rock)
+	var rock_area := nearby_rocks[0]
+	var rock = rock_area.get_parent()
+	
+	if rock.is_thrown or rock.was_thrown_recently:
+		return
+	
+	nearby_rocks.erase(rock_area)
 
-	rock.get_parent().queue_free()
+	rock.queue_free()
 	rocks_picked += 1
 	trajectory.visible = true
 
@@ -160,9 +165,15 @@ func _on_enemy_died():
 	#print("enemy died")
 	enemy_count -= 1
 	if enemy_count == 0:
+		hide_label()
 		get_rid_of_rocks()
 		wall.open_tower()
 
+func show_label():
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	if enemies.size() != 0:
+		get_tree().current_scene.get_node("PickRockLabel").visible = true
+
 func hide_label():
-	if nearby_rocks.size() == 0:
+	if nearby_rocks.size() == 0 or enemy_count == 0:
 		get_tree().current_scene.get_node("PickRockLabel").visible = false
