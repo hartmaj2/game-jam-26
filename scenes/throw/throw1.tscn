@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
 [ext_resource type="Script" uid="uid://dbmdbwbpdr58v" path="res://scripts/throw/camera_2d.gd" id="6_4jtqv"]
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="6_rw6rq"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_mfv0q"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_mfv0q"]
 [ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="8_4jtqv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
