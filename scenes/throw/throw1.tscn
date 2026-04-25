@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="3_omid4"]
 [ext_resource type="Script" uid="uid://es6o2vdp8koj" path="res://scripts/throw/enemy.gd" id="5_rl1dt"]
 [ext_resource type="Texture2D" uid="uid://cg68pn1s2oxyl" path="res://assets/img/throw/stickman2.png" id="6_lfrcs"]
-[ext_resource type="Script" uid="uid://doif7g58eyacj" path="res://scripts/throw/enter_throwing_fight.gd" id="8_4jtqv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_omid4"]
 radius = 44.0
@@ -169,14 +168,26 @@ shape = SubResource("RectangleShape2D_rw6rq")
 [node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
 
 [node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
-script = ExtResource("8_4jtqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/EnterThrowingFight" unique_id=283124648]
 position = Vector2(4000, 1000)
+shape = SubResource("CircleShape2D_mfv0q")
+
+[node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
+position = Vector2(9000, 1000)
+shape = SubResource("CircleShape2D_mfv0q")
+
+[node name="EnterMapScene" type="Area2D" parent="TriggerAreas" unique_id=331970046]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterMapScene" unique_id=998060879]
+position = Vector2(7000, 1000)
 shape = SubResource("CircleShape2D_mfv0q")
 
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
 [connection signal="area_entered" from="Enemy/PickupArea" to="Enemy" method="_on_pickup_area_area_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
-[connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="TriggerAreas/EnterThrowingFight" method="_on_body_entered"]
+[connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
+[connection signal="body_entered" from="TriggerAreas/EnterMapScene" to="." method="_on_enter_map_scene_body_entered"]

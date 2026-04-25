@@ -26,3 +26,10 @@ func activate_barriers():
 
 	camera.limit_left = left_x
 	camera.limit_right = right_x
+
+func _on_enter_cave_body_entered(body: Node2D) -> void:
+	GM.to_cave()
+
+
+func _on_enter_map_scene_body_entered(body: Node2D) -> void:
+	GM.to_map()
