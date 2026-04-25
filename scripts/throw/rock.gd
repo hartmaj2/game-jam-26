@@ -69,7 +69,6 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("floor"):
 		if is_lava:
-			await get_tree().create_timer(0.5).timeout
 			queue_free()
 			return
 		if is_thrown:
