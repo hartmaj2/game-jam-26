@@ -72,15 +72,22 @@ func set_sprite():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("throw"):
 		#print("throw")
-		throw_rock()
+		throw_rock(aim_angle)
 	if event.is_action_pressed("pickup"):
 		#print("pickup")
 		pickup_nearest_rock()
 	if event.is_action_pressed("debug_print"):
 		print("---DEBUG---")
 		print("mouse pos: ",get_global_mouse_position())
+		kill_all_enemies()
 		#print("nearby rocks: ",nearby_rocks)
 		#print("rocks picked: " ,rocks_picked)
+
+func get_rid_of_rocks():
+	while rocks_picked > 0:
+		var angle = deg_to_rad(randi_range(-60,60))
+		throw_rock(angle)
+		await get_tree().create_timer(0.2).timeout
 
 func update_trajectory():
 	trajectory.global_position = Vector2.ZERO
@@ -101,7 +108,7 @@ func update_trajectory():
 	
 # THROWING ROCKS
 	
-func throw_rock():
+func throw_rock(angle):
 	if rocks_picked == 0:
 		#print("No rocks to throw")
 		return
@@ -110,7 +117,7 @@ func throw_rock():
 		trajectory.visible = false
 	var rock = rock_scene.instantiate()
 	get_tree().current_scene.add_child(rock)
-	var dir = Vector2.UP.rotated(aim_angle).normalized()
+	var dir = Vector2.UP.rotated(angle).normalized()
 	rock.initiate_rock(global_position,throw_speed,dir,"player")
 	
 # HANDLING PICKUPS
@@ -124,8 +131,16 @@ func _on_pickup_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("rocks"):
 		nearby_rocks.erase(area)
 
+func kill_all_enemies():
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		enemy.die()
+
 func pickup_nearest_rock() -> void:
 	if nearby_rocks.is_empty():
+		return
+
+	if enemy_count == 0:
 		return
 
 	var rock := nearby_rocks[0]
@@ -145,4 +160,5 @@ func _on_enemy_died():
 	#print("enemy died")
 	enemy_count -= 1
 	if enemy_count == 0:
+		get_rid_of_rocks()
 		wall.open_tower()
