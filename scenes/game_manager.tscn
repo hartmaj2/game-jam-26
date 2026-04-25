@@ -2,17 +2,20 @@
 
 [ext_resource type="Script" uid="uid://bbx82dl1tyami" path="res://scripts/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="AudioStream" uid="uid://c0gu2mid4v6vq" path="res://assets/sounds/music/adventure.ogg" id="2_glms7"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/cave.jpg" id="2_udu3i"]
 
 [node name="GameManager" type="Node2D" unique_id=1018969776]
 script = ExtResource("1_hwd4i")
 
 [node name="Canvas" type="CanvasLayer" parent="." unique_id=1548910305]
 
-[node name="Fade" type="ColorRect" parent="Canvas" unique_id=699553937]
+[node name="Fade" type="TextureRect" parent="Canvas" unique_id=958449220]
+modulate = Color(1, 1, 1, 0)
 offset_right = 1920.0
 offset_bottom = 1080.0
+scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(1, 1, 1, 0)
+texture = ExtResource("2_udu3i")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=761979931]
 stream = ExtResource("2_glms7")
