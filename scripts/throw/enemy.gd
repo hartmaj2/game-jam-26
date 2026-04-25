@@ -6,7 +6,7 @@ signal enemy_died
 @export var rock_scene: PackedScene
 @export var crown_scene : PackedScene
 @export var wall : StaticBody2D
-@export var throw_speed: float = 1200.0
+@export var throw_speed: float = 1300.0
 @export var health: int = 1
 
 
@@ -57,20 +57,21 @@ func set_sprite():
 		$Sprite2D.texture = normal_texture
 
 func find_throw_direction():
-	var best_dir = Vector2(-1, -2)
+	var best_dir = Vector2.UP.rotated(deg_to_rad(-45))
 	var best_dist = INF
 
 	var g = Vector2(0, ProjectSettings.get_setting("physics/2d/default_gravity"))
 	var dt = 1.0 / 60.0
 
-	for angle in range(-60, 60, 5):  
+	for angle in range(-60, 60, 5):
 		var dir = Vector2.UP.rotated(deg_to_rad(angle))
 		var vel = dir * throw_speed
 		var pos = global_position
+		var min_dist = INF
 
 		# check wall collision
 		if will_hit_wall(dir):
-			#print("will hit wall with angle: ", angle)
+			print("will hit wall with angle: ", angle)
 			continue
 
 		for i in range(180):
@@ -78,10 +79,16 @@ func find_throw_direction():
 			pos += vel * dt
 						
 			var dist = pos.distance_to(target_player.global_position)
-			if dist < best_dist:
-				best_dist = dist
-				#best_dir = dir
+			if dist < min_dist:
+				min_dist = dist
+		
+		print("angle: ", angle, " min dist: ", min_dist)
+		if min_dist < best_dist:
+			best_dist = min_dist
+			best_dir = dir
+			print("new best angle: ", angle, " dist: ", min_dist)
 
+	print("best angle: ", rad_to_deg(best_dir.angle_to(Vector2.UP)))
 	return best_dir
 
 func will_hit_wall(dir):
@@ -94,6 +101,7 @@ func will_hit_wall(dir):
 	if t < 0:
 		return false
 	var y = global_position.y + v.y * t + 0.5 * g * t * t
+	# breakpoint
 	if y > wall_top_y:
 		return true
 	var pos = global_position

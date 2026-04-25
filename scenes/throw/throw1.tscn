@@ -18,8 +18,8 @@ height = 208.0
 radius = 43.0
 height = 206.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_omid4"]
-size = Vector2(507, 1018)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
+points = PackedVector2Array(-260.5713, -510.10803, 5.7871094, -615.35486, 262.1914, -508.17896, 260.417, 511.18835, -246.91309, 509.2594)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(9600, 20)
@@ -102,9 +102,9 @@ scale = Vector2(0.72, 0.72)
 texture = ExtResource("3_720jk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=686396905]
-position = Vector2(1.5, 2)
+position = Vector2(-5.5556645, -2.7777815)
 scale = Vector2(0.72, 0.72)
-shape = SubResource("RectangleShape2D_omid4")
+shape = SubResource("ConvexPolygonShape2D_4jtqv")
 
 [node name="EnemyWallTop" type="Node2D" parent="Wall" unique_id=936026313]
 position = Vector2(-1.3887746, -629.1666)
@@ -179,14 +179,10 @@ shape = SubResource("CircleShape2D_mfv0q")
 position = Vector2(9000, 1000)
 shape = SubResource("CircleShape2D_mfv0q")
 
-[node name="EnterMapScene" type="Area2D" parent="TriggerAreas" unique_id=331970046]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterMapScene" unique_id=998060879]
-position = Vector2(7000, 1000)
-shape = SubResource("CircleShape2D_mfv0q")
+[node name="Rock" parent="." unique_id=380066496 instance=ExtResource("3_omid4")]
+position = Vector2(4319, 1003)
 
 [connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
 [connection signal="area_exited" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_exited"]
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
-[connection signal="body_entered" from="TriggerAreas/EnterMapScene" to="." method="_on_enter_map_scene_body_entered"]
