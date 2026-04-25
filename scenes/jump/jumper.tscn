@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dj62nkty0gyva"]
 
-[ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jumper.gd" id="1_qi757"]
-[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman1.png" id="2_nq2w0"]
+[ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jump/jumper.gd" id="1_qi757"]
+[ext_resource type="Texture2D" uid="uid://buixvhluy7v37" path="res://assets/img/throw/stickman_rock0.png" id="2_nq2w0"]
 [ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="3_1spwc"]
 [ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="4_nq2w0"]
 

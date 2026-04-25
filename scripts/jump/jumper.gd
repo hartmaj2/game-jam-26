@@ -15,7 +15,6 @@ func _physics_process(delta: float) -> void:
 	if coyote < 0 and floored:
 		impact.play()
 		GM.trigger_shake(falling+falling*float(drop), max(float(drop),0.5))
-		print(falling)
 		drop = false
 	if floored: coyote = COYOTE_INIT
 	else:

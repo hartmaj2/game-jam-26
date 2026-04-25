@@ -6,13 +6,13 @@ var controllable = true
 const fade_time = 0.5
 var current = 0
 
-var jumps = ["res://scenes/jump1.tscn"]
+var jumps = ["res://scenes/jump/jump1.tscn"]
 var throws = ["res://scenes/throw/throw1.tscn"]
 var current_scene = jumps[0]
 
-var death_screen = preload("res://assets/img/death.jpg")
-var village = preload("res://assets/img/village.jpg")
-var cave = preload("res://assets/img/cave.jpg")
+var death_screen = preload("res://assets/img/trans/death.jpg")
+var village = preload("res://assets/img/trans/village.jpg")
+var cave = preload("res://assets/img/trans/cave.jpg")
 @onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2]
 
 var fading: float = 0.5

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cysdns6h1yggq"]
 
-[ext_resource type="Script" uid="uid://5rpv6mllisy8" path="res://scripts/jump_1.gd" id="1_85k56"]
-[ext_resource type="PackedScene" uid="uid://dj62nkty0gyva" path="res://scenes/jumper.tscn" id="2_73gf7"]
+[ext_resource type="Script" uid="uid://5rpv6mllisy8" path="res://scripts/jump/jump_1.gd" id="1_85k56"]
+[ext_resource type="PackedScene" uid="uid://dj62nkty0gyva" path="res://scenes/jump/jumper.tscn" id="2_73gf7"]
 [ext_resource type="Texture2D" uid="uid://bdglrx54fhpgm" path="res://assets/img/jump/tiles.png" id="2_85k56"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8xrq"]

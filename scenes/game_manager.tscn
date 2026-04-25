@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbx82dl1tyami" path="res://scripts/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="AudioStream" uid="uid://c0gu2mid4v6vq" path="res://assets/sounds/music/adventure.ogg" id="2_glms7"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/cave.jpg" id="2_udu3i"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_udu3i"]
 [ext_resource type="Texture2D" uid="uid://c7tv7d3bb4ep5" path="res://icon.svg" id="3_oo155"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_udu3i"]
