@@ -26,7 +26,7 @@ func activate_barriers():
 
 	# set camera limits to the barriers
 	var left_x = left_wall.get_node("CollisionShape2D").global_position.x
-	#var right_x = right_wall.get_node("CollisionShape2D").global_position.x
+	var right_x = right_wall.get_node("CollisionShape2D").global_position.x
 
 	camera.limit_left = left_x
 	camera.limit_right = right_x
