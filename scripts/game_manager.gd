@@ -31,6 +31,9 @@ func to_tutorial():
 	current_scene = jumps[current]
 	get_tree().change_scene_to_file(tut)
 	fade_out()
+
+func to_epilogue():
+	get_tree().change_scene_to_file("res://scenes/epilogue/epilogue.tscn")
 	
 	
 
