@@ -52,10 +52,12 @@ func _process(delta):
 	set_sprite()
 	setup_references()
 	if Input.is_action_pressed("aim_up"):
-		aim_angle -= angle_speed * delta
+		if rocks_picked != 0:
+			aim_angle -= angle_speed * delta
 		#print("aim angle: ", aim_angle)
 	if Input.is_action_pressed("aim_down"):
-		aim_angle += angle_speed * delta
+		if rocks_picked != 0:
+			aim_angle += angle_speed * delta
 		#print("aim angle: ", aim_angle)
 	aim_angle = clamp(aim_angle, min_angle, max_angle)
 	
