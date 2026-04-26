@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dvoy7jk4kibkw" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
 [ext_resource type="PackedScene" uid="uid://cgpuh23ujv3a8" path="res://scenes/left_cave.tscn" id="8_4kp8k"]
 [ext_resource type="PackedScene" uid="uid://dj51eg2lwa2pr" path="res://scenes/right_cave.tscn" id="11_3a3r6"]
+[ext_resource type="Texture2D" uid="uid://bcvxftj0ri741" path="res://assets/img/throw/right_cave.PNG" id="14_nwtl2"]
+[ext_resource type="Texture2D" uid="uid://1hk68iwd77di" path="res://assets/img/throw/right_cave_front.PNG" id="15_53kvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(7680, 20)
@@ -28,10 +30,13 @@ radius = 13.0
 height = 800.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7l3cx"]
-height = 1128.0
+height = 2192.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kp8k"]
 size = Vector2(173, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwtl2"]
+size = Vector2(324, 1131)
 
 [node name="Throw2" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_wbfnm")
@@ -161,6 +166,36 @@ shape = SubResource("RectangleShape2D_4kp8k")
 
 [node name="Labels" parent="." unique_id=1888949001 instance=ExtResource("7_7l3cx")]
 position = Vector2(3950, 75)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=683914799]
+position = Vector2(6152, 593)
+texture = ExtResource("14_nwtl2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D" unique_id=1064375708]
+light_mask = 2
+visibility_layer = 0
+position = Vector2(-744, -169)
+shape = SubResource("RectangleShape2D_nwtl2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=9042009]
+position = Vector2(6222, 648)
+texture = ExtResource("14_nwtl2")
+
+[node name="Sprite2D_front" type="Sprite2D" parent="." unique_id=1806794554]
+z_index = 1
+position = Vector2(6041, 942.00006)
+scale = Vector2(1, 1.5)
+texture = ExtResource("15_53kvn")
+
+[node name="ThrowRockLabel" type="Label" parent="." unique_id=816242453]
+offset_left = 5008.0
+offset_top = 721.99994
+offset_right = 5915.0
+offset_bottom = 831.99994
+rotation = -1.3962634
+theme_override_colors/font_color = Color(1.031, 1.031, 1.031, 0.776)
+theme_override_font_sizes/font_size = 80
+text = "CLIMB UP   - - - - - - - - - - "
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]

@@ -27,6 +27,7 @@ position = Vector2(-1, 0)
 shape = ExtResource("3_h0aso")
 
 [node name="Label" type="Label" parent="." unique_id=1778611954]
+z_index = 15
 offset_left = -181.0
 offset_top = -86.0
 offset_right = 182.0
