@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c7p7pqskx3jh0"]
+
+[ext_resource type="Texture2D" uid="uid://b8ydyfw0q6hgp" path="res://assets/img/throw/house1.PNG" id="1_0xiww"]
+[ext_resource type="Texture2D" uid="uid://cx57l2ec0oc2a" path="res://assets/img/throw/house2.PNG" id="2_1oqlt"]
+[ext_resource type="Texture2D" uid="uid://bu6fomtlg0dbh" path="res://assets/img/throw/house_small.PNG" id="3_pldg8"]
+
+[node name="Village" type="Node2D" unique_id=723442918]
+
+[node name="small2" type="Sprite2D" parent="." unique_id=1387208343]
+position = Vector2(-300, -82)
+texture = ExtResource("3_pldg8")
+
+[node name="dark" type="Sprite2D" parent="." unique_id=611694592]
+position = Vector2(700, -5)
+texture = ExtResource("1_0xiww")
+
+[node name="light2" type="Sprite2D" parent="." unique_id=120990115]
+position = Vector2(114, -12)
+texture = ExtResource("2_1oqlt")

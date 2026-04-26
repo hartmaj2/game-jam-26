@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_wr8iv"]
 [ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_e13mp"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="6_0epgs"]
+[ext_resource type="PackedScene" uid="uid://c7p7pqskx3jh0" path="res://scenes/village.tscn" id="6_tbcdj"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
 [ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="9_nlqja"]
 [ext_resource type="PackedScene" uid="uid://bx7h7kqlvkvk4" path="res://scenes/throw/labels.tscn" id="10_0epgs"]
@@ -72,6 +73,9 @@ texture = ExtResource("4_wr8iv")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_e13mp")
+
+[node name="Village" parent="." unique_id=723442918 instance=ExtResource("6_tbcdj")]
+position = Vector2(5660, 521)
 
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
 

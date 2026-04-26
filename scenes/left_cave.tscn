@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cgpuh23ujv3a8"]
 
-[ext_resource type="Texture2D" uid="uid://chnsu4jevfgnw" path="res://assets/img/throw/left_cave.PNG" id="1_7ok5j"]
+[ext_resource type="Texture2D" uid="uid://boyyjxqurp8r3" path="res://assets/img/throw/left_cave_new.PNG" id="1_7ok5j"]
 [ext_resource type="Texture2D" uid="uid://cd2s02ren1q4w" path="res://assets/img/throw/left_cave_front.PNG" id="2_uea2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
