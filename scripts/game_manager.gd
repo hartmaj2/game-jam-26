@@ -13,8 +13,10 @@ var current_scene = jumps[0]
 
 var wind = preload("res://assets/sounds/sfx/wind.ogg")
 var cave = preload("res://assets/sounds/sfx/cave.ogg")
-var trans_texture = preload("res://assets/img/trans/death.jpg")
-@onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2]
+var death_texture = preload("res://assets/img/trans/death.png")
+var cave_texture = preload("res://assets/img/trans/cave.png")
+var village_texture = preload("res://assets/img/trans/village.png")
+@onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2, $Canvas/Map/Path3]
 
 var fading: float = 0.5
 var current_strength: float = 0.0
@@ -27,7 +29,7 @@ func to_tutorial():
 	path_follower.progress_ratio = 0
 	path_follower.reparent(paths[current_index+1])
 	controllable = false
-	fade.texture = cave
+	fade.texture = cave_texture
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -46,7 +48,7 @@ func to_prologue():
 func to_cave():
 	
 	controllable = false
-	fade.texture = trans_texture
+	fade.texture = cave_texture
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -59,7 +61,7 @@ func to_cave():
 func from_cave():
 	controllable = false
 	
-	fade.texture = trans_texture
+	fade.texture = village_texture
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -71,7 +73,7 @@ func from_cave():
 
 func death():
 	controllable = false
-	fade.texture = trans_texture
+	fade.texture = death_texture
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -96,7 +98,8 @@ func to_map():
 	tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
-	current_index += 1 
-	path_follower.reparent(paths[min(1,current_index+1)])
-	path_follower.progress_ratio = 0
+	current_index += 1
+	if current_index <= 1:
+		path_follower.reparent(paths[current_index+1])
+		path_follower.progress_ratio = 0
 	controllable = true
