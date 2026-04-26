@@ -119,10 +119,10 @@ offset_bottom = 526.0
 text = "PRESS SPACE TO SKIP"
 
 [node name="Label" type="Label" parent="." unique_id=1658879132]
-offset_left = 364.0
-offset_top = 643.0
-offset_right = 1444.0
-offset_bottom = 843.0
+offset_left = 420.0
+offset_top = 440.0
+offset_right = 1500.0
+offset_bottom = 640.0
 theme_override_font_sizes/font_size = 100
 text = "PRESS SPACE TO PLAY"
 
