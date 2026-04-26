@@ -33,7 +33,7 @@ height = 1058.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0epgs"]
 size = Vector2(173, 60)
 
-[node name="Throw1" type="Node2D" unique_id=1793107038]
+[node name="Tutorial" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_tbcdj")
 start_at_wall = false
 

@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://t636rfy1ob3"]
+[gd_scene format=3 uid="uid://bneewpq4vvfce"]
 
-[ext_resource type="Script" path="res://scripts/throw/throw_3.gd" id="1_b4vjv"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_mmche"]
-[ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_68k3t"]
-[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_cmjri"]
-[ext_resource type="PackedScene" uid="uid://bed6ge5p6rkjg" path="res://scenes/throw/wall.tscn" id="6_snxnh"]
-[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
+[ext_resource type="Script" uid="uid://c20mysv78v5v6" path="res://scripts/throw/throw_1.gd" id="1_rl1dt"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_lfrcs"]
+[ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_rw6rq"]
+[ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_4jtqv"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="5_mfv0q"]
+[ext_resource type="PackedScene" uid="uid://bed6ge5p6rkjg" path="res://scenes/throw/wall.tscn" id="6_ub7db"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(7680, 20)
@@ -22,41 +22,44 @@ size = Vector2(360, 720)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
 radius = 50.0
 
-[node name="Throw3" type="Node2D" unique_id=1793107038]
-script = ExtResource("1_b4vjv")
+[node name="Throw1" type="Node2D" unique_id=1793107038]
+script = ExtResource("1_rl1dt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(3840, 540)
 scale = Vector2(2, 0.5)
-texture = ExtResource("2_mmche")
+texture = ExtResource("2_lfrcs")
 
-[node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_68k3t")]
+[node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_rw6rq")]
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
-[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_cmjri")]
+[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_4jtqv")]
 position = Vector2(3750, 952)
 
-[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_cmjri")]
+[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("4_4jtqv")]
+position = Vector2(2880, 360)
+
+[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_4jtqv")]
 position = Vector2(3600, 952)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=767239893]
 
-[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_xrg28")]
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 instance=ExtResource("5_mfv0q")]
 position = Vector2(3208, 880)
-wall = NodePath("")
 is_king = false
 
-[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_xrg28")]
+[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("5_mfv0q")]
 position = Vector2(3390.625, 880)
 
-[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_xrg28")]
+[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("5_mfv0q")]
 position = Vector2(3585.555, 880)
 speed = 50.0
 is_king = false
+is_harmless = true
 
-[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("6_snxnh")]
-position = Vector2(2879, 545)
+[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("6_ub7db")]
+position = Vector2(2880, 550)
 
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
 
@@ -116,12 +119,12 @@ shape = SubResource("CircleShape2D_mfv0q")
 
 [node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
 visible = false
-offset_left = 2045.0
-offset_top = 128.0
-offset_right = 2631.0
-offset_bottom = 226.22852
+offset_left = 3912.0
+offset_top = 64.0
+offset_right = 4498.0
+offset_bottom = 162.22852
 theme_override_font_sizes/font_size = 60
-text = "Press J to pick rocks"
+text = "Press E to pick rocks"
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]

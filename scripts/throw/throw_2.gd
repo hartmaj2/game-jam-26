@@ -16,18 +16,6 @@ func _ready():
 	if start_at_wall:
 		$Player.global_position = $TriggerAreas/EnterThrowingFight/CollisionShape2D.global_position
 
-func _physics_process(_delta: float) -> void:
-	var offset = Vector2(0,0)
-	var current_strength = GM.current_strength
-	if GM.current_strength > 0.0:
-		
-		offset = Vector2(
-			randf_range(-current_strength, current_strength),
-			randf_range(-current_strength, current_strength)
-		)
-		camera.offset = offset
-	GM.current_strength -=GM.fading*float(current_strength>0)
-
 func disable_right_wall_and_camera_limits():
 	right_wall.get_node("CollisionShape2D").set_deferred("disabled", true)
 	camera.set_target(get_node("Player").global_position)
