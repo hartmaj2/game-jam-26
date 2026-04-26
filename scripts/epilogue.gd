@@ -3,16 +3,16 @@ extends Node2D
 var textures = [
 	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #1
 	preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), #2
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #3
 	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #4
 	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #5
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #6
 	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #6
 	]
 
 var functions = [
 	king_on_vulcan, #1
 	king_on_vulcan_closeup, #2
-	king_on_vulcan_GTFO, #3
+	king_on_vulcan_GTFO1, #3
 	king_on_vulcan_GTFO2, #4
 	king_on_vulcan_GTFO3, #5
 	final #6
@@ -56,7 +56,7 @@ func king_on_vulcan_closeup():
 	$King_On_Vulkan_Closeup_Enemy.visible=false
 	next()
 
-func king_on_vulcan_GTFO():
+func king_on_vulcan_GTFO1():
 	$King_On_Vulkan_Background.visible=true
 	texture.z_index=1
 	await get_tree().create_timer(2).timeout
