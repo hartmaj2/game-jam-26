@@ -206,8 +206,7 @@ func _on_enemy_died():
 			enemy.is_active = false
 
 func show_label():
-	var enemies = get_tree().get_nodes_in_group("enemy")
-	if enemies.size() != 0:
+	if enemy_count != 0:
 		get_tree().current_scene.get_node("PickRockLabel").visible = true
 
 func hide_label():

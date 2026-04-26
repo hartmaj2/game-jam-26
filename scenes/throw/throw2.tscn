@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://c20mysv78v5v6" path="res://scripts/throw/throw_2.gd" id="1_rr2ot"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
 [ext_resource type="PackedScene" uid="uid://cngj3psmuserp" path="res://scenes/throw/player.tscn" id="3_7l3cx"]
+[ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="3_pv6vb"]
+[ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="4_3a3r6"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
+[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="5_4kp8k"]
+[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="6_ndlm4"]
 [ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="8_fau2y"]
 [ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="9_2pq3j"]
@@ -23,18 +27,60 @@ size = Vector2(20, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
 size = Vector2(360, 720)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
-radius = 50.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7l3cx"]
+height = 878.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv6vb"]
+height = 638.0
 
 [node name="Throw2" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_rr2ot")
+start_at_wall = false
+
+[node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=1466161818]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Sky" unique_id=1399873908]
+offset_top = -1950.0
+offset_right = 3840.0
+offset_bottom = 2370.0
+texture = ExtResource("3_pv6vb")
+
+[node name="Parallax_Clouds" type="Parallax2D" parent="." unique_id=797851630]
+scroll_scale = Vector2(0.15, 1)
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Clouds" unique_id=987903833]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(0, 850)
+texture = ExtResource("4_3a3r6")
+
+[node name="Parallax_Trees" type="Parallax2D" parent="." unique_id=86534136]
+scroll_scale = Vector2(0.2, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=1650499495]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_4kp8k")
+
+[node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=32631245]
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=1135388417]
+offset_left = -1920.0
+offset_right = 7680.0
+offset_bottom = 1080.0
+texture = ExtResource("6_ndlm4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
+visible = false
 position = Vector2(3840, 540)
 scale = Vector2(2, 0.5)
 texture = ExtResource("2_x6bfp")
 
 [node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_7l3cx")]
+position = Vector2(292, 877)
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
@@ -119,7 +165,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightCave" unique_id=2125337852]
-position = Vector2(7680, 720)
+position = Vector2(6217, 717)
 shape = SubResource("RectangleShape2D_rw6rq")
 
 [node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
@@ -127,14 +173,16 @@ shape = SubResource("RectangleShape2D_rw6rq")
 [node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/EnterThrowingFight" unique_id=283124648]
-position = Vector2(2080, 950)
-shape = SubResource("CircleShape2D_mfv0q")
+position = Vector2(2395, 980)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7l3cx")
 
 [node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
-position = Vector2(7080, 950)
-shape = SubResource("CircleShape2D_mfv0q")
+position = Vector2(5724, 982)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_pv6vb")
 
 [node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
 visible = false

@@ -28,6 +28,7 @@ radius = 50.0
 
 [node name="Throw3" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_b4vjv")
+start_at_wall = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(3840, 540)
@@ -35,6 +36,7 @@ scale = Vector2(2, 0.5)
 texture = ExtResource("2_mmche")
 
 [node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_68k3t")]
+position = Vector2(374, 879)
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
