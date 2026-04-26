@@ -35,7 +35,9 @@ func _input(event: InputEvent) -> void:
 			label.visible = false
 			next()
 			skip_label.visible = true
-		else: 
+			
+		elif not started:
+			started = true 
 			GM.to_tutorial()
 			
 		

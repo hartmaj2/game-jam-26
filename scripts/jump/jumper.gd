@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		if GM.controllable:
 			if coyote > 0 and is_jumping and not is_dropping:
-				print(is_dropping)
+				#print(is_dropping
 				velocity.y = JUMP_VELOCITY
 				coyote = 0
 				hop.play() 

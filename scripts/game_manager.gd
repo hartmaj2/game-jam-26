@@ -3,7 +3,7 @@ var controllable = true
 @onready var fade = $Canvas/Fade
 @onready var map = $Canvas/Map
 @onready var path_follower = $Canvas/Map/Path1/PathFollow2D
-const fade_time = 0.2
+const fade_time = 1
 var current_index = -1
 
 var jumps = ["res://scenes/jump/jump1.tscn", "res://scenes/jump/jump2.tscn"]
@@ -88,7 +88,7 @@ func death():
 	controllable = false
 	fade.texture = death_texture
 	var tw = get_tree().create_tween()
-	tw.tween_property(fade, "modulate:a",1,fade_time)
+	tw.tween_property(fade, "modulate:a",1,fade_time/2)
 	await tw.finished
 	get_tree().change_scene_to_file(current_scene)
 	fade_out()
@@ -106,7 +106,7 @@ func to_map():
 	tw.tween_property(map, "modulate:a",1,fade_time)
 	await tw.finished
 	tw = get_tree().create_tween()
-	tw.tween_property(path_follower, "progress_ratio", 1.0, 0.5)
+	tw.tween_property(path_follower, "progress_ratio", 1.0, 1.5)
 	await tw.finished
 	tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",0,fade_time)
