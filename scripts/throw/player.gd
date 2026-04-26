@@ -43,11 +43,9 @@ func _ready() -> void:
 		enemy_count += 1
 	for enemy in enemies:
 		if not enemy.is_connected("enemy_died", Callable(self, "_on_enemy_died")):
-			#print("connected to enemy signal")
 			enemy.connect("enemy_died", Callable(self, "_on_enemy_died"))
 
-func _physics_process(delta: float) -> void:
-	#print(GM.controllable)
+func _physics_process(_delta: float) -> void:
 	if input_locked:
 		velocity.x = 0
 		velocity.y += GRAVITY
@@ -62,6 +60,16 @@ func _physics_process(delta: float) -> void:
 	if direction != 0 and in_water and is_on_floor():
 		$WaterLeftParty.emitting = true
 		speed *= 0.2
+	if direction and GM.controllable:
+		velocity.x = direction * speed
+		if direction!= 0:
+			$Sprite2D.animation = "left"
+			$Sprite2D.flip_h = direction < 0
+	else:
+		$Sprite2D.animation = "idle"
+		velocity.x = move_toward(velocity.x, 0, speed)
+	if not is_on_floor():
+		$Sprite2D.animation = "jump"
 	velocity.x = direction * speed
 	velocity.y += GRAVITY
 	move_and_slide()
@@ -73,8 +81,8 @@ func _physics_process(delta: float) -> void:
 		impact.play()
 		GM.trigger_shake(10,0.5)
 		just_jumped = false
-		# $LeftParty.emitting = true
-		# $RightParty.emitting = true
+		$LeftParty.emitting = true
+		$RightParty.emitting = true
 
 	# Handle jump.
 	if Input.is_action_pressed("ui_accept") and GM.controllable and floored:
@@ -84,7 +92,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta):
-	set_sprite()
+	# set_sprite()
 	setup_references()
 	if Input.is_action_pressed("aim_up"):
 		if rocks_picked != 0:
@@ -99,10 +107,6 @@ func _process(delta):
 func setup_references():
 	if wall == null:
 		wall = get_tree().get_first_node_in_group("wall")
-
-func set_sprite():
-	var i = min(MAX_ROCKS_PICKED,rocks_picked)
-	$Sprite2D.texture = sprites[i]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("throw"):
@@ -188,6 +192,9 @@ func pickup_nearest_rock() -> void:
 	
 	if rock.is_thrown or rock.was_thrown_recently:
 		return
+
+	if rocks_picked >= MAX_ROCKS_PICKED:
+		return
 	
 	nearby_rocks.erase(rock_area)
 
@@ -220,8 +227,8 @@ func hide_label():
 	if nearby_rocks.size() == 0 or enemy_count == 0:
 		get_tree().current_scene.get_node("PickRockLabel").visible = false
 		
-func _on_water_body_entered(body: Node2D) -> void:
+func _on_water_body_entered(_body: Node2D) -> void:
 	in_water = true
 
-func _on_water_body_exited(body: Node2D) -> void:
+func _on_water_body_exited(_body: Node2D) -> void:
 	in_water = false

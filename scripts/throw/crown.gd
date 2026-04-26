@@ -15,7 +15,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Label.global_position = global_position + Vector2(pickup_label_offset_x,pickup_label_offset_y)
 	$Label.rotation = 0
 	#print("collected",was_collected)

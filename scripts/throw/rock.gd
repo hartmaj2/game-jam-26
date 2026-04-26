@@ -3,10 +3,10 @@ extends RigidBody2D
 var texture_normal = preload("res://assets/img/throw/stone.png")
 var texture_lava = preload("res://assets/img/throw/stone_lava.png")
 
+@export var thrown_by := ""
+@export var is_thrown := false
 var is_lava := false
-var is_thrown := false
 var was_thrown_recently := false
-var thrown_by := ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,8 +28,8 @@ func _process(_delta: float) -> void:
 	if is_thrown:
 		pass
 		#print("thrown by ",thrown_by)
-	if linear_velocity.length() < 10:
-		is_thrown = false
+	#if linear_velocity.length() < 10:
+		#is_thrown = false
 	pass
 	
 
@@ -41,6 +41,7 @@ func initiate_rock(pos : Vector2, speed : float, direction : Vector2, who : Stri
 	thrown_by = who
 	is_thrown = true
 	was_thrown_recently = true
+	rotation = randf_range(0,PI*2)
 
 func _on_pickup_area_body_exited(body: Node2D) -> void:
 	#print("somebody exited")

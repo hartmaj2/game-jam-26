@@ -61,6 +61,10 @@ height = 208.0
 radius = 43.0
 height = 206.0
 
+[sub_resource type="Curve" id="Curve_up8u8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79471546, 0.5751634), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Curve" id="Curve_0kksi"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.79471546, 0.5751634), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -70,13 +74,13 @@ collision_mask = 10
 script = ExtResource("1_ic21p")
 rock_scene = ExtResource("2_34rwq")
 
-[node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=137237869]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=137237869]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_rfykx")
 animation = &"left"
 autoplay = "idle"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=139832300]
+[node name="Sprite2D_old" type="Sprite2D" parent="." unique_id=139832300]
 visible = false
 position = Vector2(-2, 2)
 texture = ExtResource("3_vlhfn")
@@ -112,8 +116,38 @@ stream = ExtResource("5_0kksi")
 [node name="Impact" type="AudioStreamPlayer" parent="." unique_id=1121576692]
 stream = ExtResource("6_up8u8")
 
+[node name="LeftParty" type="CPUParticles2D" parent="." unique_id=736760833]
+position = Vector2(-24, 103)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.85
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_up8u8")
+
+[node name="RightParty" type="CPUParticles2D" parent="." unique_id=528586334]
+position = Vector2(-1, 104)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.85
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, -30)
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_up8u8")
+
 [node name="WaterLeftParty" type="CPUParticles2D" parent="." unique_id=1226490743]
-position = Vector2(-32, 140)
+position = Vector2(-24, 103)
 emitting = false
 amount = 20
 lifetime = 0.4

@@ -31,8 +31,8 @@ const king_texture = preload(path_base + "_king.png")
 func _ready():
 	var trigger_area = get_tree().current_scene.get_node("TriggerAreas/EnterThrowingFight")
 	trigger_area.connect("body_entered", Callable(self, "_on_enter_throwing_fight_body_entered"))
-	#print(trigger_area)
-	if GM.current_index == 2 or debug:
+	print(GM.current_index)
+	if GM.current_index == 1 or debug:
 		setup_lava_timer()
 
 func setup_lava_timer():
@@ -71,7 +71,7 @@ func setup_references():
 		wall_x = wall_top.global_position.x
 		wall_top_y = wall_top.global_position.y
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	setup_references()
 	set_sprite()
 
