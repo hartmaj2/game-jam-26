@@ -24,12 +24,15 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	#print("pickup triggered in crown")
 	if event.is_action_pressed("pickup") and player_nearby and not was_collected:
-		print(GM.controllable)
-		was_collected = true
-		$Label.visible = false
+		collect_crown()
 		get_tree().current_scene.disable_right_wall_and_camera_limits()
 		GM.to_map()
-		
+
+func collect_crown():
+	GM.collect_crown()
+	was_collected = true
+	$Label.visible = false
+	
 func show_crown(pos : Vector2):
 	global_position = pos
 	#print("crown is here")

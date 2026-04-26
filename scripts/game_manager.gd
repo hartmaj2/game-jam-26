@@ -19,7 +19,8 @@ var trans_texture = preload("res://assets/img/trans/death.jpg")
 var fading: float = 0.5
 var current_strength: float = 0.0
 
-var crowns_collected = 1
+signal crown_collected
+var crowns_collected = 0
 
 func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	current_strength = strength
@@ -103,3 +104,7 @@ func to_map():
 	path_follower.reparent(paths[min(1,current_index+1)])
 	path_follower.progress_ratio = 0
 	controllable = true
+
+func collect_crown():
+	crowns_collected += 1
+	crown_collected.emit()
