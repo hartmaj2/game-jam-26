@@ -303,6 +303,7 @@ scale_amount_curve = SubResource("Curve_dppjr")
 scale = Vector2(1.24, 1.24)
 
 [node name="Sprite2D" type="Sprite2D" parent="Crown" unique_id=1250153192]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(1.6129034, -161.29031)
 scale = Vector2(0.09114584, 0.09114584)
 texture = ExtResource("9_7q77l")
