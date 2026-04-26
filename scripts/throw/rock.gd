@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-var texture_normal = preload("res://assets/img/throw/stone.png")
-var texture_lava = preload("res://assets/img/throw/stone_lava.png")
+var texture_normal = preload("res://assets/img/throw/stone.PNG")
+var texture_lava = preload("res://assets/img/throw/stone_lava_small.png")
 
 var speed_threshold = 500
 @onready var throw = $Throw
@@ -20,6 +20,7 @@ func _ready() -> void:
 func set_mode():
 	if is_lava:
 		$Sprite2D.texture = texture_lava
+		$Sprite2D.scale = Vector2(0.5,0.5)
 	else:
 		$Sprite2D.texture = texture_normal
 
@@ -59,7 +60,8 @@ func initiate_rock(pos : Vector2, speed : float, direction : Vector2, who : Stri
 func _on_pickup_area_body_exited(body: Node2D) -> void:
 	#print("somebody exited")
 	if body.is_in_group("player"):
-		get_tree().get_first_node_in_group("player").handle_labels()
+		GM.trigger_handle_labels.emit()
+		#get_tree().get_first_node_in_group("player").handle_labels()
 
 
 func damage_body_from_group(body, group : String) -> bool:
@@ -79,7 +81,8 @@ func damage_body_from_group(body, group : String) -> bool:
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	# check if should show label
 	if body.is_in_group("player") and not is_thrown and not was_thrown_recently:
-		get_tree().get_first_node_in_group("player").handle_labels()
+		#get_tree().get_first_node_in_group("player").handle_labels()
+		GM.trigger_handle_labels.emit()
 	
 	if body.is_in_group("floor"):
 		if is_lava:

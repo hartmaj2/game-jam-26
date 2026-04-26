@@ -24,11 +24,17 @@ var current_strength: float = 0.0
 signal crown_collected
 var crowns_collected = 0
 
+const path_base = "res://assets/img/throw/crown_"
+var crown_sprites = [preload(path_base + "1_a.PNG"),preload(path_base + "2_a.PNG"),preload(path_base + "3_a.PNG"),preload(path_base + "4_a.PNG")]
+
+signal trigger_handle_labels
+
 func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	current_strength = strength
 	fading = decay
 
 func to_tutorial():
+	$Music.play()
 	current_index = -1
 	path_follower.progress_ratio = 0
 	path_follower.reparent(paths[current_index+1])
@@ -42,6 +48,7 @@ func to_tutorial():
 	fade_out()
 
 func to_epilogue():
+	$Music.stop()
 	await get_tree().create_timer(0.2).timeout # to not have the error appear
 	get_tree().change_scene_to_file("res://scenes/epilogue.tscn")
 
@@ -58,8 +65,9 @@ func to_cave():
 	await tw.finished
 	current_scene = jumps[current_index]
 	get_tree().change_scene_to_file(current_scene)
-	$AudioStreamPlayer.stream = cave
-	$AudioStreamPlayer.play()
+	$Ambient.stream = cave
+	$Ambient.play()
+	$Music.stop()
 	fade_out()
 
 func from_cave():
@@ -71,8 +79,9 @@ func from_cave():
 	await tw.finished
 	current_scene = throws[current_index]
 	get_tree().change_scene_to_file(current_scene)
-	$AudioStreamPlayer.stream = wind
-	$AudioStreamPlayer.play()
+	$Ambient.stream = wind
+	$Ambient.play()
+	$Music.play()
 	fade_out()
 
 func death():
@@ -109,5 +118,6 @@ func to_map():
 	controllable = true
 
 func collect_crown():
+	path_follower.get_node("Player/Crown/Sprite2D").texture = crown_sprites[GM.crowns_collected]
 	crowns_collected += 1
 	crown_collected.emit()
