@@ -1,8 +1,28 @@
 extends Node2D
 
-var textures = [preload("res://assets/img/prologue/Backgrounds.JPG"), preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), preload("res://assets/img/trans/cave.jpg"), preload("res://assets/img/trans/death.jpg"), preload("res://assets/img/trans/village.jpg")]
-var functions = [vulkan, king_on_vulcan, king_on_vulcan_closeup, king_on_vulcan_GTFO, shit1, shit2, shit3]
-var current = -1
+var textures = [
+	preload("res://assets/img/prologue/Backgrounds.JPG"), #1
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #2
+	preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), #3
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #4
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #5
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #6
+	preload("res://assets/img/prologue/Backgrounds.JPG"), #7
+	preload("res://assets/img/prologue/Backgrounds.JPG") #8
+	]
+
+var functions = [
+	vulkan, #1
+	king_on_vulcan, #2
+	king_on_vulcan_closeup, #3
+	king_on_vulcan_GTFO, #4
+	king_on_vulcan_GTFO2, #5
+	king_on_vulcan_GTFO3, #6
+	king_on_vulcan_GTFO4, #7
+	final #8
+	]
+
+var current = -1 # SHOULD BE -1
 @onready var texture = $Background
 @onready var cam = $Camera2D
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +34,7 @@ func _input(event: InputEvent) -> void:
 func next():
 	current+=1
 	texture.texture = textures[current]
+	#print(textures[current])
 	functions[current].call()
 	
 
@@ -46,24 +67,61 @@ func king_on_vulcan_closeup():
 	await get_tree().create_timer(2).timeout
 	$King_On_Vulkan_Closeup_King.visible=false
 	$King_On_Vulkan_Closeup_Enemy.visible=false
-	$Make_Clouds_Invisible_Again.visible=false
 	next()
 
 func king_on_vulcan_GTFO():
+	$King_On_Vulkan_Background.visible=true
+	texture.z_index=1
 	await get_tree().create_timer(2).timeout
+	$King_On_Vulkan_Background.visible=false
+	texture.z_index=0
 	next()
 
-func shit1():
+# other king holds the chair
+func king_on_vulcan_GTFO2():
+	$King_On_Vulkan_Background.visible=true
+	texture.z_index=1
+	await get_tree().create_timer(2).timeout
+	$King_On_Vulkan_Background.visible=false
+	texture.z_index=0
+	next()
+
+# rolling out of chair
+func king_on_vulcan_GTFO3():
+	$King_On_Vulkan_Background.visible=true
+	texture.z_index=1
+	
+	$KickPath.visible = true
+	var tw = get_tree().create_tween()
+	tw.set_parallel(true)
+	var duration = 1
+	tw.tween_property($KickPath/PathFollow2D,"progress_ratio",1, duration)
+	tw.tween_property($KickPath/PathFollow2D,"rotation",deg_to_rad(-100), duration)
+	await  tw.finished
+	
+	await get_tree().create_timer(2).timeout
+	$King_On_Vulkan_Background.visible=false
+	texture.z_index=0
+	next()
+
+func king_on_vulcan_GTFO4():
+	#await get_tree().create_timer(0.5).timeout
+	$Camera2D.position = Vector2(960, 1080+540)
+	$Camera2D.zoom = Vector2(2,2)
+	await get_tree().create_timer(0.5).timeout
+	$VulcanoFallPath.visible = true
+	var tw = get_tree().create_tween()
+	tw.set_parallel(true)
+	var duration = 2
+	tw.tween_property($VulcanoFallPath/PathFollow2D,"progress_ratio",1, duration)
+	tw.tween_property($VulcanoFallPath/PathFollow2D,"rotation",deg_to_rad(-600), duration)
+	await  tw.finished
+	next()
+
+func final():
 	cam.position = Vector2(960,540)
 	cam.zoom = Vector2(1,1)
 	GM.to_tutorial()
 	#texture.scale = Vector2(1,1)
 	#print(texture.texture)
 	#print()
-
-func shit2():
-	pass
-	
-func shit3():
-	pass
-	
