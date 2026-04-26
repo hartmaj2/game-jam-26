@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dkcc512ni22hr" path="res://assets/img/jump/jump_2/parallax_1.PNG" id="3_xwlll"]
 [ext_resource type="Texture2D" uid="uid://154wwifjkciv" path="res://assets/img/jump/jump_2/foreground_2.PNG" id="4_us2c6"]
 [ext_resource type="Texture2D" uid="uid://bxr26co65pt4g" path="res://assets/img/jump/jump_2/foreground_1.PNG" id="7_kf0am"]
+[ext_resource type="AudioStream" uid="uid://csva8x2wi5eh1" path="res://assets/sounds/sfx/au.wav" id="8_xwlll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rslrf"]
 size = Vector2(72, 292.5)
@@ -114,6 +115,9 @@ position = Vector2(0, 200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary" unique_id=479886744]
 shape = SubResource("WorldBoundaryShape2D_rslrf")
+
+[node name="Au" type="AudioStreamPlayer" parent="." unique_id=1676824440]
+stream = ExtResource("8_xwlll")
 
 [connection signal="body_entered" from="End" to="." method="_on_end_body_entered"]
 [connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
