@@ -20,6 +20,9 @@ var village_texture = preload("res://assets/img/trans/village.png")
 
 var fading: float = 0.5
 var current_strength: float = 0.0
+
+var crowns_collected = 1
+
 func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	current_strength = strength
 	fading = decay

@@ -64,13 +64,13 @@ func _physics_process(_delta: float) -> void:
 	if direction and GM.controllable:
 		velocity.x = direction * speed
 		if direction!= 0:
-			$Sprite2D.animation = "left"
+			$AnimationPlayer.play("left")
 			$Sprite2D.flip_h = direction < 0
 	else:
-		$Sprite2D.animation = "idle"
+		$AnimationPlayer.play("idle")
 		velocity.x = move_toward(velocity.x, 0, speed)
 	if not is_on_floor():
-		$Sprite2D.animation = "jump"
+		$AnimationPlayer.play("jump")
 	velocity.x = direction * speed
 	velocity.y += GRAVITY
 	move_and_slide()

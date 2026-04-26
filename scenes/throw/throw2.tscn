@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bneewpq4vvfce"]
+[gd_scene format=3 uid="uid://t636rfy1ob3"]
 
 [ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_wbfnm"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_pv6vb"]
@@ -35,6 +35,7 @@ size = Vector2(173, 60)
 
 [node name="Throw2" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_wbfnm")
+start_at_wall = true
 
 [node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=1729102803]
 scroll_scale = Vector2(0.1, 1)

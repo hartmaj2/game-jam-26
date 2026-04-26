@@ -1,13 +1,8 @@
 [gd_scene format=3 uid="uid://biu2w8nshcxid"]
 
 [ext_resource type="Script" uid="uid://yr7ji4d1883p" path="res://scripts/throw/crown.gd" id="1_gg83n"]
-[ext_resource type="Texture2D" uid="uid://d1ynmqg2k8pin" path="res://assets/img/throw/crown.png" id="2_0khlc"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ub7db"]
-radius = 18.13
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_eurq2"]
-radius = 18.925806
+[ext_resource type="Texture2D" uid="uid://cpjjwkq4ldp8j" path="res://assets/img/throw/crown_1_a.PNG" id="2_0khlc"]
+[ext_resource type="Shape2D" uid="uid://oxa8q4gc2646" path="res://assets/Polygons/new_convex_polygon_shape_2d.tres" id="3_h0aso"]
 
 [node name="Crown" type="RigidBody2D" unique_id=681452533]
 collision_layer = 4
@@ -15,25 +10,27 @@ collision_mask = 6
 script = ExtResource("1_gg83n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1091627854]
+position = Vector2(-1, -28)
+scale = Vector2(0.09114584, 0.09114588)
 texture = ExtResource("2_0khlc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=436299719]
 position = Vector2(-1.0751953, -0.19470215)
-shape = SubResource("CircleShape2D_ub7db")
+shape = ExtResource("3_h0aso")
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=2047091603]
 collision_layer = 8
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=1623886985]
-position = Vector2(-1.0751953, -0.19470215)
-shape = SubResource("CircleShape2D_eurq2")
+position = Vector2(-1, 0)
+shape = ExtResource("3_h0aso")
 
 [node name="Label" type="Label" parent="." unique_id=1778611954]
 offset_left = -181.0
-offset_top = -85.0
+offset_top = -86.0
 offset_right = 182.0
-offset_bottom = -40.0
+offset_bottom = -41.0
 theme_override_font_sizes/font_size = 32
 text = "Press J to collect crown"
 

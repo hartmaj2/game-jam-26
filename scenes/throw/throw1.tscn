@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ioi3n1upg221"]
 
 [ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_mfv0q"]
+[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_7l3cx"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="3_pv6vb"]
 [ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="4_3a3r6"]
@@ -113,15 +114,14 @@ position = Vector2(292, 877)
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 
 [node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_8rivp")]
-position = Vector2(3750, 952)
+position = Vector2(3660, 944)
 
 [node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("4_8rivp")]
 position = Vector2(2880, 360)
-thrown_by = "player"
-is_thrown = true
+thrown_by = "special"
 
 [node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_8rivp")]
-position = Vector2(3600, 952)
+position = Vector2(3739, 945)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=767239893]
 
@@ -133,7 +133,7 @@ is_king = false
 position = Vector2(3390.625, 880)
 
 [node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_4r5fs")]
-position = Vector2(3585.555, 880)
+position = Vector2(3530, 880)
 speed = 50.0
 is_king = false
 is_harmless = true
