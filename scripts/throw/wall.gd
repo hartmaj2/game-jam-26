@@ -3,6 +3,7 @@ extends StaticBody2D
 
 var texture_closed = preload("res://assets/img/wall.png")
 var texture_open = preload("res://assets/img/wall_open.png")
+@onready var open_gate = $OpenGate
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,5 +15,6 @@ func open_tower():
 	#print("tower is open")
 	#$Sprite2D.texture = texture_open
 	var tween := create_tween()
+	open_gate.play()
 	tween.tween_property($Gate, "rotation",deg_to_rad(-90), 2.5)
 	$CollisionShape2D.set_deferred("disabled", true)

@@ -11,6 +11,9 @@ signal enemy_died
 @export var throw_speed: float = 1300.0
 @export var health: int = 1
 
+@onready var crushed = $Crushed
+@onready var cry = $Cry
+
 var direction: int = [-1, 1].pick_random() # Randomly choose left or right
 var has_rock := false
 var can_pick_up := true
@@ -162,10 +165,14 @@ func throw_at_player(rock: Node2D, is_lava : bool = false):
 
 func die():
 	enemy_died.emit()
-	if is_king:
-		call_deferred("drop_crown")
 	if is_harmless:
+		cry.play()
 		GM.death()
+	elif is_king:
+		crushed.play()
+		call_deferred("drop_crown")
+	else:
+		crushed.play()
 	queue_free()
 
 func take_damage(amount: int = 1):

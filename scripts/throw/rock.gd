@@ -4,6 +4,7 @@ var texture_normal = preload("res://assets/img/throw/stone.png")
 var texture_lava = preload("res://assets/img/throw/stone_lava.png")
 
 var speed_threshold = 500
+@onready var throw = $Throw
 
 @export var thrown_by := ""
 var is_thrown := false
@@ -45,6 +46,7 @@ func _process(_delta: float) -> void:
 	
 
 func initiate_rock(pos : Vector2, speed : float, direction : Vector2, who : String, lava : bool = false):
+	throw.play()
 	global_position = pos
 	linear_velocity = speed * direction.normalized()
 	#await get_tree().create_timer(0.2).timeout HERE TO AVOID KILLING YOURSELF
