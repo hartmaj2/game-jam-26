@@ -24,6 +24,11 @@ var current_strength: float = 0.0
 signal crown_collected
 var crowns_collected = 0
 
+const path_base = "res://assets/img/throw/crown_"
+var crown_sprites = [preload(path_base + "1_a.PNG"),preload(path_base + "2_a.PNG"),preload(path_base + "3_a.PNG"),preload(path_base + "4_a.PNG")]
+
+signal trigger_handle_labels
+
 func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	current_strength = strength
 	fading = decay
@@ -109,5 +114,6 @@ func to_map():
 	controllable = true
 
 func collect_crown():
+	path_follower.get_node("Player/Crown/Sprite2D").texture = crown_sprites[GM.crowns_collected]
 	crowns_collected += 1
 	crown_collected.emit()
