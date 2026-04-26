@@ -98,7 +98,8 @@ func to_map():
 	tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
-	current_index += 1 
-	path_follower.reparent(paths[current_index+1])
-	path_follower.progress_ratio = 0
+	current_index += 1
+	if current_index <= 1:
+		path_follower.reparent(paths[current_index+1])
+		path_follower.progress_ratio = 0
 	controllable = true

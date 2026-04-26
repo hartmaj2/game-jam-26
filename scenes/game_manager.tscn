@@ -19,9 +19,9 @@ point_count = 8
 
 [sub_resource type="Curve2D" id="Curve2D_ternb"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1442, 492, 0, 0, 0, 0, 1530, 602, 0, 0, 0, 0, 1496, 792, 0, 0, 0, 0, 1394, 918, 0, 0, 0, 0, 1348, 1088, 0, 0, 0, 0, 1384, 1260, 0, 0, 0, 0, 1552, 1340, 0, 0, 0, 0, 1694, 1206)
+"points": PackedVector2Array(0, 0, 0, 0, 1566, 644, 0, 0, 0, 0, 1322, 636, 0, 0, 0, 0, 1342, 758, 0, 0, 0, 0, 1360, 876, 0, 0, 0, 0, 1362, 966, 0, 0, 0, 0, 1360, 1078, 0, 0, 0, 0, 1552, 972, 0, 0, 0, 0, 1642, 968, 0, 0, 0, 0, 1520, 732, 0, 0, 0, 0, 1448, 920)
 }
-point_count = 8
+point_count = 10
 
 [node name="GameManager" type="Node2D" unique_id=1018969776]
 script = ExtResource("1_hwd4i")
