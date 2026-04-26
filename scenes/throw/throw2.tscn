@@ -130,7 +130,6 @@ position = Vector2(3390.625, 880)
 
 [node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_xrg28")]
 position = Vector2(3585.555, 880)
-speed = 50.0
 is_king = false
 
 [node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("6_wbfnm")]

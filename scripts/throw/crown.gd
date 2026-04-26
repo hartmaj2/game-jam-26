@@ -32,6 +32,11 @@ func collect_crown():
 	GM.collect_crown()
 	was_collected = true
 	$Label.visible = false
+
+	# hide the crown and disable its collision OR LATER animate it being picked up
+	$Sprite2D.visible = false
+	$CollisionShape2D.disabled = true
+
 	
 func show_crown(pos : Vector2):
 	global_position = pos

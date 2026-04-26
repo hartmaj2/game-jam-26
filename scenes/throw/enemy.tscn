@@ -60,6 +60,10 @@ height = 200.0
 radius = 35.0
 height = 200.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2gol"]
+radius = 35.0
+height = 122.0
+
 [node name="Enemy1" type="CharacterBody2D" unique_id=1419214293 groups=["enemy"]]
 collision_mask = 10
 script = ExtResource("1_p5u0l")
@@ -92,5 +96,18 @@ stream = ExtResource("9_k2gol")
 volume_db = 24.0
 
 [node name="Cry" type="AudioStreamPlayer" parent="." unique_id=918082524]
+
+[node name="Sprite2D_Child" type="AnimatedSprite2D" parent="." unique_id=2005069650]
+visible = false
+position = Vector2(-1.0000005, 46)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_ugbd5")
+animation = &"left"
+autoplay = "idle"
+
+[node name="CollisionShape2D_Child" type="CollisionShape2D" parent="." unique_id=9433198]
+position = Vector2(-1, 45)
+shape = SubResource("CapsuleShape2D_k2gol")
+disabled = true
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
