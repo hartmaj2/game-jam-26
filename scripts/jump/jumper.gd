@@ -37,21 +37,10 @@ func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction and GM.controllable:
-		#if in_water and floored:
-			#speed = MAX_SPEED * 0.2
-		
-		speed = MAX_SPEED
-		if direction != 0 and in_water and floored:
-			$WaterLeftParty.emitting = true
-			speed *= 0.2
-			#$WaterRightParty.emitting = true
 		velocity.x = direction * speed
-		if direction > 0:
+		if direction!= 0:
 			$Sprite2D.animation = "left"
-			$Sprite2D.flip_h = false
-		elif direction < 0:
-			$Sprite2D.animation = "left"
-			$Sprite2D.flip_h = true
+			$Sprite2D.flip_h = direction < 0
 	else:
 		$Sprite2D.animation = "idle"
 		velocity.x = move_toward(velocity.x, 0, speed)
@@ -60,14 +49,5 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("aim_down"):
 			velocity+=get_gravity()*3*delta
 			drop = true
-			
 			velocity.y = max(velocity.y, 0)
 	move_and_slide()
-
-func _on_water_body_entered(body: Node2D) -> void:
-	in_water = true
-
-func _on_water_body_exited(body: Node2D) -> void:
-	in_water = false
-	#$WaterLeftParty.emitting = false
-	##$WaterRightParty.emitting = false

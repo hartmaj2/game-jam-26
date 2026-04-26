@@ -7,7 +7,7 @@ const fade_time = 0.2
 var current_index = -1
 
 var jumps = ["res://scenes/jump/jump1.tscn", "res://scenes/jump/jump2.tscn"]
-var throws = ["res://scenes/throw/throw2.tscn","res://scenes/throw/throw3.tscn","res://scenes/throw/throw3.tscn"]
+var throws = ["res://scenes/throw/throw1.tscn","res://scenes/throw/throw2.tscn"]
 var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
@@ -73,13 +73,13 @@ func death():
 	fade_out()
 
 func fade_out():
+	print("Fade out:", str(current_index))
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",0,fade_time)
 	await tw.finished
 	controllable = true
 	
 func to_map():
-	
 	print(path_follower.get_parent())
 	print(current_index)
 	controllable = false
@@ -92,7 +92,7 @@ func to_map():
 	tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
-	current_index+=1
+	current_index += 1 
 	path_follower.reparent(paths[min(1,current_index+1)])
 	
 	path_follower.progress_ratio = 0
