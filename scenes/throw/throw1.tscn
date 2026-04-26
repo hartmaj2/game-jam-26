@@ -58,6 +58,7 @@ texture = ExtResource("4_3a3r6")
 
 [node name="Parallax_Trees" type="Parallax2D" parent="." unique_id=86534136]
 scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(0, -93)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=1650499495]
 offset_right = 40.0
@@ -65,6 +66,7 @@ offset_bottom = 40.0
 texture = ExtResource("5_4kp8k")
 
 [node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=32631245]
+scroll_offset = Vector2(0, -93)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=1135388417]
 offset_left = -1920.0

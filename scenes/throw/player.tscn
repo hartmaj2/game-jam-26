@@ -282,7 +282,6 @@ script = ExtResource("4_ef6wi")
 
 [node name="Au" type="AudioStreamPlayer" parent="." unique_id=1506762255]
 stream = ExtResource("8_g5kdh")
-volume_db = 24.0
 
 [node name="Hop" type="AudioStreamPlayer" parent="." unique_id=1958127882]
 stream = ExtResource("5_0kksi")
