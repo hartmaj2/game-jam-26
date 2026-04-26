@@ -14,8 +14,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
+	
 func open_tower():
-	print("tower is open")
-	$Sprite2D.texture = texture_open
+	#print("tower is open")
+	#$Sprite2D.texture = texture_open
+	var tween := create_tween()
+	tween.tween_property($Gate, "rotation",deg_to_rad(-90), 1)
 	$CollisionShape2D.set_deferred("disabled", true)

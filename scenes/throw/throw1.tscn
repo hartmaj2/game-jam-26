@@ -97,7 +97,6 @@ position = Vector2(3600, 952)
 
 [node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_4r5fs")]
 position = Vector2(3208, 880)
-wall = NodePath("../../Wall")
 is_king = false
 
 [node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_4r5fs")]
@@ -109,7 +108,7 @@ speed = 50.0
 is_king = false
 is_harmless = true
 
-[node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462 groups=["wall"]]
+[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("6_ub7db")]
 position = Vector2(2880, 550)
 collision_layer = 2
 collision_mask = 0

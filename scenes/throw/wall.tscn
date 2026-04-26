@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bed6ge5p6rkjg"]
+
+[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="1_5oaac"]
+[ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="2_fmw6u"]
+[ext_resource type="Texture2D" uid="uid://chy3f7vo2t23t" path="res://assets/img/throw/gate.PNG" id="3_fmw6u"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
+points = PackedVector2Array(-16.667, -280, 30, -280, 80, -130, 80, 700, -70, 700, -70, -130)
+
+[node name="Wall" type="StaticBody2D" unique_id=2009131024 groups=["wall"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_5oaac")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=195066078]
+texture = ExtResource("2_fmw6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731700317]
+position = Vector2(-5.0000005, 36.999992)
+scale = Vector2(0.72, 0.72)
+shape = SubResource("ConvexPolygonShape2D_4jtqv")
+
+[node name="EnemyWallTop" type="Node2D" parent="." unique_id=827213133]
+position = Vector2(0, -160)
+
+[node name="Gate" type="Node2D" parent="." unique_id=151082012]
+position = Vector2(-2, 434)
+
+[node name="Sprite2D" type="Sprite2D" parent="Gate" unique_id=286732095]
+position = Vector2(0, -171)
+texture = ExtResource("3_fmw6u")

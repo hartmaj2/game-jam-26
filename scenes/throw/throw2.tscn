@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bneewpq4vvfce"]
+[gd_scene format=3 uid="uid://t636rfy1ob3"]
 
 [ext_resource type="Script" uid="uid://et6aunegovvv" path="res://scripts/throw/throw_2.gd" id="1_b4vjv"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_mmche"]
@@ -50,7 +50,7 @@ position = Vector2(3600, 952)
 
 [node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_xrg28")]
 position = Vector2(3208, 880)
-wall = NodePath("../../Wall")
+wall = NodePath("")
 is_king = false
 
 [node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_xrg28")]
