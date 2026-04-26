@@ -41,6 +41,7 @@ func initiate_rock(pos : Vector2, speed : float, direction : Vector2, who : Stri
 	thrown_by = who
 	is_thrown = true
 	was_thrown_recently = true
+	rotation = randf_range(0,PI*2)
 
 func _on_pickup_area_body_exited(body: Node2D) -> void:
 	#print("somebody exited")

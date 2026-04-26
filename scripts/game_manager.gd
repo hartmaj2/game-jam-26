@@ -21,7 +21,7 @@ var current_strength: float = 0.0
 func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	current_strength = strength
 	fading = decay
-	
+
 func to_tutorial():
 	current_index = -1
 	path_follower.progress_ratio = 0

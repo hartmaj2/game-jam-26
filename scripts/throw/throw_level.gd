@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var start_at_wall = true
+@export var start_at_wall = false
 
 @onready var left_wall: StaticBody2D = $Bounds/LeftFightBarrier
 @onready var right_wall: StaticBody2D = $Bounds/RightFightBarrier
@@ -15,6 +15,18 @@ func _ready():
 
 	if start_at_wall:
 		$Player.global_position = $TriggerAreas/EnterThrowingFight/CollisionShape2D.global_position
+
+func _physics_process(_delta: float) -> void:
+	var offset = Vector2(0,0)
+	var current_strength = GM.current_strength
+	if GM.current_strength > 0.0:
+		
+		offset = Vector2(
+			randf_range(-current_strength, current_strength),
+			randf_range(-current_strength, current_strength)
+		)
+		camera.offset = offset
+	GM.current_strength -=GM.fading*float(current_strength>0)
 
 func disable_right_wall_and_camera_limits():
 	get_node("Player").input_locked = true
@@ -49,8 +61,19 @@ func _on_enter_throwing_fight_body_entered(body: Node2D) -> void:
 		body.input_locked = false
 
 
-func _on_enter_cave_body_entered(body: Node2D) -> void:
-	GM.to_cave()
+func _on_enter_cave_body_entered(_body: Node2D) -> void:
+	match GM.current_index:
+		0:
+			print("Throw1")
+			GM.to_cave()
+		1:
+			print("Throw2")
+			GM.to_cave()
+		2:
+			print("Epilogue")
+			GM.to_epilogue()
+		_:
+			print("Unknown cave index: ", GM.current_index)
 
 
 func _on_enter_map_scene_body_entered(_body: Node2D) -> void:

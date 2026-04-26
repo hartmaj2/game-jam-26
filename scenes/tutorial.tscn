@@ -1,14 +1,14 @@
-[gd_scene format=3 uid="uid://bm0688v3vbraw"]
+[gd_scene format=3 uid="uid://cxnbjxae78lnu"]
 
-[ext_resource type="Script" uid="uid://jn08vjtfkqhq" path="res://scripts/tutorial.gd" id="1_tbcdj"]
+[ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_nlqja"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_ej4tf"]
 [ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_0hilk"]
 [ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_wr8iv"]
 [ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_e13mp"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="6_0epgs"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
-[ext_resource type="PackedScene" uid="uid://bed6ge5p6rkjg" path="res://scenes/throw/wall.tscn" id="9_nlqja"]
-[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
+[ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="9_nlqja"]
+[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(9600, 20)
@@ -23,8 +23,8 @@ size = Vector2(20, 2160)
 size = Vector2(360, 720)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbcdj"]
-radius = 25.0
-height = 874.0
+radius = 18.0
+height = 812.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ej4tf"]
 radius = 21.0
@@ -34,8 +34,7 @@ height = 1058.0
 size = Vector2(173, 60)
 
 [node name="Tutorial" type="Node2D" unique_id=1793107038]
-script = ExtResource("1_tbcdj")
-start_at_wall = false
+script = ExtResource("1_nlqja")
 
 [node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=349661175]
 scroll_scale = Vector2(0.1, 1)
@@ -88,9 +87,8 @@ position = Vector2(4204.617, 952)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=767239893]
 
-[node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("10_bl2xa")]
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 instance=ExtResource("10_bl2xa")]
 position = Vector2(5208, 880)
-wall = NodePath("")
 is_king = false
 
 [node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("10_bl2xa")]
@@ -150,7 +148,7 @@ shape = SubResource("RectangleShape2D_rw6rq")
 [node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/EnterThrowingFight" unique_id=283124648]
-position = Vector2(4320, 990)
+position = Vector2(4355, 987)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tbcdj")
 
@@ -175,6 +173,15 @@ offset_right = 4498.0
 offset_bottom = 162.22852
 theme_override_font_sizes/font_size = 60
 text = "Press J to pick rocks"
+
+[node name="ThrowRockLabel" type="Label" parent="." unique_id=1533446544]
+visible = false
+offset_left = 2040.0
+offset_top = 64.0
+offset_right = 2626.0
+offset_bottom = 162.22852
+theme_override_font_sizes/font_size = 60
+text = "Press E to pick rocks"
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]

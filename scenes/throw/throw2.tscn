@@ -1,30 +1,33 @@
-[gd_scene format=3 uid="uid://t636rfy1ob3"]
+[gd_scene format=3 uid="uid://bneewpq4vvfce"]
 
-[ext_resource type="Script" uid="uid://et6aunegovvv" path="res://scripts/throw/throw_2.gd" id="1_b4vjv"]
+[ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_wbfnm"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_mmche"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_68k3t"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_cmjri"]
-[ext_resource type="PackedScene" uid="uid://bed6ge5p6rkjg" path="res://scenes/throw/wall.tscn" id="6_wbfnm"]
-[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
+[ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="6_wbfnm"]
+[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(7680, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rl1dt"]
-size = Vector2(20, 1080)
+size = Vector2(20, 2160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrcs"]
-size = Vector2(20, 1080)
+size = Vector2(20, 2160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
 size = Vector2(360, 720)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
-radius = 50.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbfnm"]
+radius = 13.0
+height = 800.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7l3cx"]
+height = 1128.0
 
 [node name="Throw2" type="Node2D" unique_id=1793107038]
-script = ExtResource("1_b4vjv")
-start_at_wall = false
+script = ExtResource("1_wbfnm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(3840, 540)
@@ -74,7 +77,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftFightBarrier" unique_id=429855713]
-position = Vector2(1920, 540)
+position = Vector2(1920, 0)
 shape = SubResource("RectangleShape2D_rl1dt")
 
 [node name="RightFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1683984710]
@@ -82,7 +85,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightFightBarrier" unique_id=140447480]
-position = Vector2(3840, 540)
+position = Vector2(3840, 0)
 shape = SubResource("RectangleShape2D_lfrcs")
 
 [node name="LeftCave" type="StaticBody2D" parent="Bounds" unique_id=769643632]
@@ -98,7 +101,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightCave" unique_id=2125337852]
-position = Vector2(7680, 720)
+position = Vector2(6525, 713)
 shape = SubResource("RectangleShape2D_rw6rq")
 
 [node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
@@ -106,14 +109,16 @@ shape = SubResource("RectangleShape2D_rw6rq")
 [node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerAreas/EnterThrowingFight" unique_id=283124648]
-position = Vector2(2080, 950)
-shape = SubResource("CircleShape2D_mfv0q")
+position = Vector2(2459, 983)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wbfnm")
 
 [node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
-position = Vector2(7080, 950)
-shape = SubResource("CircleShape2D_mfv0q")
+position = Vector2(5975, 975)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7l3cx")
 
 [node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
 visible = false
@@ -122,7 +127,16 @@ offset_top = 128.0
 offset_right = 2631.0
 offset_bottom = 226.22852
 theme_override_font_sizes/font_size = 60
-text = "Press J to pick rocks"
+text = "Press J to pick a rock"
+
+[node name="ThrowRockLabel" type="Label" parent="." unique_id=2139807246]
+visible = false
+offset_left = 2045.0
+offset_top = 128.0
+offset_right = 2631.0
+offset_bottom = 226.22852
+theme_override_font_sizes/font_size = 60
+text = "Press K to throw a rock"
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
