@@ -7,6 +7,7 @@ extends Node2D
 @onready var camera: Camera2D = $Player/Camera2D
 
 var fight_started = false
+var crown_collected = false
 
 func _ready():
 	# turn off barrier collisions at the start
@@ -74,6 +75,21 @@ func _on_enter_cave_body_entered(_body: Node2D) -> void:
 			GM.to_epilogue()
 		_:
 			print("Unknown cave index: ", GM.current_index)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip_level"):
+		match GM.current_index:
+			0:
+				print("Throw1")
+				GM.to_cave()
+			1:
+				print("Throw2")
+				GM.to_cave()
+			2:
+				print("Epilogue")
+				GM.to_epilogue()
+			_:
+				print("Unknown cave index: ", GM.current_index)
 
 
 func _on_enter_map_scene_body_entered(_body: Node2D) -> void:
