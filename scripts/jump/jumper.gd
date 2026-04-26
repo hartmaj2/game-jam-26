@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const MAX_SPEED = 500.0
 var speed = MAX_SPEED
-const JUMP_VELOCITY = -900.0
+const JUMP_VELOCITY = -800.0
 const COYOTE_INIT = 0.2
 var coyote = COYOTE_INIT
 @onready var hop = $Hop
