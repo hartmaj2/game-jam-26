@@ -43,14 +43,14 @@ func show_crown(pos : Vector2):
 	#print("crown is here")
 
 func _on_pickup_area_body_entered(body: Node2D) -> void:
-	print("somebody entered")
+	# print("somebody entered")
 	if body.is_in_group("player") and not was_collected:
 		#print("player entered")
 		player_nearby = true	
 		$Label.visible = true
 
 func _on_pickup_area_body_exited(body: Node2D) -> void:
-	print("somebody exited")
+	# print("somebody exited")
 	if body.is_in_group("player"):
 		player_nearby = false
 		$Label.visible = false

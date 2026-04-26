@@ -94,7 +94,7 @@ func death():
 	fade_out()
 
 func fade_out():
-	print("Fade out:", str(current_index))
+	# print("Fade out:", str(current_index))
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",0,fade_time)
 	await tw.finished

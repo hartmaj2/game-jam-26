@@ -125,8 +125,8 @@ func _input(event: InputEvent) -> void:
 		#print("pickup")
 		pickup_nearest_rock()
 	if event.is_action_pressed("debug_print"):
-		print("---DEBUG---")
-		print("mouse pos: ",get_global_mouse_position())
+		# print("---DEBUG---")
+		# print("mouse pos: ",get_global_mouse_position())
 		kill_all_enemies()
 		#print("nearby rocks: ",nearby_rocks)
 		#print("rocks picked: " ,rocks_picked) 
