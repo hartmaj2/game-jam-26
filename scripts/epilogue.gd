@@ -1,12 +1,12 @@
 extends Node2D
 
 var textures = [
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #1
+	preload("res://assets/img/epilogue/red_sitting.PNG"), #1
 	preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), #2
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #4
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #5
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #6
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #6
+	preload("res://assets/img/epilogue/blue_bullying_red.PNG"), #4
+	preload("res://assets/img/epilogue/blue_tilting_red.PNG"), #5
+	preload("res://assets/img/epilogue/blue_tilting_empty.PNG"), #6
+	preload("res://assets/img/epilogue/blue_tilting_empty.PNG"), #6
 	]
 
 var functions = [
@@ -39,7 +39,7 @@ func king_on_vulcan():
 	texture.z_index=1
 	cam.position = Vector2(960,540)
 	cam.zoom = Vector2(1,1)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(3).timeout
 	$King_On_Vulkan_Background.visible=false
 	texture.z_index=0
 	next()
@@ -49,7 +49,7 @@ func king_on_vulcan_closeup():
 	$King_On_Vulkan_Closeup_Enemy.visible=true
 	await get_tree().create_timer(0.5).timeout
 	var tw = get_tree().create_tween()
-	tw.tween_property($King_On_Vulkan_Closeup_Enemy,"position", Vector2(0, 0), 1)
+	tw.tween_property($King_On_Vulkan_Closeup_Enemy,"position", Vector2(0, 0), 2)
 	await  tw.finished
 	await get_tree().create_timer(2).timeout
 	$King_On_Vulkan_Closeup_King.visible=false
@@ -69,7 +69,7 @@ func king_on_vulcan_GTFO1():
 func king_on_vulcan_GTFO2():
 	$King_On_Vulkan_Background.visible=true
 	texture.z_index=1
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.03).timeout
 	$King_On_Vulkan_Background.visible=false
 	texture.z_index=0
 	next()
@@ -91,5 +91,11 @@ func king_on_vulcan_GTFO3():
 	next()
 
 func final():
+	#$King_On_Vulkan_Background.visible=false
+	texture.visible = false
+	$AnimatedSprite2D.visible = true
+	#$AnimatedSprite2D.animation = "idle"
+	$AnimatedSprite2D.sprite_frames.set_animation_loop("idle", false)
+	$AnimatedSprite2D.play("idle")
 	pass
 	#TODO: END GAME HERE
