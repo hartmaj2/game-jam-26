@@ -14,3 +14,7 @@ func _physics_process(delta: float) -> void:
 func _on_end_body_entered(_body: Node2D) -> void: GM.from_cave()
 
 func _on_death_body_entered(_body: Node2D) -> void: GM.death()
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("skibidi")

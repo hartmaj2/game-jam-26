@@ -1,15 +1,24 @@
 extends Node2D
 
 var textures = [preload("res://assets/img/prologue/Backgrounds.JPG"), preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), preload("res://assets/img/trans/cave.jpg"), preload("res://assets/img/trans/death.jpg"), preload("res://assets/img/trans/village.jpg")]
-var functions = [vulkan, king_on_vulcan, king_on_vulcan_closeup, king_on_vulcan_GTFO, shit1, shit2, shit3]
+var functions = [vulkan, king_on_vulcan, king_on_vulcan_closeup, king_on_vulcan_GTFO, king_falling]
 var current = -1
 @onready var texture = $Background
 @onready var cam = $Camera2D
+@onready var label = $Label
+@onready var skip_label = $Camera2D/Label
+var started = false
 # Called when the node enters the scene tree for the first time.
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		$Label.visible = false
-		next()
+		if label.visible:
+			label.visible = false
+			next()
+			skip_label.visible = true
+		else: 
+			GM.to_tutorial()
+			
+		
 
 func next():
 	current+=1
@@ -52,18 +61,13 @@ func king_on_vulcan_closeup():
 func king_on_vulcan_GTFO():
 	await get_tree().create_timer(2).timeout
 	next()
+	#GM.to_tutorial()
 
-func shit1():
+func king_falling():
 	cam.position = Vector2(960,540)
 	cam.zoom = Vector2(1,1)
 	GM.to_tutorial()
 	#texture.scale = Vector2(1,1)
 	#print(texture.texture)
 	#print()
-
-func shit2():
-	pass
-	
-func shit3():
-	pass
 	

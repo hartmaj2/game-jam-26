@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dp3ibkbm0gvt6"]
 
 [ext_resource type="Script" uid="uid://bbx82dl1tyami" path="res://scripts/game_manager.gd" id="1_hwd4i"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_udu3i"]
 [ext_resource type="Texture2D" uid="uid://c7tv7d3bb4ep5" path="res://icon.svg" id="3_oo155"]
 [ext_resource type="AudioStream" uid="uid://da5vna7h7hr7p" path="res://assets/sounds/sfx/wind.ogg" id="4_oo155"]
 
@@ -29,9 +28,7 @@ script = ExtResource("1_hwd4i")
 modulate = Color(1, 1, 1, 0)
 offset_right = 1920.0
 offset_bottom = 1080.0
-scale = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("2_udu3i")
 
 [node name="Map" type="TextureRect" parent="Canvas" unique_id=775689534]
 modulate = Color(1, 1, 1, 0)
