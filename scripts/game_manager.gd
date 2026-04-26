@@ -11,9 +11,8 @@ var throws = ["res://scenes/throw/throw1.tscn","res://scenes/throw/throw2.tscn"]
 var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
-var death_screen = preload("res://assets/img/trans/death.jpg")
-var village = preload("res://assets/img/trans/village.jpg")
-var cave = preload("res://assets/img/trans/cave.jpg")
+var wind = preload("res://assets/sounds/sfx/wind.ogg")
+var cave = preload("res://assets/sounds/sfx/cave.mp3")
 @onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2]
 
 var fading: float = 0.5
@@ -31,7 +30,7 @@ func to_tutorial():
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
-	current_scene = jumps[current_index]
+	current_scene = tut
 	get_tree().change_scene_to_file(tut)
 	fade_out()
 
@@ -44,28 +43,34 @@ func to_prologue():
 	
 
 func to_cave():
+	
 	controllable = false
-	fade.texture = cave
+	#fade.texture = cave
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
 	current_scene = jumps[current_index]
 	get_tree().change_scene_to_file(current_scene)
+	$AudioStreamPlayer.stream = cave
+	$AudioStreamPlayer.play()
 	fade_out()
 
 func from_cave():
 	controllable = false
-	fade.texture = village
+	
+	#fade.texture = village
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
 	current_scene = throws[current_index]
 	get_tree().change_scene_to_file(current_scene)
+	$AudioStreamPlayer.stream = wind
+	$AudioStreamPlayer.play()
 	fade_out()
 
 func death():
 	controllable = false
-	fade.texture = death_screen
+	#fade.texture = death_screen
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -80,8 +85,6 @@ func fade_out():
 	controllable = true
 	
 func to_map():
-	print(path_follower.get_parent())
-	print(current_index)
 	controllable = false
 	var tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",1,fade_time)

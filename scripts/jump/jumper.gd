@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	if not floored:
 		$Sprite2D.animation = "jump"
-		if Input.is_action_pressed("aim_down"):
+		if Input.is_action_pressed("aim_down") and not Input.is_action_pressed("ui_accept"):
 			velocity+=get_gravity()*3*delta
 			drop = true
 			velocity.y = max(velocity.y, 0)
