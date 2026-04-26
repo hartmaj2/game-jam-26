@@ -1,6 +1,8 @@
 extends Node2D
 
-func _physics_process(delta: float) -> void:
+@onready var au = $Au
+
+func _physics_process(_delta: float) -> void:
 	var offset = Vector2(0,0)
 	var current_strength = GM.current_strength
 	if GM.current_strength > 0.0:
@@ -12,7 +14,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_end_body_entered(_body: Node2D) -> void: ending()
 
-func _on_death_body_entered(_body: Node2D) -> void: GM.death(3)
+func _on_death_body_entered(_body: Node2D) -> void:
+	au.play()
+	GM.death(3)
 
 func ending():
 	GM.from_cave()
