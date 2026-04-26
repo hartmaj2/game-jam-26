@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_nlqja"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_ej4tf"]
 [ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_0hilk"]
-[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_wr8iv"]
-[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_e13mp"]
+[ext_resource type="Texture2D" uid="uid://d0sqgywv4j35o" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_wr8iv"]
+[ext_resource type="Texture2D" uid="uid://dra5atll8e2fj" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_e13mp"]
+[ext_resource type="Texture2D" uid="uid://b22e4exucbby3" path="res://assets/img/throw/throw_1/paralax_trees_2.PNG" id="5_ej4tf"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="6_0epgs"]
 [ext_resource type="PackedScene" uid="uid://c7p7pqskx3jh0" path="res://scenes/village.tscn" id="6_tbcdj"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
@@ -63,15 +64,27 @@ texture = ExtResource("3_0hilk")
 scroll_scale = Vector2(0.2, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=1025018210]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = -100.0
+offset_right = 9600.0
+offset_bottom = 1180.0
 texture = ExtResource("4_wr8iv")
+
+[node name="Parallax_Trees_2" type="Parallax2D" parent="." unique_id=513939337]
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(4094, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Trees_2" unique_id=339666705]
+offset_top = -50.0
+offset_right = 4094.0
+offset_bottom = 1230.0
+texture = ExtResource("5_ej4tf")
 
 [node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=122608356]
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=2099266772]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = -100.0
+offset_right = 9600.0
+offset_bottom = 1180.0
 texture = ExtResource("5_e13mp")
 
 [node name="Village" parent="." unique_id=723442918 instance=ExtResource("6_tbcdj")]

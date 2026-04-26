@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0sqgywv4j35o"
-path="res://.godot/imported/paralax_trees.PNG-e15626f1b2a208151dbdd5b4541cd3d3.ctex"
+uid="uid://b22e4exucbby3"
+path="res://.godot/imported/paralax_trees_2.PNG-238e84f91da3143cbe0a17185777dcca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/throw/throw_1/paralax_trees.PNG"
-dest_files=["res://.godot/imported/paralax_trees.PNG-e15626f1b2a208151dbdd5b4541cd3d3.ctex"]
+source_file="res://assets/img/throw/throw_1/paralax_trees_2.PNG"
+dest_files=["res://.godot/imported/paralax_trees_2.PNG-238e84f91da3143cbe0a17185777dcca.ctex"]
 
 [params]
 
