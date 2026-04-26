@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bujqgkfombpl" path="res://scripts/jump/jumper.gd" id="1_qi757"]
 [ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="3_1spwc"]
 [ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="4_nq2w0"]
+[ext_resource type="AudioStream" uid="uid://2u0304c2875d" path="res://assets/sounds/sfx/walk.wav" id="8_h3rx5"]
 [ext_resource type="Texture2D" uid="uid://eoh0nrf1q4rm" path="res://assets/img/jump/walking/1.PNG" id="15_sxi6w"]
 [ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="16_3woja"]
 [ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="17_8m2s7"]
@@ -76,9 +77,9 @@ script = ExtResource("1_qi757")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2067367883]
 sprite_frames = SubResource("SpriteFrames_u4wil")
-animation = &"jump"
+animation = &"left"
 autoplay = "idle"
-frame_progress = 0.54123116
+frame_progress = 0.4076207
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
 position = Vector2(-6.5, -1.5)
@@ -96,6 +97,9 @@ stream = ExtResource("3_1spwc")
 
 [node name="Impact" type="AudioStreamPlayer" parent="." unique_id=1320073865]
 stream = ExtResource("4_nq2w0")
+
+[node name="Walk" type="AudioStreamPlayer" parent="." unique_id=823803532]
+stream = ExtResource("8_h3rx5")
 
 [node name="LeftParty" type="CPUParticles2D" parent="." unique_id=146441343]
 position = Vector2(-32, 140)
