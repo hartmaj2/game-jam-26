@@ -34,7 +34,7 @@ height = 874.0
 radius = 21.0
 height = 1058.0
 
-[node name="Throw1" type="Node2D" unique_id=1793107038]
+[node name="Tutorial" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_tbcdj")
 start_at_wall = false
 
@@ -187,4 +187,3 @@ text = "Press J to pick rocks"
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
-
