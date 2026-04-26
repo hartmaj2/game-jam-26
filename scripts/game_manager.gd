@@ -122,3 +122,10 @@ func collect_crown():
 	path_follower.get_node("Player/Crown/Sprite2D").texture = crown_sprites[GM.crowns_collected]
 	crowns_collected += 1
 	crown_collected.emit()
+
+
+func _on_trigger_handle_labels() -> void:
+	pass # Replace with function body.
+
+func some_event():
+	emit_signal("trigger_handle_labels")
