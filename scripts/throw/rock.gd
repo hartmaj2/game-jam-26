@@ -3,8 +3,10 @@ extends RigidBody2D
 var texture_normal = preload("res://assets/img/throw/stone.png")
 var texture_lava = preload("res://assets/img/throw/stone_lava.png")
 
+var speed_threshold = 500
+
 @export var thrown_by := ""
-@export var is_thrown := false
+var is_thrown := false
 var is_lava := false
 var was_thrown_recently := false
 
@@ -24,13 +26,22 @@ func set_mode():
 func _process(_delta: float) -> void:
 	set_mode()
 	if thrown_by == "enemy":
-		set_collision_layer_value(3, false)
+		set_collision_layer_value(3,false)
+		set_collision_layer_value(5,true)
+		set_collision_mask_value(5,true)
+		#set_collision_mask_value(3,false)
+	if thrown_by == "special":
+		#set_collision_layer_value(3,false)
+		set_collision_mask_value(5,true)
 	if is_thrown:
 		pass
 		#print("thrown by ",thrown_by)
-	#if linear_velocity.length() < 10:
-		#is_thrown = false
-	pass
+	#print("lin vel y: ",linear_velocity.y)
+	
+	if abs(linear_velocity.y) < speed_threshold:
+		is_thrown = false
+	else:
+		is_thrown = true
 	
 
 func initiate_rock(pos : Vector2, speed : float, direction : Vector2, who : String, lava : bool = false):
@@ -54,7 +65,7 @@ func damage_body_from_group(body, group : String) -> bool:
 		if thrown_by == group:
 			return true
 		is_thrown = false
-		linear_velocity = Vector2(0,0)
+		#linear_velocity = Vector2(0,0) # stop rock on enemy hit
 		body.take_damage(1)
 		GM.trigger_shake(10,0.5)
 		await get_tree().create_timer(0.5).timeout
