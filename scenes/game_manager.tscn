@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfr2bp5mi01f" path="res://assets/img/prologue/Backgrounds.JPG" id="2_oo155"]
 [ext_resource type="Texture2D" uid="uid://c7tv7d3bb4ep5" path="res://icon.svg" id="3_oo155"]
 [ext_resource type="AudioStream" uid="uid://da5vna7h7hr7p" path="res://assets/sounds/sfx/wind.ogg" id="4_oo155"]
+[ext_resource type="AudioStream" uid="uid://b6hcyerthg5gt" path="res://assets/sounds/music/background_music.ogg" id="5_eaq8r"]
 
 [sub_resource type="Curve2D" id="Curve2D_eaq8r"]
 _data = {
@@ -62,6 +63,9 @@ curve = SubResource("Curve2D_oo155")
 position = Vector2(1084, 2908)
 curve = SubResource("Curve2D_ternb")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=761979931]
+[node name="Ambient" type="AudioStreamPlayer" parent="." unique_id=761979931]
 stream = ExtResource("4_oo155")
 autoplay = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1495299577]
+stream = ExtResource("5_eaq8r")
