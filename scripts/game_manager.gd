@@ -124,8 +124,8 @@ func collect_crown():
 	crown_collected.emit()
 
 
-func _on_trigger_handle_labels() -> void:
-	pass # Replace with function body.
-
-func some_event():
-	emit_signal("trigger_handle_labels")
+#func _on_trigger_handle_labels() -> void:
+	#pass # Replace with function body.
+#
+#func some_event():
+	#emit_signal("trigger_handle_labels")
