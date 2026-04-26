@@ -4,10 +4,179 @@
 [ext_resource type="AudioStream" uid="uid://dgsvdn2xbdcye" path="res://assets/sounds/sfx/hop.wav" id="3_1spwc"]
 [ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="4_nq2w0"]
 [ext_resource type="AudioStream" uid="uid://2u0304c2875d" path="res://assets/sounds/sfx/walk.wav" id="8_h3rx5"]
+[ext_resource type="Texture2D" uid="uid://cpjjwkq4ldp8j" path="res://assets/img/throw/crown_1_a.PNG" id="9_7q77l"]
 [ext_resource type="Texture2D" uid="uid://eoh0nrf1q4rm" path="res://assets/img/jump/walking/1.PNG" id="15_sxi6w"]
 [ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="16_3woja"]
 [ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="17_8m2s7"]
 [ext_resource type="Texture2D" uid="uid://clr1hosuilc57" path="res://assets/img/jump/walking/4.PNG" id="18_58asi"]
+
+[sub_resource type="Animation" id="Animation_up8u8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crown:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g5kdh"]
+resource_name = "idle"
+length = 0.66
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crown:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_rfykx"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crown:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_7bxlc"]
+resource_name = "jump"
+length = 0.264
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.066, 0.132, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"left"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crown:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.132, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 2), Vector2(0, 0), Vector2(0, 5), Vector2(0, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0vfaf"]
+_data = {
+&"RESET": SubResource("Animation_up8u8"),
+&"idle": SubResource("Animation_g5kdh"),
+&"jump": SubResource("Animation_rfykx"),
+&"left": SubResource("Animation_7bxlc")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u4wil"]
 animations = [{
@@ -75,11 +244,13 @@ scale = Vector2(0.5, 0.5)
 collision_layer = 3
 script = ExtResource("1_qi757")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=538772574]
+libraries/ = SubResource("AnimationLibrary_0vfaf")
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2067367883]
 sprite_frames = SubResource("SpriteFrames_u4wil")
-animation = &"left"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.4076207
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
 position = Vector2(-6.5, -1.5)
@@ -130,3 +301,11 @@ initial_velocity_max = 50.0
 scale_amount_min = 5.0
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_dppjr")
+
+[node name="Crown" type="Node2D" parent="." unique_id=1756361970]
+scale = Vector2(1.24, 1.24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Crown" unique_id=1250153192]
+position = Vector2(1.6129034, -161.29031)
+scale = Vector2(0.09114584, 0.09114584)
+texture = ExtResource("9_7q77l")

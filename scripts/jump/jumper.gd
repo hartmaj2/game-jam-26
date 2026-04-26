@@ -14,6 +14,13 @@ var drop = false
 
 var in_water = false
 
+const path_base = "res://assets/img/throw/crown_"
+var crown_sprites = [preload(path_base + "1_a.PNG"),preload(path_base + "2_a.PNG"),preload(path_base + "3_a.PNG"),preload(path_base + "4_a.PNG")]
+
+func _ready() -> void:
+	GM.crown_collected.connect(set_crown_sprite)
+	set_crown_sprite()
+
 func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
 	var is_jumping = Input.is_action_pressed("ui_accept")
@@ -37,13 +44,13 @@ func _physics_process(delta: float) -> void:
 			
 			elif direction != 0:
 				velocity.x = direction * speed
-				$Sprite2D.animation = "left"
+				$AnimationPlayer.play("left")
 				$Sprite2D.flip_h = direction < 0
 				if not walk.playing:
 					#print("play")
 					walk.play()
 			else:
-				$Sprite2D.animation = "idle"
+				$AnimationPlayer.play("idle")
 				velocity.x = move_toward(velocity.x, 0, speed)
 	else:
 		if GM.controllable:
@@ -110,3 +117,6 @@ func _physics_process(delta: float) -> void:
 			#drop = true
 			#velocity.y = max(velocity.y, 0)
 	move_and_slide()
+
+func set_crown_sprite():
+	$Crown/Sprite2D.texture = crown_sprites[GM.crowns_collected]
