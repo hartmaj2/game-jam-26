@@ -53,8 +53,8 @@ func vulkan():
 	await get_tree().create_timer(0.5).timeout
 	var tw = get_tree().create_tween()
 	#tw.set_parallel(true)
-	tw.tween_property($Camera2D,"position",Vector2(960, 1080+540), 0.5)
-	tw.tween_property($Camera2D,"zoom",Vector2(2,2), 0.5)
+	tw.tween_property($Camera2D,"position",Vector2(960, 1080+540), 1.5)
+	tw.tween_property($Camera2D,"zoom",Vector2(2,2),1.5)
 	await  tw.finished
 	next()
 
