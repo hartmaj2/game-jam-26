@@ -37,6 +37,7 @@ var enemy_count := 0
 var wall = null
 
 func _ready() -> void:
+	GM.trigger_handle_labels.connect(handle_labels)
 	GM.crown_collected.connect(set_crown_sprite)
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
