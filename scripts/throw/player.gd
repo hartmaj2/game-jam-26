@@ -16,9 +16,8 @@ var speed = MAX_SPEED
 @onready var pickup_area: Area2D = $PickupArea
 @onready var trajectory: Line2D = $Trajectory
 
-
-const path_base = "res://assets/img/throw/stickman_rock"
-var sprites = [preload(path_base + "0.png"),preload(path_base + "1.png"),preload(path_base + "2.png"),preload(path_base + "3.png")]
+const path_base = "res://assets/img/throw/crown_"
+var crown_sprites = [preload(path_base + "1_a.PNG"),preload(path_base + "2_a.PNG"),preload(path_base + "3_a.PNG"),preload(path_base + "4_a.PNG")]
 var input_locked := false
 
 const MAX_ROCKS_PICKED = 3
@@ -36,6 +35,7 @@ var enemy_count := 0
 var wall = null
 
 func _ready() -> void:
+	GM.crown_collected.connect(set_crown_sprite)
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		if enemy.is_harmless:
@@ -44,6 +44,7 @@ func _ready() -> void:
 	for enemy in enemies:
 		if not enemy.is_connected("enemy_died", Callable(self, "_on_enemy_died")):
 			enemy.connect("enemy_died", Callable(self, "_on_enemy_died"))
+	set_crown_sprite()
 
 func _physics_process(_delta: float) -> void:
 	if input_locked:
@@ -236,3 +237,7 @@ func _on_water_body_entered(_body: Node2D) -> void:
 
 func _on_water_body_exited(_body: Node2D) -> void:
 	in_water = false
+
+func set_crown_sprite():
+	$Crown/Sprite2D.texture = crown_sprites[GM.crowns_collected]
+	#print("I will change sprite")
