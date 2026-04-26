@@ -4,9 +4,9 @@ var textures = [
 	preload("res://assets/img/prologue/Backgrounds.JPG"), #1
 	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #2
 	preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), #3
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #4
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #5
-	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #6
+	preload("res://assets/img/epilogue/red_bullying_blue.PNG"), #4 bully
+	preload("res://assets/img/epilogue/red_tilting_blue.PNG"), #5 tilt sitting
+	preload("res://assets/img/epilogue/red_tilting_empty.PNG"), #6 tilt empty
 	preload("res://assets/img/prologue/Backgrounds.JPG"), #7
 	preload("res://assets/img/prologue/Backgrounds.JPG") #8
 	]
@@ -50,12 +50,12 @@ func next():
 	
 
 func vulkan():
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.3).timeout
 	var tw = get_tree().create_tween()
 	#tw.set_parallel(true)
-	tw.tween_property($Camera2D,"position",Vector2(960, 1080+540), 0.5)
-	tw.tween_property($Camera2D,"zoom",Vector2(2,2), 0.5)
-	await  tw.finished
+	tw.tween_property($Camera2D,"position",Vector2(960, 1080+540), 4)
+	tw.tween_property($Camera2D,"zoom",Vector2(2,2), 3)
+	await tw.finished
 	next()
 
 func king_on_vulcan():
@@ -63,7 +63,7 @@ func king_on_vulcan():
 	texture.z_index=1
 	cam.position = Vector2(960,540)
 	cam.zoom = Vector2(1,1)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(3).timeout
 	$King_On_Vulkan_Background.visible=false
 	texture.z_index=0
 	next()
@@ -73,7 +73,7 @@ func king_on_vulcan_closeup():
 	$King_On_Vulkan_Closeup_Enemy.visible=true
 	await get_tree().create_timer(0.5).timeout
 	var tw = get_tree().create_tween()
-	tw.tween_property($King_On_Vulkan_Closeup_Enemy,"position", Vector2(0, 0), 1)
+	tw.tween_property($King_On_Vulkan_Closeup_Enemy,"position", Vector2(0, 0), 2)
 	await  tw.finished
 	await get_tree().create_timer(2).timeout
 	$King_On_Vulkan_Closeup_King.visible=false
@@ -93,7 +93,7 @@ func king_on_vulcan_GTFO():
 func king_on_vulcan_GTFO2():
 	$King_On_Vulkan_Background.visible=true
 	texture.z_index=1
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.03).timeout
 	$King_On_Vulkan_Background.visible=false
 	texture.z_index=0
 	next()
