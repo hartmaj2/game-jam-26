@@ -10,6 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://i20reo6cqic3" path="res://assets/img/prologue/montage/og_king_sitting_background.JPG" id="8_l6q3c"]
 [ext_resource type="Texture2D" uid="uid://c212nekg87yws" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_king.PNG" id="9_e3ep0"]
 [ext_resource type="Texture2D" uid="uid://bxq80o4qpepw6" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_enemy.PNG" id="10_18dgh"]
+[ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="11_18dgh"]
+[ext_resource type="Texture2D" uid="uid://cpjjwkq4ldp8j" path="res://assets/img/throw/crown_1_a.PNG" id="12_3qt1a"]
+
+[sub_resource type="Curve2D" id="Curve2D_7g2sk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 190.99382, -133.22408, -190.99382, 133.22408, -719.50543, 132.27917, 0, 0, 0, 0, -983.50543, 705.2792)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_3qt1a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -45.137817, 64.257324, 25.768232, -34.15067, -25.768232, 34.15067, -116.13782, 69.257324, 0, 0, 0, 0, -131.16046, 125.894775, 21.732244, -28.251917, -21.732244, 28.251917, -193.28906, 121.05261, 0, 0, 0, 0, -210.547, 199.73682, 32.908825, -32.908825, -32.908825, 32.908825, -271.52515, 209.42114, 0, 0, 0, 0, -276.12726, 285.6842, 29.80422, -26.699614, -29.80422, 26.699614, -349, 274, 0, 0, 0, 0, -372.7718, 363.15784)
+}
+point_count = 9
 
 [node name="Prologue" type="Node2D" unique_id=1364128692]
 script = ExtResource("1_x1kem")
@@ -111,4 +125,48 @@ offset_right = 1444.0
 offset_bottom = 843.0
 theme_override_font_sizes/font_size = 100
 text = "PRESS SPACE TO PLAY"
-horizontal_alignment = 1
+
+[node name="KickPath" type="Path2D" parent="." unique_id=1573435937]
+visible = false
+position = Vector2(788.50543, 484.72083)
+curve = SubResource("Curve2D_7g2sk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="KickPath" unique_id=139251075]
+scale = Vector2(2.99, 2.99)
+rotates = false
+
+[node name="Stickman2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=2033189226]
+position = Vector2(2.8716393, 8.624359)
+scale = Vector2(0.21160002, 0.2116)
+texture = ExtResource("11_18dgh")
+flip_h = true
+
+[node name="Crown2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=553809157]
+position = Vector2(5.224462, -33.25975)
+rotation = 0.11688162
+scale = Vector2(0.027666708, 0.0281211)
+texture = ExtResource("12_3qt1a")
+flip_h = true
+
+[node name="VulcanoFallPath" type="Path2D" parent="." unique_id=357360615]
+visible = false
+position = Vector2(967, 1420)
+scale = Vector2(0.8691646, 0.82608694)
+curve = SubResource("Curve2D_3qt1a")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="VulcanoFallPath" unique_id=620484115]
+position = Vector2(-45.137817, 64.257324)
+rotation = 6.2831855
+scale = Vector2(0.3, 0.3)
+rotates = false
+
+[node name="Stickman2" type="Sprite2D" parent="VulcanoFallPath/PathFollow2D" unique_id=1666382962]
+position = Vector2(2.8716393, 8.624359)
+scale = Vector2(0.21160002, 0.2116)
+texture = ExtResource("11_18dgh")
+
+[node name="Crown2" type="Sprite2D" parent="VulcanoFallPath/PathFollow2D" unique_id=102704240]
+position = Vector2(5.224462, -33.25975)
+rotation = 0.11688162
+scale = Vector2(0.027666708, 0.0281211)
+texture = ExtResource("12_3qt1a")

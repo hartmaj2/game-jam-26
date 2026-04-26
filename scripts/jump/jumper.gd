@@ -14,6 +14,13 @@ var drop = false
 
 var in_water = false
 
+const path_base = "res://assets/img/throw/crown_"
+var crown_sprites = [preload(path_base + "1_a.PNG"),preload(path_base + "2_a.PNG"),preload(path_base + "3_a.PNG"),preload(path_base + "4_a.PNG")]
+
+func _ready() -> void:
+	GM.crown_collected.connect(set_crown_sprite)
+	set_crown_sprite()
+
 func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
 	var is_jumping = Input.is_action_pressed("ui_accept")
@@ -28,7 +35,7 @@ func _physics_process(delta: float) -> void:
 			$RightParty.emitting = true
 			coyote=COYOTE_INIT
 			# staring idle
-			$Sprite2D.animation = "idle"
+			$AnimationPlayer.play("idle")
 		elif GM.controllable:
 			if is_jumping and not is_dropping:
 				velocity.y = JUMP_VELOCITY
@@ -36,16 +43,17 @@ func _physics_process(delta: float) -> void:
 				hop.play() 
 				walk.stop()
 				#starting jump animation
-				$Sprite2D.animation = "jump"
+				$AnimationPlayer.play("jump")
 			
 			elif direction != 0:
 				velocity.x = direction * speed
-				$Sprite2D.animation = "left"
+				$AnimationPlayer.play("left")
 				$Sprite2D.flip_h = direction < 0
+				$Crown/Sprite2D.flip_h = direction < 0
 				if not walk.playing:
 					walk.play()
 			else:
-				$Sprite2D.animation = "idle"
+				$AnimationPlayer.play("idle")
 				velocity.x = 0
 				#velocity.x = move_toward(velocity.x, 0, speed)
 	else:
@@ -66,6 +74,7 @@ func _physics_process(delta: float) -> void:
 			#if direction != 0:
 			velocity.x = direction * speed
 			$Sprite2D.flip_h = direction < 0
+			$Crown/Sprite2D.flip_h = direction < 0
 			
 		coyote -= delta*float((coyote>=0))
 		var decay = get_gravity() * delta*1.2
@@ -114,3 +123,6 @@ func _physics_process(delta: float) -> void:
 			#drop = true
 			#velocity.y = max(velocity.y, 0)
 	move_and_slide()
+
+func set_crown_sprite():
+	$Crown/Sprite2D.texture = crown_sprites[GM.crowns_collected]
