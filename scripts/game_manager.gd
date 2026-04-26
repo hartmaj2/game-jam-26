@@ -12,7 +12,8 @@ var tut = "res://scenes/tutorial.tscn"
 var current_scene = jumps[0]
 
 var wind = preload("res://assets/sounds/sfx/wind.ogg")
-var cave = preload("res://assets/sounds/sfx/cave.mp3")
+var cave = preload("res://assets/sounds/sfx/cave.ogg")
+var trans_texture = preload("res://assets/img/trans/death.jpg")
 @onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2]
 
 var fading: float = 0.5
@@ -45,7 +46,7 @@ func to_prologue():
 func to_cave():
 	
 	controllable = false
-	#fade.texture = cave
+	fade.texture = trans_texture
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -58,7 +59,7 @@ func to_cave():
 func from_cave():
 	controllable = false
 	
-	#fade.texture = village
+	fade.texture = trans_texture
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -70,7 +71,7 @@ func from_cave():
 
 func death():
 	controllable = false
-	#fade.texture = death_screen
+	fade.texture = trans_texture
 	var tw = get_tree().create_tween()
 	tw.tween_property(fade, "modulate:a",1,fade_time)
 	await tw.finished
@@ -97,7 +98,5 @@ func to_map():
 	await tw.finished
 	current_index += 1 
 	path_follower.reparent(paths[min(1,current_index+1)])
-	
 	path_follower.progress_ratio = 0
 	controllable = true
-	#fade_out()
