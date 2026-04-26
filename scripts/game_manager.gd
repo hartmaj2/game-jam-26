@@ -101,6 +101,7 @@ func fade_out():
 	controllable = true
 	
 func to_map():
+	print("Current index:", str(current_index))
 	controllable = false
 	var tw = get_tree().create_tween()
 	tw.tween_property(map, "modulate:a",1,fade_time)
