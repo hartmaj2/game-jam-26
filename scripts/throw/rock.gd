@@ -60,7 +60,8 @@ func initiate_rock(pos : Vector2, speed : float, direction : Vector2, who : Stri
 func _on_pickup_area_body_exited(body: Node2D) -> void:
 	#print("somebody exited")
 	if body.is_in_group("player"):
-		get_tree().get_first_node_in_group("player").handle_labels()
+		GM.trigger_handle_labels.emit()
+		#get_tree().get_first_node_in_group("player").handle_labels()
 
 
 func damage_body_from_group(body, group : String) -> bool:
@@ -80,7 +81,8 @@ func damage_body_from_group(body, group : String) -> bool:
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	# check if should show label
 	if body.is_in_group("player") and not is_thrown and not was_thrown_recently:
-		get_tree().get_first_node_in_group("player").handle_labels()
+		#get_tree().get_first_node_in_group("player").handle_labels()
+		GM.trigger_handle_labels.emit()
 	
 	if body.is_in_group("floor"):
 		if is_lava:
