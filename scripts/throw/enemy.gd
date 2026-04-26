@@ -34,10 +34,10 @@ const king_texture = preload(path_base + "_king.png")
 func _ready():
 	var trigger_area = get_tree().current_scene.get_node("TriggerAreas/EnterThrowingFight")
 	trigger_area.connect("body_entered", Callable(self, "_on_enter_throwing_fight_body_entered"))
-	print(GM.current_index)
+	# print(GM.current_index)
 	if GM.current_index == 1 or debug:
 		setup_lava_timer()
-	print(is_harmless)
+	# print(is_harmless)
 	if is_harmless:
 		$Sprite2D.visible = false
 		$CollisionShape2D.disabled = true

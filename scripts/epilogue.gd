@@ -31,7 +31,7 @@ func _ready() -> void:
 func next():
 	current+=1
 	texture.texture = textures[current]
-	print(textures[current])
+	# print(textures[current])
 	functions[current].call()
 
 func king_on_vulcan():
