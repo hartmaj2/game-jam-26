@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var texture_normal = preload("res://assets/img/throw/stone.PNG")
+var texture_normal = preload("res://assets/img/throw/stone.png")
 var texture_lava = preload("res://assets/img/throw/stone_lava_small.png")
 
 var speed_threshold = 500

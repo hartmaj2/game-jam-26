@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfuprq1mv7nbh"]
 
 [ext_resource type="Script" uid="uid://b5memhlunlw8q" path="res://scripts/throw/rock.gd" id="1_1bxqv"]
-[ext_resource type="Texture2D" uid="uid://cin4rpv2lxo0" path="res://assets/img/throw/stone.PNG" id="2_1dgyr"]
+[ext_resource type="Texture2D" uid="uid://cin4rpv2lxo0" path="res://assets/img/throw/stone.png" id="2_1dgyr"]
 [ext_resource type="AudioStream" uid="uid://2tgthjgd7ax4" path="res://assets/sounds/sfx/throw1.mp3" id="3_1dgyr"]
 [ext_resource type="AudioStream" uid="uid://d21gf8lu6l1ky" path="res://assets/sounds/sfx/crushed.wav" id="4_8yxvt"]
 [ext_resource type="AudioStream" uid="uid://iuejohpw4tgv" path="res://assets/sounds/sfx/baby_cry.wav" id="5_ynopp"]
