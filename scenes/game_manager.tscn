@@ -328,3 +328,5 @@ autoplay = true
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1495299577]
 stream = ExtResource("5_eaq8r")
+
+[connection signal="trigger_handle_labels" from="." to="." method="_on_trigger_handle_labels"]
