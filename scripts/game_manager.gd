@@ -84,11 +84,11 @@ func from_cave():
 	$Music.play()
 	fade_out()
 
-func death():
+func death(den: float = 1):
 	controllable = false
 	fade.texture = death_texture
 	var tw = get_tree().create_tween()
-	tw.tween_property(fade, "modulate:a",1,fade_time/2)
+	tw.tween_property(fade, "modulate:a",1,fade_time/den)
 	await tw.finished
 	get_tree().change_scene_to_file(current_scene)
 	fade_out()

@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_end_body_entered(_body: Node2D) -> void: ending()
 
-func _on_death_body_entered(_body: Node2D) -> void: GM.death()
+func _on_death_body_entered(_body: Node2D) -> void: GM.death(3)
 
 func ending():
 	GM.from_cave()
