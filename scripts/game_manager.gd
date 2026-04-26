@@ -16,7 +16,7 @@ var cave = preload("res://assets/sounds/sfx/cave.ogg")
 var death_texture = preload("res://assets/img/trans/death.png")
 var cave_texture = preload("res://assets/img/trans/cave.png")
 var village_texture = preload("res://assets/img/trans/village.png")
-@onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2]
+@onready var paths = [$Canvas/Map/Path1, $Canvas/Map/Path2, $Canvas/Map/Path3]
 
 var fading: float = 0.5
 var current_strength: float = 0.0
@@ -99,6 +99,6 @@ func to_map():
 	tw.tween_property(map, "modulate:a",0,fade_time)
 	await tw.finished
 	current_index += 1 
-	path_follower.reparent(paths[min(1,current_index+1)])
+	path_follower.reparent(paths[current_index+1])
 	path_follower.progress_ratio = 0
 	controllable = true
