@@ -7,15 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://doi008hlydver" path="res://assets/img/prologue/Parallax_Clouds_3.PNG" id="5_e3ep0"]
 [ext_resource type="Texture2D" uid="uid://bcrjvn5b5se3t" path="res://assets/img/prologue/Parallax_Clouds_4.PNG" id="6_18dgh"]
 [ext_resource type="Texture2D" uid="uid://dqm8hoyntdpam" path="res://assets/img/prologue/Vulcane_Smoke.PNG" id="7_3qt1a"]
+[ext_resource type="Texture2D" uid="uid://i20reo6cqic3" path="res://assets/img/prologue/montage/og_king_sitting_background.JPG" id="8_l6q3c"]
+[ext_resource type="Texture2D" uid="uid://c212nekg87yws" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_king.PNG" id="9_e3ep0"]
+[ext_resource type="Texture2D" uid="uid://bxq80o4qpepw6" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_enemy.PNG" id="10_18dgh"]
 
 [node name="Prologue" type="Node2D" unique_id=1364128692]
 script = ExtResource("1_x1kem")
+
+[node name="King_On_Vulkan_Background" type="TextureRect" parent="." unique_id=1753921905]
+visible = false
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_l6q3c")
 
 [node name="Background" type="TextureRect" parent="." unique_id=2130167154]
 offset_right = 3840.0
 offset_bottom = 4320.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_470yy")
+stretch_mode = 4
 
 [node name="Make_Clouds_Invisible_Again" type="Node2D" parent="." unique_id=360197577]
 
@@ -59,6 +70,21 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_18dgh")
+
+[node name="King_On_Vulkan_Closeup_King" type="TextureRect" parent="." unique_id=697235641]
+visible = false
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_e3ep0")
+
+[node name="King_On_Vulkan_Closeup_Enemy" type="TextureRect" parent="." unique_id=8444575]
+visible = false
+offset_left = -760.0
+offset_right = 3080.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_18dgh")
 
 [node name="Smoke" type="TextureRect" parent="." unique_id=205138586]
 visible = false
