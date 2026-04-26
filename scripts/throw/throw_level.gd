@@ -10,12 +10,16 @@ var fight_started = false
 var crown_collected = false
 
 func _ready():
+	GM.crown_collected.connect(collect_crown)
 	# turn off barrier collisions at the start
 	left_wall.get_node("CollisionShape2D").disabled = true
 	#right_wall.get_node("CollisionShape2D").disabled = true
 
 	if start_at_wall:
 		$Player.global_position = $TriggerAreas/EnterThrowingFight/CollisionShape2D.global_position
+
+func collect_crown():
+	crown_collected = true
 
 func _physics_process(_delta: float) -> void:
 	var offset = Vector2(0,0)
@@ -78,6 +82,8 @@ func _on_enter_cave_body_entered(_body: Node2D) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("skip_level"):
+		if not crown_collected:
+			GM.current_index += 1
 		match GM.current_index:
 			0:
 				print("Throw1")
