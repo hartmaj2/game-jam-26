@@ -8,12 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
 [ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="5_4kp8k"]
 [ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="6_ndlm4"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
-[ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="8_fau2y"]
-[ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="9_2pq3j"]
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
-points = PackedVector2Array(-16.667, -280, 30, -280, 80, -130, 80, 700, -70, 700, -70, -130)
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
+[ext_resource type="PackedScene" uid="uid://bed6ge5p6rkjg" path="res://scenes/throw/wall.tscn" id="10_mfv0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(7680, 20)
@@ -97,7 +93,7 @@ position = Vector2(3600, 952)
 
 [node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_4r5fs")]
 position = Vector2(3208, 880)
-wall = NodePath("../../Wall")
+wall = NodePath("")
 is_king = false
 
 [node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_4r5fs")]
@@ -109,22 +105,8 @@ speed = 50.0
 is_king = false
 is_harmless = true
 
-[node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462 groups=["wall"]]
-position = Vector2(2880, 550)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("8_fau2y")
-
-[node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=750386743]
-texture = ExtResource("9_2pq3j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=686396905]
-position = Vector2(-5.0000005, 36.999992)
-scale = Vector2(0.72, 0.72)
-shape = SubResource("ConvexPolygonShape2D_4jtqv")
-
-[node name="EnemyWallTop" type="Node2D" parent="Wall" unique_id=936026313]
-position = Vector2(0, -160)
+[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("10_mfv0q")]
+position = Vector2(2880, 554)
 
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
 
