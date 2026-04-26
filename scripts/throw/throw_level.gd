@@ -69,13 +69,10 @@ func _on_enter_throwing_fight_body_entered(body: Node2D) -> void:
 func _on_enter_cave_body_entered(_body: Node2D) -> void:
 	match GM.current_index:
 		0:
-			print("Throw1")
 			GM.to_cave()
 		1:
-			print("Throw2")
 			GM.to_cave()
 		2:
-			print("Epilogue")
 			GM.to_epilogue()
 		_:
 			print("Unknown cave index: ", GM.current_index)
@@ -84,15 +81,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("skip_level"):
 		if not crown_collected:
 			GM.current_index += 1
+			print("skipping level, new index: ", GM.current_index)
 		match GM.current_index:
 			0:
-				print("Throw1")
 				GM.to_cave()
 			1:
-				print("Throw2")
 				GM.to_cave()
 			2:
-				print("Epilogue")
 				GM.to_epilogue()
 			_:
 				print("Unknown cave index: ", GM.current_index)

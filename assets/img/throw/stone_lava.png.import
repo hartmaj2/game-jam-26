@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwd83bepe7x2y"
-path="res://.godot/imported/stone_lava.png-38e58aa0bb9cb38cefaf1210795b410e.ctex"
+uid="uid://dskrpetos1tah"
+path="res://.godot/imported/stone_lava.PNG-b59a209d99a88642ad52050627eb693f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/throw/stone_lava.png"
-dest_files=["res://.godot/imported/stone_lava.png-38e58aa0bb9cb38cefaf1210795b410e.ctex"]
+source_file="res://assets/img/throw/stone_lava.PNG"
+dest_files=["res://.godot/imported/stone_lava.PNG-b59a209d99a88642ad52050627eb693f.ctex"]
 
 [params]
 
