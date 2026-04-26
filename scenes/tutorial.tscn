@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cxnbjxae78lnu"]
+[gd_scene format=3 uid="uid://bm0688v3vbraw"]
 
 [ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_nlqja"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_ej4tf"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="6_0epgs"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
 [ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="9_nlqja"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(9600, 20)

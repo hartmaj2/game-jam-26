@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://bneewpq4vvfce"]
+[gd_scene format=3 uid="uid://t636rfy1ob3"]
 
 [ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_wbfnm"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_mmche"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_68k3t"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_cmjri"]
 [ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="6_wbfnm"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
+[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(7680, 20)
@@ -28,6 +28,7 @@ height = 1128.0
 
 [node name="Throw2" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_wbfnm")
+start_at_wall = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(3840, 540)
