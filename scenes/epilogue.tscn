@@ -1,24 +1,135 @@
-[gd_scene format=3 uid="uid://dfy6xvlbh23ub"]
+[gd_scene format=3 uid="uid://b1j3rgo58omws"]
 
 [ext_resource type="Script" uid="uid://dr4remfgt38c1" path="res://scripts/epilogue.gd" id="1_kmtq4"]
-[ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_kmtq4"]
+[ext_resource type="Texture2D" uid="uid://i20reo6cqic3" path="res://assets/img/prologue/montage/og_king_sitting_background.JPG" id="2_pucjr"]
+[ext_resource type="Texture2D" uid="uid://cfr2bp5mi01f" path="res://assets/img/prologue/Backgrounds.JPG" id="3_pqn56"]
+[ext_resource type="Texture2D" uid="uid://b5avyedil6wco" path="res://assets/img/prologue/Parallax_Clouds_1.PNG" id="4_8yude"]
+[ext_resource type="Texture2D" uid="uid://bjvhmf3il2uwy" path="res://assets/img/prologue/Parallax_Clouds_2.PNG" id="5_nscdx"]
+[ext_resource type="Texture2D" uid="uid://doi008hlydver" path="res://assets/img/prologue/Parallax_Clouds_3.PNG" id="6_rrsvb"]
+[ext_resource type="Texture2D" uid="uid://bcrjvn5b5se3t" path="res://assets/img/prologue/Parallax_Clouds_4.PNG" id="7_2vs10"]
+[ext_resource type="Texture2D" uid="uid://c212nekg87yws" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_king.PNG" id="8_6w3dj"]
+[ext_resource type="Texture2D" uid="uid://bxq80o4qpepw6" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_enemy.PNG" id="9_lfws4"]
+[ext_resource type="Texture2D" uid="uid://dqm8hoyntdpam" path="res://assets/img/prologue/Vulcane_Smoke.PNG" id="10_067g0"]
+[ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="11_qpq0c"]
+[ext_resource type="Texture2D" uid="uid://ctb3vuoq8edxt" path="res://assets/img/throw/crown_2_b.PNG" id="12_pucjr"]
+
+[sub_resource type="Curve2D" id="Curve2D_d46tg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 190.99382, -133.22408, -190.99382, 133.22408, -719.50543, 132.27917, 0, 0, 0, 0, -983.50543, 705.2792)
+}
+point_count = 3
 
 [node name="Epilogue" type="Node2D" unique_id=1296033417]
 script = ExtResource("1_kmtq4")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1464313182]
+[node name="King_On_Vulkan_Background" type="TextureRect" parent="." unique_id=947511212]
+visible = false
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pucjr")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1685626808]
+offset_right = 3840.0
+offset_bottom = 4320.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_pqn56")
+stretch_mode = 4
+
+[node name="Make_Clouds_Invisible_Again" type="Node2D" parent="." unique_id=726344786]
+
+[node name="Cloud_1" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=260089589]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_1" unique_id=1116231091]
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_kmtq4")
+texture = ExtResource("4_8yude")
+metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1472096499]
+[node name="Cloud_2" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=558211824]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-45, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_2" unique_id=1311290135]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_nscdx")
+
+[node name="Cloud_3" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=1786646133]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-32.5, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_3" unique_id=262757733]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_rrsvb")
+
+[node name="Cloud_4" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=2025480612]
+repeat_size = Vector2(1920, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_4" unique_id=500881599]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_2vs10")
+
+[node name="King_On_Vulkan_Closeup_King" type="TextureRect" parent="." unique_id=7671276]
+visible = false
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_6w3dj")
+
+[node name="King_On_Vulkan_Closeup_Enemy" type="TextureRect" parent="." unique_id=1989609674]
+visible = false
+offset_left = -760.0
+offset_right = 3080.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_lfws4")
+
+[node name="Smoke" type="TextureRect" parent="." unique_id=300542969]
+visible = false
+offset_right = 3840.0
+offset_bottom = 4320.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_067g0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=894584337]
 position = Vector2(960, 540)
 
-[node name="Label" type="Label" parent="." unique_id=445334288]
-offset_left = 397.0
-offset_top = 808.0
-offset_right = 1444.0
-offset_bottom = 1085.0
-theme_override_font_sizes/font_size = 100
-text = "PRESS SPACE TO PLAY"
+[node name="Label" type="Label" parent="Camera2D" unique_id=1529539619]
+visible = false
+offset_left = 788.0
+offset_top = 503.0
+offset_right = 951.0
+offset_bottom = 526.0
+text = "PRESS SPACE TO SKIP"
+
+[node name="KickPath" type="Path2D" parent="." unique_id=1036942891]
+visible = false
+position = Vector2(788.50543, 484.72083)
+curve = SubResource("Curve2D_d46tg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="KickPath" unique_id=656527239]
+scale = Vector2(2.99, 2.99)
+rotates = false
+
+[node name="Stickman2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=1065856473]
+position = Vector2(2.8716393, 8.624359)
+scale = Vector2(0.21160002, 0.2116)
+texture = ExtResource("11_qpq0c")
+flip_h = true
+
+[node name="Crown2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=1445685071]
+position = Vector2(5.224462, -33.25975)
+rotation = 0.11688162
+scale = Vector2(0.027666708, 0.0281211)
+texture = ExtResource("12_pucjr")
+flip_h = true

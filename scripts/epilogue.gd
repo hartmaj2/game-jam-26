@@ -1,42 +1,95 @@
 extends Node2D
 
-var textures = [preload("res://assets/img/trans/cave.jpg"), preload("res://assets/img/trans/death.jpg"), preload("res://assets/img/trans/village.jpg")]
-var functions = [vulkan, shit1, shit2, shit3]
-var current = -1
-@onready var texture = $TextureRect
+var textures = [
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #1
+	preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), #2
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #3
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #4
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #5
+	preload("res://assets/img/prologue/montage/og_king_sitting_foreground.PNG"), #6
+	]
+
+var functions = [
+	king_on_vulcan, #1
+	king_on_vulcan_closeup, #2
+	king_on_vulcan_GTFO, #3
+	king_on_vulcan_GTFO2, #4
+	king_on_vulcan_GTFO3, #5
+	final #6
+	]
+
+var current = -1 # SHOULD BE -1
+@onready var texture = $Background
 @onready var cam = $Camera2D
-# Called when the node enters the scene tree for the first time.
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		$Label.visible = false
-		next()
+@onready var skip_label = $Camera2D/Label
+@onready var clouds = $Make_Clouds_Invisible_Again
+var started = false
+
+func _ready() -> void:
+	next()
 
 func next():
 	current+=1
 	texture.texture = textures[current]
+	print(textures[current])
 	functions[current].call()
-	
 
-func vulkan():
-	await get_tree().create_timer(0.1).timeout
-	var tw = get_tree().create_tween()
-	#tw.set_parallel(true)
-	tw.tween_property($Camera2D,"position",Vector2(960, 1080+540), 0.3)
-	tw.tween_property($Camera2D,"zoom",Vector2(2,2), 0.5)
-	await  tw.finished
-	next()
-
-func shit1():
+func king_on_vulcan():
+	$King_On_Vulkan_Background.visible=true
+	texture.z_index=1
 	cam.position = Vector2(960,540)
 	cam.zoom = Vector2(1,1)
-	GM.to_prologue()
-	#texture.scale = Vector2(1,1)
-	#print(texture.texture)
-	#print()
+	await get_tree().create_timer(1).timeout
+	$King_On_Vulkan_Background.visible=false
+	texture.z_index=0
+	next()
+	
+func king_on_vulcan_closeup():
+	$King_On_Vulkan_Closeup_King.visible=true
+	$King_On_Vulkan_Closeup_Enemy.visible=true
+	await get_tree().create_timer(0.5).timeout
+	var tw = get_tree().create_tween()
+	tw.tween_property($King_On_Vulkan_Closeup_Enemy,"position", Vector2(0, 0), 1)
+	await  tw.finished
+	await get_tree().create_timer(2).timeout
+	$King_On_Vulkan_Closeup_King.visible=false
+	$King_On_Vulkan_Closeup_Enemy.visible=false
+	next()
 
-func shit2():
-	pass
+func king_on_vulcan_GTFO():
+	$King_On_Vulkan_Background.visible=true
+	texture.z_index=1
+	await get_tree().create_timer(2).timeout
+	$King_On_Vulkan_Background.visible=false
+	texture.z_index=0
+	next()
+	#GM.to_tutorial()
+
+# other king holds the chair
+func king_on_vulcan_GTFO2():
+	$King_On_Vulkan_Background.visible=true
+	texture.z_index=1
+	await get_tree().create_timer(2).timeout
+	$King_On_Vulkan_Background.visible=false
+	texture.z_index=0
+	next()
+
+# rolling out of chair
+func king_on_vulcan_GTFO3():
+	$King_On_Vulkan_Background.visible=true
+	texture.z_index=1
 	
-func shit3():
-	pass
+	$KickPath.visible = true
+	var tw = get_tree().create_tween()
+	tw.set_parallel(true)
+	var duration = 1
+	tw.tween_property($KickPath/PathFollow2D,"progress_ratio",1, duration)
+	tw.tween_property($KickPath/PathFollow2D,"rotation",deg_to_rad(-100), duration)
+	await  tw.finished
 	
+	await get_tree().create_timer(2).timeout
+	next()
+
+func final():
+	pass
+	#TODO: END GAME HERE
