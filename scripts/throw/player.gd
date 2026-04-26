@@ -69,6 +69,7 @@ func _physics_process(_delta: float) -> void:
 		if direction!= 0:
 			$AnimationPlayer.play("left")
 			$Sprite2D.flip_h = direction < 0
+			$Crown/Sprite2D.flip_h = direction < 0
 			if not walk.playing:
 				walk.play()
 	else:
