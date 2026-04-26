@@ -6,22 +6,31 @@
 texture = ExtResource("1_2jbmo")
 texture_region_size = Vector2i(60, 60)
 0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -21.11132, -21.732243, -30, 30, -30, 30, 30, -30, 30)
 1:0/0 = 0
+1:0/0/modulate = Color(1, 1, 1, 0)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 2:0/0 = 0
+2:0/0/modulate = Color(1, 1, 1, 0)
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(30, -21.11132, 21.732243, -30, -30, -30, -30, 30, 30, 30)
 0:1/0 = 0
+0:1/0/modulate = Color(1, 1, 1, 0)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 1:1/0 = 0
+1:1/0/modulate = Color(1, 1, 1, 0)
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 2:1/0 = 0
+2:1/0/modulate = Color(1, 1, 1, 0)
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 0:2/0 = 0
+0:2/0/modulate = Color(1, 1, 1, 0)
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, 21.11132, -21.732243, 30, 30, 30, 30, -30, -30, -30)
 1:2/0 = 0
+1:2/0/modulate = Color(1, 1, 1, 0)
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30, -30, 30, -30, 30, 30, -30, 30)
 2:2/0 = 0
+2:2/0/modulate = Color(1, 1, 1, 0)
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(30, 21.11132, 21.732243, 30, -30, 30, -30, -30, 30, -30)
 
 [resource]

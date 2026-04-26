@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://5rpv6mllisy8" path="res://scripts/jump/jump_1.gd" id="1_85k56"]
 [ext_resource type="PackedScene" uid="uid://dj62nkty0gyva" path="res://scenes/jump/jumper.tscn" id="2_73gf7"]
 [ext_resource type="TileSet" uid="uid://dhqelex8kk4r8" path="res://assets/img/jump/jump_tiles.tres" id="2_ifbyb"]
+[ext_resource type="Texture2D" uid="uid://cw3dr7n7xwk6l" path="res://assets/img/jump/jump_1/background.JPG" id="2_mb5ou"]
+[ext_resource type="Texture2D" uid="uid://de62g5bkrlfog" path="res://assets/img/jump/jump_1/parallax_1.PNG" id="3_y7b3h"]
+[ext_resource type="Texture2D" uid="uid://sd51e5splkxg" path="res://assets/img/jump/jump_1/foregrounds.PNG" id="4_8ue5i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ifbyb"]
 normal = Vector2(1, 0)
@@ -14,6 +17,33 @@ size = Vector2(102, 357)
 
 [node name="Jump1" type="Node2D" unique_id=1315899903]
 script = ExtResource("1_85k56")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=2011430282]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D2" unique_id=255396289]
+offset_left = -232.0
+offset_top = -1315.0
+offset_right = 5528.0
+offset_bottom = 1925.0
+texture = ExtResource("2_mb5ou")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1955091189]
+scroll_scale = Vector2(0.9, 0.9)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=1017180433]
+offset_left = -232.0
+offset_top = -1315.0
+offset_right = 5528.0
+offset_bottom = 1925.0
+texture = ExtResource("3_y7b3h")
+
+[node name="Map" type="TextureRect" parent="." unique_id=360885861]
+offset_left = -232.0
+offset_top = -1315.0
+offset_right = 5528.0
+offset_bottom = 1925.0
+texture = ExtResource("4_8ue5i")
 
 [node name="Boundary" type="StaticBody2D" parent="." unique_id=1550475651]
 position = Vector2(0, 200)
@@ -32,7 +62,10 @@ light_mask = 2
 position = Vector2(40, 540)
 
 [node name="Camera2D" type="Camera2D" parent="Jumper" unique_id=901021110]
-limit_left = 0
+limit_left = -200
+limit_top = -1200
+limit_right = 5000
+limit_bottom = 1200
 
 [node name="End" type="Area2D" parent="." unique_id=1585923708]
 position = Vector2(4685, 245)
@@ -40,7 +73,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End" unique_id=1518098769]
-position = Vector2(-15, -91.5)
+position = Vector2(-138, -91.5)
 shape = SubResource("RectangleShape2D_o8xrq")
 
 [node name="Death" type="Area2D" parent="." unique_id=1240941555]
