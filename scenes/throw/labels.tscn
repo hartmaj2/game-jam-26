@@ -12,7 +12,7 @@ offset_bottom = 98.228516
 theme_override_colors/font_color = Color(0.078431375, 0, 0, 0.78431374)
 theme_override_font_sizes/font_size = 40
 text = "Press K to throw rocks
-Press W,S to adjust aiming"
+Press W, S to adjust aiming"
 
 [node name="PickRockLabel" type="Label" parent="." unique_id=87410489]
 visible = false
