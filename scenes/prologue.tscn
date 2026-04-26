@@ -110,11 +110,19 @@ texture = ExtResource("7_3qt1a")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1633737785]
 position = Vector2(960, 540)
 
+[node name="Label" type="Label" parent="Camera2D" unique_id=491521056]
+visible = false
+offset_left = 788.0
+offset_top = 503.0
+offset_right = 951.0
+offset_bottom = 526.0
+text = "PRESS SPACE TO SKIP"
+
 [node name="Label" type="Label" parent="." unique_id=1658879132]
 offset_left = 364.0
 offset_top = 643.0
-offset_right = 1411.0
-offset_bottom = 920.0
+offset_right = 1444.0
+offset_bottom = 843.0
 theme_override_font_sizes/font_size = 100
 text = "PRESS SPACE TO PLAY"
 

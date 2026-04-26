@@ -29,29 +29,33 @@ func _physics_process(delta: float) -> void:
 	if floored:
 		if coyote < 0:
 			impact.play()
-			GM.trigger_shake(falling+falling*float(drop), max(float(drop),0.5))
+			GM.trigger_shake(falling+falling*float(drop), max(float(drop)*1.5,0.5))
 			drop = false
 			$LeftParty.emitting = true
 			$RightParty.emitting = true
 			coyote=COYOTE_INIT
 			# staring idle
+			$AnimationPlayer.play("idle")
 		elif GM.controllable:
 			if is_jumping and not is_dropping:
 				velocity.y = JUMP_VELOCITY
 				coyote = 0
 				hop.play() 
 				walk.stop()
+				#starting jump animation
+				$AnimationPlayer.play("jump")
 			
 			elif direction != 0:
 				velocity.x = direction * speed
 				$AnimationPlayer.play("left")
 				$Sprite2D.flip_h = direction < 0
+				$Crown/Sprite2D.flip_h = direction < 0
 				if not walk.playing:
-					#print("play")
 					walk.play()
 			else:
 				$AnimationPlayer.play("idle")
-				velocity.x = move_toward(velocity.x, 0, speed)
+				velocity.x = 0
+				#velocity.x = move_toward(velocity.x, 0, speed)
 	else:
 		if GM.controllable:
 			if coyote > 0 and is_jumping and not is_dropping:
@@ -61,17 +65,19 @@ func _physics_process(delta: float) -> void:
 				hop.play() 
 				walk.stop()
 				#starting jumping animation
+				$Sprite2D.animation = "jump"
 			if is_dropping and not is_jumping:
 				velocity+=get_gravity()*3*delta
 				drop = true
 				velocity.y = max(velocity.y, 0)
 				#falling animation
-			if direction != 0:
-				velocity.x = direction * speed
-				$Sprite2D.flip_h = direction < 0
+			#if direction != 0:
+			velocity.x = direction * speed
+			$Sprite2D.flip_h = direction < 0
+			$Crown/Sprite2D.flip_h = direction < 0
 			
 		coyote -= delta*float((coyote>=0))
-		var decay = get_gravity() * delta
+		var decay = get_gravity() * delta*1.2
 		velocity +=  decay+1.2*float(drop)*decay
 		falling = velocity.y/100
 		

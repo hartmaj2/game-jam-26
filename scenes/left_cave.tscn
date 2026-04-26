@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cgpuh23ujv3a8"]
+
+[ext_resource type="Texture2D" uid="uid://boyyjxqurp8r3" path="res://assets/img/throw/left_cave_new.PNG" id="1_7ok5j"]
+[ext_resource type="Texture2D" uid="uid://cd2s02ren1q4w" path="res://assets/img/throw/left_cave_front.PNG" id="2_uea2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
+size = Vector2(50, 1278)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rawnq"]
+size = Vector2(991, 717.5)
+
+[node name="LeftCave" type="StaticBody2D" unique_id=1348247925]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1997315984]
+position = Vector2(-600, 0)
+texture = ExtResource("1_7ok5j")
+
+[node name="Sprite2D_front" type="Sprite2D" parent="." unique_id=1477841224]
+z_index = 1
+position = Vector2(-600, 0)
+texture = ExtResource("2_uea2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=896795106]
+shape = SubResource("RectangleShape2D_rw6rq")
+
+[node name="CollisionShape2D_up" type="CollisionShape2D" parent="." unique_id=725073455]
+position = Vector2(-259, -278.25)
+shape = SubResource("RectangleShape2D_rawnq")

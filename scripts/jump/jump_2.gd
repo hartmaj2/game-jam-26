@@ -10,8 +10,13 @@ func _physics_process(delta: float) -> void:
 	$Jumper/Camera2D.offset = offset
 	GM.current_strength -=GM.fading*float(current_strength>0)
 
-func _on_end_body_entered(body: Node2D) -> void:
+func _on_end_body_entered(_body: Node2D) -> void: ending()
+
+func _on_death_body_entered(_body: Node2D) -> void: GM.death()
+
+func ending():
 	GM.from_cave()
 
-
-func _on_death_body_entered(body: Node2D) -> void: GM.death()
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip_level"):
+		ending()

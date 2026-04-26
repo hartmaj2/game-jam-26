@@ -48,6 +48,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if input_locked:
+		$Sprite2D.animation = "idle"
 		velocity.x = 0
 		velocity.y += GRAVITY
 		move_and_slide()
@@ -202,6 +203,7 @@ func pickup_nearest_rock() -> void:
 	rock.queue_free()
 	rocks_picked += 1
 	trajectory.visible = true
+	handle_labels()
 
 func take_damage(amount: int = 1):
 	#print("Player took damage: ", amount)
@@ -213,21 +215,23 @@ func _on_enemy_died():
 	print("enemy died", enemy_count - 1, " remaining")
 	enemy_count -= 1
 	if enemy_count == 0:
-		hide_label()
+		handle_labels()
 		get_rid_of_rocks()
 		wall.open_tower()
 		var enemies = get_tree().get_nodes_in_group("enemy")
 		for enemy in enemies:
 			enemy.is_active = false
 
-func show_label():
-	if enemy_count != 0:
-		get_tree().current_scene.get_node("PickRockLabel").visible = true
-
-func hide_label():
-	if nearby_rocks.size() == 0 or enemy_count == 0:
-		get_tree().current_scene.get_node("PickRockLabel").visible = false
-
+func handle_labels():
+	if enemy_count == 0:
+		get_tree().current_scene.get_node("Labels").make_invisible_labels()
+	elif rocks_picked > 0:
+		get_tree().current_scene.get_node("Labels").make_visible_throw()
+	elif nearby_rocks.size() > 0:
+		get_tree().current_scene.get_node("Labels").make_visible_pick()
+	else:
+		get_tree().current_scene.get_node("Labels").make_invisible_labels()
+		
 func _on_water_body_entered(_body: Node2D) -> void:
 	in_water = true
 

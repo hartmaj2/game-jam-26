@@ -25,11 +25,20 @@ var functions = [
 var current = -1 # SHOULD BE -1
 @onready var texture = $Background
 @onready var cam = $Camera2D
+@onready var label = $Label
+@onready var skip_label = $Camera2D/Label
+var started = false
 # Called when the node enters the scene tree for the first time.
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		$Label.visible = false
-		next()
+		if label.visible:
+			label.visible = false
+			next()
+			skip_label.visible = true
+		else: 
+			GM.to_tutorial()
+			
+		
 
 func next():
 	current+=1
@@ -76,6 +85,7 @@ func king_on_vulcan_GTFO():
 	$King_On_Vulkan_Background.visible=false
 	texture.z_index=0
 	next()
+	#GM.to_tutorial()
 
 # other king holds the chair
 func king_on_vulcan_GTFO2():
