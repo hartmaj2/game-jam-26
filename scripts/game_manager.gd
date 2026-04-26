@@ -29,6 +29,7 @@ func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	fading = decay
 
 func to_tutorial():
+	$Music.play()
 	current_index = -1
 	path_follower.progress_ratio = 0
 	path_follower.reparent(paths[current_index+1])
@@ -42,6 +43,7 @@ func to_tutorial():
 	fade_out()
 
 func to_epilogue():
+	$Music.stop()
 	await get_tree().create_timer(0.2).timeout # to not have the error appear
 	get_tree().change_scene_to_file("res://scenes/epilogue.tscn")
 
@@ -58,8 +60,9 @@ func to_cave():
 	await tw.finished
 	current_scene = jumps[current_index]
 	get_tree().change_scene_to_file(current_scene)
-	$AudioStreamPlayer.stream = cave
-	$AudioStreamPlayer.play()
+	$Ambient.stream = cave
+	$Ambient.play()
+	$Music.stop()
 	fade_out()
 
 func from_cave():
@@ -71,8 +74,9 @@ func from_cave():
 	await tw.finished
 	current_scene = throws[current_index]
 	get_tree().change_scene_to_file(current_scene)
-	$AudioStreamPlayer.stream = wind
-	$AudioStreamPlayer.play()
+	$Ambient.stream = wind
+	$Ambient.play()
+	$Music.play()
 	fade_out()
 
 func death():
