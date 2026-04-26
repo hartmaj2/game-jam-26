@@ -26,15 +26,17 @@ size = Vector2(360, 720)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfv0q"]
 radius = 50.0
 
-[node name="Throw1" type="Node2D" unique_id=1793107038]
-script = ExtResource("1_lfrcs")
+[node name="Throw3" type="Node2D" unique_id=1793107038]
+script = ExtResource("1_b4vjv")
+start_at_wall = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
 position = Vector2(3840, 540)
 scale = Vector2(2, 0.5)
 texture = ExtResource("2_rw6rq")
 
-[node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_4jtqv")]
+[node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_68k3t")]
+position = Vector2(374, 879)
 
 [node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
 

@@ -67,6 +67,7 @@ script = ExtResource("1_ic21p")
 rock_scene = ExtResource("2_34rwq")
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="." unique_id=137237869]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_rfykx")
 animation = &"left"
 autoplay = "idle"
