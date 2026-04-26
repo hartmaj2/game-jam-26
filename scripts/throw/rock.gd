@@ -5,6 +5,9 @@ var texture_lava = preload("res://assets/img/throw/stone_lava_small.png")
 
 var speed_threshold = 500
 @onready var throw = $Throw
+@onready var impact = $Impact
+@onready var crushed = $Crushed
+@onready var cry = $Cry
 
 @export var thrown_by := ""
 var is_thrown := false
@@ -90,14 +93,22 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 			return
 		if is_thrown:
 			GM.trigger_shake(10,0.5)
+			impact.play()
 		is_thrown = false
 		await get_tree().create_timer(0.5).timeout
 		was_thrown_recently = false
 
 	if not is_thrown:
 		return
+
+	if body.is_in_group("enemy") and thrown_by == "player":
+		if body.is_harmless:
+			cry.play()
+		else:
+			crushed.play()
+
 	#print("this rock was thrown by: ",thrown_by)
-	if await damage_body_from_group(body,"enemy"):
+	if await damage_body_from_group(body,"enemy"):	
 		return
 	if await damage_body_from_group(body,"player"):
 		return

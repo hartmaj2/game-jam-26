@@ -45,7 +45,7 @@ func _input(event: InputEvent) -> void:
 func next():
 	current+=1
 	texture.texture = textures[current]
-	#print(textures[current])
+	print(textures[current])
 	functions[current].call()
 	
 

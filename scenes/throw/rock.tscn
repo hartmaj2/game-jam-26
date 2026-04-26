@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cfuprq1mv7nbh"]
 
 [ext_resource type="Script" uid="uid://b5memhlunlw8q" path="res://scripts/throw/rock.gd" id="1_1bxqv"]
-[ext_resource type="Texture2D" uid="uid://bys4p3ba01cq4" path="res://assets/img/throw/stone.PNG" id="2_1dgyr"]
+[ext_resource type="Texture2D" uid="uid://cin4rpv2lxo0" path="res://assets/img/throw/stone.PNG" id="2_1dgyr"]
 [ext_resource type="AudioStream" uid="uid://2tgthjgd7ax4" path="res://assets/sounds/sfx/throw1.mp3" id="3_1dgyr"]
+[ext_resource type="AudioStream" uid="uid://d21gf8lu6l1ky" path="res://assets/sounds/sfx/crushed.wav" id="4_8yxvt"]
+[ext_resource type="AudioStream" uid="uid://iuejohpw4tgv" path="res://assets/sounds/sfx/baby_cry.wav" id="5_ynopp"]
+[ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="6_ynopp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dgyr"]
 radius = 40.0
@@ -31,6 +34,15 @@ shape = SubResource("CircleShape2D_intit")
 
 [node name="Throw" type="AudioStreamPlayer" parent="." unique_id=1599725626]
 stream = ExtResource("3_1dgyr")
+
+[node name="Crushed" type="AudioStreamPlayer" parent="." unique_id=697153133]
+stream = ExtResource("4_8yxvt")
+
+[node name="Cry" type="AudioStreamPlayer" parent="." unique_id=1838387116]
+stream = ExtResource("5_ynopp")
+
+[node name="Impact" type="AudioStreamPlayer" parent="." unique_id=661214666]
+stream = ExtResource("6_ynopp")
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
 [connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]
