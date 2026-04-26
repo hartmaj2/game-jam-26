@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 500.0
+const MAX_SPEED = 500.0
+var speed = MAX_SPEED
 const JUMP_VELOCITY = -800.0
 const COYOTE_INIT = 0.2
 var coyote = COYOTE_INIT
@@ -9,6 +10,8 @@ var coyote = COYOTE_INIT
 @onready var impact = $Impact
 var falling = 0
 var drop = false
+
+var in_water = false
 
 func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
@@ -34,25 +37,17 @@ func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction and GM.controllable:
-		velocity.x = direction * SPEED
-		if direction > 0:
+		velocity.x = direction * speed
+		if direction!= 0:
 			$Sprite2D.animation = "left"
-			$Sprite2D.flip_h = false
-		elif direction < 0:
-			$Sprite2D.animation = "left"
-			$Sprite2D.flip_h = true
+			$Sprite2D.flip_h = direction < 0
 	else:
 		$Sprite2D.animation = "idle"
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 	if not floored:
 		$Sprite2D.animation = "jump"
 		if Input.is_action_pressed("aim_down"):
 			velocity+=get_gravity()*3*delta
 			drop = true
-			
 			velocity.y = max(velocity.y, 0)
 	move_and_slide()
-
-
-func _on_end_body_entered(_body: Node2D) -> void:
-	pass # Replace with function body.

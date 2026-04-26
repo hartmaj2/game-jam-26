@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
+var in_water = false
+
 const JUMP_VELOCITY = -800.0
 const GRAVITY = 25
 @onready var hop = $Hop
 @onready var impact = $Impact
 var just_jumped = false
 
-@export var speed: float = 600.0
+@export var MAX_SPEED: float = 600.0
+var speed = MAX_SPEED
 @export var rock_scene: PackedScene
 @export var health: int = 1
 
@@ -44,9 +47,10 @@ func _ready() -> void:
 			enemy.connect("enemy_died", Callable(self, "_on_enemy_died"))
 
 func _physics_process(delta: float) -> void:
-	print(GM.controllable)
+	#print(GM.controllable)
 	if input_locked:
 		velocity.x = 0
+		velocity.y += GRAVITY
 		move_and_slide()
 		return
 	
@@ -54,6 +58,10 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	var direction := Input.get_axis("move_left", "move_right")
+	speed = MAX_SPEED
+	if direction != 0 and in_water and is_on_floor():
+		$WaterLeftParty.emitting = true
+		speed *= 0.2
 	velocity.x = direction * speed
 	velocity.y += GRAVITY
 	move_and_slide()
@@ -62,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	var floored = is_on_floor()
 	#print("floored: ", floored, " just_jumped: ", just_jumped)
 	if floored and just_jumped:
-		#impact.play()
+		impact.play()
 		GM.trigger_shake(10,0.5)
 		just_jumped = false
 		# $LeftParty.emitting = true
@@ -72,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_accept") and GM.controllable and floored:
 		just_jumped = true
 		velocity.y = JUMP_VELOCITY
-		#hop.play()
+		hop.play()
 
 
 func _process(delta):
@@ -205,10 +213,15 @@ func _on_enemy_died():
 			enemy.is_active = false
 
 func show_label():
-	var enemies = get_tree().get_nodes_in_group("enemy")
-	if enemies.size() != 0:
+	if enemy_count != 0:
 		get_tree().current_scene.get_node("PickRockLabel").visible = true
 
 func hide_label():
 	if nearby_rocks.size() == 0 or enemy_count == 0:
 		get_tree().current_scene.get_node("PickRockLabel").visible = false
+		
+func _on_water_body_entered(body: Node2D) -> void:
+	in_water = true
+
+func _on_water_body_exited(body: Node2D) -> void:
+	in_water = false
