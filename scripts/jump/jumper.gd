@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	if floored:
 		if coyote < 0:
 			impact.play()
-			GM.trigger_shake(falling+falling*float(drop), max(float(drop)*1.5,0.5))
+			GM.trigger_shake(falling+falling*float(drop)/2, max(float(drop)*1.5,0.5))
 			drop = false
 			$LeftParty.emitting = true
 			$RightParty.emitting = true
