@@ -47,6 +47,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if input_locked:
+		$Sprite2D.animation = "idle"
 		velocity.x = 0
 		velocity.y += GRAVITY
 		move_and_slide()
