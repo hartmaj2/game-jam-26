@@ -25,9 +25,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("15_sxi6w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_8m2s7")
 }],
 "loop": true,
 "name": &"jump",
@@ -77,9 +74,8 @@ script = ExtResource("1_qi757")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2067367883]
 sprite_frames = SubResource("SpriteFrames_u4wil")
-animation = &"left"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.4076207
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294619935]
 position = Vector2(-6.5, -1.5)

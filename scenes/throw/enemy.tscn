@@ -1,9 +1,55 @@
-[gd_scene format=3 uid="uid://bpuqkhll2utcp"]
+[gd_scene format=3 uid="uid://dvoy7jk4kibkw"]
 
 [ext_resource type="Script" uid="uid://es6o2vdp8koj" path="res://scripts/throw/enemy.gd" id="1_p5u0l"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="2_kfndj"]
 [ext_resource type="Texture2D" uid="uid://cg68pn1s2oxyl" path="res://assets/img/throw/stickman2.png" id="3_aqj7x"]
 [ext_resource type="PackedScene" uid="uid://biu2w8nshcxid" path="res://scenes/throw/crown.tscn" id="3_kfndj"]
+[ext_resource type="Texture2D" uid="uid://eoh0nrf1q4rm" path="res://assets/img/jump/walking/1.PNG" id="4_5r3qm"]
+[ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="5_k2gol"]
+[ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="6_8q2j8"]
+[ext_resource type="Texture2D" uid="uid://clr1hosuilc57" path="res://assets/img/jump/walking/4.PNG" id="7_hae4o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugbd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5r3qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k2gol")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5r3qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k2gol")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5r3qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8q2j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k2gol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hae4o")
+}],
+"loop": true,
+"name": &"left",
+"speed": 15.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl1dt"]
 radius = 35.0
@@ -20,7 +66,14 @@ rock_scene = ExtResource("2_kfndj")
 crown_scene = ExtResource("3_kfndj")
 is_king = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1191956435]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1312978740]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_ugbd5")
+animation = &"left"
+autoplay = "idle"
+
+[node name="Sprite2D_old" type="Sprite2D" parent="." unique_id=1191956435]
+visible = false
 texture = ExtResource("3_aqj7x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370466014]

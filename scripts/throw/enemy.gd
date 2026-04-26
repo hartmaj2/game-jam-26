@@ -46,12 +46,17 @@ func setup_lava_timer():
 	timer.timeout.connect(_on_lava_timeout)
 
 func _on_lava_timeout():
+	if not is_active:
+		return
 	var rock = rock_scene.instantiate()
 	get_tree().current_scene.add_child(rock)
 	throw_at_player(rock,true)
 
 func _physics_process(_delta: float) -> void:
 	if not is_active:
+		velocity.x = 0.0
+		$Sprite2D.animation = "idle"
+		$Sprite2D.flip_h = true
 		return
 
 	velocity.x = direction * speed
@@ -61,6 +66,11 @@ func _physics_process(_delta: float) -> void:
 
 	if is_on_wall():
 		direction *= -1
+
+	if is_active and velocity.x != 0:
+		$Sprite2D.animation = "left"
+		$Sprite2D.flip_h = direction < 0
+
 
 func setup_references():
 	if target_player == null:
@@ -76,10 +86,11 @@ func _process(_delta: float) -> void:
 	set_sprite()
 
 func set_sprite():
-	if is_king:
-		$Sprite2D.texture = king_texture
-	else:
-		$Sprite2D.texture = normal_texture
+	pass #TODO: add different sprites for king and normal, and for harmless as well
+	# if is_king:
+	# 	$Sprite2D.texture = king_texture
+	# else:
+	# 	$Sprite2D.texture = normal_texture
 
 func find_throw_direction():
 	var best_dir = Vector2.UP.rotated(deg_to_rad(-45))
