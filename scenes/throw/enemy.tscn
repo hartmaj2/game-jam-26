@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="6_8q2j8"]
 [ext_resource type="Texture2D" uid="uid://clr1hosuilc57" path="res://assets/img/jump/walking/4.PNG" id="7_hae4o"]
 [ext_resource type="AudioStream" uid="uid://d21gf8lu6l1ky" path="res://assets/sounds/sfx/crushed.wav" id="9_k2gol"]
+[ext_resource type="AudioStream" uid="uid://iuejohpw4tgv" path="res://assets/sounds/sfx/baby_cry.wav" id="10_8q2j8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ugbd5"]
 animations = [{
@@ -93,9 +94,9 @@ shape = SubResource("CapsuleShape2D_lfrcs")
 
 [node name="Crushed" type="AudioStreamPlayer" parent="." unique_id=1551139476]
 stream = ExtResource("9_k2gol")
-volume_db = 24.0
 
-[node name="Cry" type="AudioStreamPlayer" parent="." unique_id=918082524]
+[node name="Cry" type="AudioStreamPlayer" parent="." unique_id=1054663407]
+stream = ExtResource("10_8q2j8")
 
 [node name="Sprite2D_Child" type="AnimatedSprite2D" parent="." unique_id=2005069650]
 visible = false
