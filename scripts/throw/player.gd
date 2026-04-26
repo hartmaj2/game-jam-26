@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -800.0
 const GRAVITY = 25
 @onready var hop = $Hop
 @onready var impact = $Impact
+@onready var walk = $Walk
+@onready var au = $Au
 var just_jumped = false
 
 @export var MAX_SPEED: float = 600.0
@@ -67,6 +69,8 @@ func _physics_process(_delta: float) -> void:
 		if direction!= 0:
 			$AnimationPlayer.play("left")
 			$Sprite2D.flip_h = direction < 0
+			if not walk.playing:
+				walk.play()
 	else:
 		$AnimationPlayer.play("idle")
 		velocity.x = move_toward(velocity.x, 0, speed)
@@ -91,6 +95,7 @@ func _physics_process(_delta: float) -> void:
 		just_jumped = true
 		velocity.y = JUMP_VELOCITY
 		hop.play()
+		walk.stop()
 
 
 func _process(delta):
@@ -206,6 +211,7 @@ func pickup_nearest_rock() -> void:
 	handle_labels()
 
 func take_damage(amount: int = 1):
+	au.play()
 	#print("Player took damage: ", amount)
 	health -= amount
 	if health <= 0:

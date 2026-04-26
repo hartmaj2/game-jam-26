@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bxtexsya3ykb6" path="res://assets/img/jump/walking/2.PNG" id="5_g5kdh"]
 [ext_resource type="Texture2D" uid="uid://clr1hosuilc57" path="res://assets/img/jump/walking/4.PNG" id="6_7bxlc"]
 [ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="6_up8u8"]
+[ext_resource type="AudioStream" uid="uid://csva8x2wi5eh1" path="res://assets/sounds/sfx/au.wav" id="8_g5kdh"]
+[ext_resource type="AudioStream" uid="uid://2u0304c2875d" path="res://assets/sounds/sfx/walk.wav" id="10_up8u8"]
 [ext_resource type="Texture2D" uid="uid://cpjjwkq4ldp8j" path="res://assets/img/throw/crown_1_a.PNG" id="11_up8u8"]
 
 [sub_resource type="Animation" id="Animation_up8u8"]
@@ -278,11 +280,18 @@ limit_bottom = 1080
 position_smoothing_speed = 20.0
 script = ExtResource("4_ef6wi")
 
+[node name="Au" type="AudioStreamPlayer" parent="." unique_id=1506762255]
+stream = ExtResource("8_g5kdh")
+volume_db = 24.0
+
 [node name="Hop" type="AudioStreamPlayer" parent="." unique_id=1958127882]
 stream = ExtResource("5_0kksi")
 
 [node name="Impact" type="AudioStreamPlayer" parent="." unique_id=1121576692]
 stream = ExtResource("6_up8u8")
+
+[node name="Walk" type="AudioStreamPlayer" parent="." unique_id=248812527]
+stream = ExtResource("10_up8u8")
 
 [node name="LeftParty" type="CPUParticles2D" parent="." unique_id=736760833]
 position = Vector2(-24, 103)

@@ -4,12 +4,15 @@ var debug = false
 
 signal enemy_died
 
-@export var speed: float = 200.0
+@export var speed: float = 300.0
 @export var rock_scene: PackedScene
 @export var crown_scene : PackedScene
 @export var wall : StaticBody2D
 @export var throw_speed: float = 1300.0
 @export var health: int = 1
+
+@onready var crushed = $Crushed
+@onready var cry = $Cry
 
 var direction: int = [-1, 1].pick_random() # Randomly choose left or right
 var has_rock := false
@@ -34,6 +37,12 @@ func _ready():
 	print(GM.current_index)
 	if GM.current_index == 1 or debug:
 		setup_lava_timer()
+	print(is_harmless)
+	if is_harmless:
+		$Sprite2D.visible = false
+		$CollisionShape2D.disabled = true
+		$Sprite2D_Child.visible = true
+		$CollisionShape2D_Child.disabled = false
 
 func setup_lava_timer():
 	#print("creating timer")
@@ -56,7 +65,9 @@ func _physics_process(_delta: float) -> void:
 	if not is_active:
 		velocity.x = 0.0
 		$Sprite2D.animation = "idle"
+		$Sprite2D_Child.animation = "idle"
 		$Sprite2D.flip_h = true
+		$Sprite2D_Child.flip_h = true
 		return
 
 	velocity.x = direction * speed
@@ -69,7 +80,9 @@ func _physics_process(_delta: float) -> void:
 
 	if is_active and velocity.x != 0:
 		$Sprite2D.animation = "left"
+		$Sprite2D_Child.animation = "left"
 		$Sprite2D.flip_h = direction < 0
+		$Sprite2D_Child.flip_h = direction < 0
 
 
 func setup_references():
@@ -162,10 +175,14 @@ func throw_at_player(rock: Node2D, is_lava : bool = false):
 
 func die():
 	enemy_died.emit()
-	if is_king:
-		call_deferred("drop_crown")
 	if is_harmless:
+		cry.play()
 		GM.death()
+	elif is_king:
+		crushed.play()
+		call_deferred("drop_crown")
+	else:
+		crushed.play()
 	queue_free()
 
 func take_damage(amount: int = 1):

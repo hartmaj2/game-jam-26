@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmm2v6bk558nk" path="res://scripts/throw/wall.gd" id="1_5oaac"]
 [ext_resource type="Texture2D" uid="uid://d35t8aadmshw6" path="res://assets/img/wall.png" id="2_fmw6u"]
 [ext_resource type="Texture2D" uid="uid://chy3f7vo2t23t" path="res://assets/img/throw/gate.PNG" id="3_fmw6u"]
+[ext_resource type="AudioStream" uid="uid://m4i4ngp4kyii" path="res://assets/sounds/sfx/gate.wav" id="4_qplqw"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
 points = PackedVector2Array(-16.667, -280, 30, -280, 80, -130, 80, 700, -70, 700, -70, -130)
@@ -29,3 +30,6 @@ shape = SubResource("ConvexPolygonShape2D_4jtqv")
 
 [node name="EnemyWallTop" type="Node2D" parent="." unique_id=827213133]
 position = Vector2(0, -160)
+
+[node name="OpenGate" type="AudioStreamPlayer" parent="." unique_id=1021615913]
+stream = ExtResource("4_qplqw")
