@@ -182,6 +182,15 @@ shape = SubResource("RectangleShape2D_0epgs")
 [node name="Labels" parent="." unique_id=1888949001 instance=ExtResource("10_0epgs")]
 position = Vector2(3950, 75)
 
+[node name="ThrowRockLabel" type="Label" parent="." unique_id=1711877403]
+offset_left = 2671.0
+offset_top = 590.0
+offset_right = 3257.0
+offset_bottom = 688.2285
+theme_override_colors/font_color = Color(0.078431375, 0, 0, 0.78431374)
+theme_override_font_sizes/font_size = 40
+text = "Press SPACE to jump"
+
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/Water" to="Player" method="_on_water_body_entered"]

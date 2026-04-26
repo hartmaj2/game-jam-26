@@ -34,7 +34,6 @@ size = Vector2(173, 60)
 
 [node name="Throw1" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_mfv0q")
-start_at_wall = true
 
 [node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=1466161818]
 scroll_scale = Vector2(0.1, 1)
