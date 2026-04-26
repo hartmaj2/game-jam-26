@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="3_pv6vb"]
 [ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="4_3a3r6"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
-[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="5_4kp8k"]
+[ext_resource type="Texture2D" uid="uid://d0sqgywv4j35o" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="5_4kp8k"]
 [ext_resource type="PackedScene" uid="uid://c7p7pqskx3jh0" path="res://scenes/village.tscn" id="6_igx8a"]
-[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="6_ndlm4"]
+[ext_resource type="Texture2D" uid="uid://dra5atll8e2fj" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="6_ndlm4"]
 [ext_resource type="PackedScene" uid="uid://dvoy7jk4kibkw" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
 [ext_resource type="PackedScene" uid="uid://cgpuh23ujv3a8" path="res://scenes/left_cave.tscn" id="8_igx8a"]
 [ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="10_mfv0q"]
@@ -57,6 +57,7 @@ texture = ExtResource("4_3a3r6")
 
 [node name="Parallax_Trees" type="Parallax2D" parent="." unique_id=86534136]
 scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(0, -93)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=1650499495]
 offset_right = 40.0
@@ -64,6 +65,7 @@ offset_bottom = 40.0
 texture = ExtResource("5_4kp8k")
 
 [node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=32631245]
+scroll_offset = Vector2(0, -93)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=1135388417]
 offset_left = -1920.0
