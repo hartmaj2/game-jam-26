@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="6_0epgs"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="7_cmspm"]
 [ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="9_nlqja"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
+[ext_resource type="PackedScene" uid="uid://bx7h7kqlvkvk4" path="res://scenes/throw/labels.tscn" id="10_0epgs"]
+[ext_resource type="PackedScene" uid="uid://dvoy7jk4kibkw" path="res://scenes/throw/enemy.tscn" id="10_bl2xa"]
+[ext_resource type="PackedScene" uid="uid://dj51eg2lwa2pr" path="res://scenes/right_cave.tscn" id="10_g2equ"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(9600, 20)
@@ -20,7 +22,7 @@ size = Vector2(20, 2160)
 size = Vector2(20, 2160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
-size = Vector2(360, 720)
+size = Vector2(360, 900)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbcdj"]
 radius = 18.0
@@ -28,7 +30,7 @@ height = 812.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ej4tf"]
 radius = 21.0
-height = 1058.0
+height = 1224.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0epgs"]
 size = Vector2(173, 60)
@@ -71,36 +73,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_e13mp")
 
-[node name="Player" parent="." unique_id=599943824 instance=ExtResource("6_0epgs")]
-position = Vector2(400, 880)
-
-[node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
-
-[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("7_cmspm")]
-position = Vector2(4341, 952)
-
-[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("7_cmspm")]
-position = Vector2(4482, 952)
-
-[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("7_cmspm")]
-position = Vector2(4204.617, 952)
-
-[node name="Enemies" type="Node2D" parent="." unique_id=767239893]
-
-[node name="Enemy1" parent="Enemies" unique_id=1419214293 instance=ExtResource("10_bl2xa")]
-position = Vector2(5208, 880)
-is_king = false
-
-[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("10_bl2xa")]
-position = Vector2(5390.625, 880)
-
-[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("10_bl2xa")]
-position = Vector2(5585.555, 880)
-is_king = false
-
-[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("9_nlqja")]
-position = Vector2(4799, 552)
-
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
 
 [node name="Bottom" type="StaticBody2D" parent="Bounds" unique_id=955624488 groups=["floor"]]
@@ -135,13 +107,38 @@ collision_mask = 0
 position = Vector2(0, 720)
 shape = SubResource("RectangleShape2D_rw6rq")
 
-[node name="RightCave" type="StaticBody2D" parent="Bounds" unique_id=135647580]
-collision_layer = 2
-collision_mask = 0
+[node name="RightCave" parent="Bounds" unique_id=1348247925 instance=ExtResource("10_g2equ")]
+position = Vector2(8000, 540)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightCave" unique_id=2125337852]
-position = Vector2(8086, 720)
-shape = SubResource("RectangleShape2D_rw6rq")
+[node name="Player" parent="." unique_id=599943824 instance=ExtResource("6_0epgs")]
+position = Vector2(400, 880)
+
+[node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
+
+[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("7_cmspm")]
+position = Vector2(4341, 952)
+
+[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("7_cmspm")]
+position = Vector2(4482, 952)
+
+[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("7_cmspm")]
+position = Vector2(4204.617, 952)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=767239893]
+
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 instance=ExtResource("10_bl2xa")]
+position = Vector2(5208, 880)
+is_king = false
+
+[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("10_bl2xa")]
+position = Vector2(5390.625, 880)
+
+[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("10_bl2xa")]
+position = Vector2(5585.555, 880)
+is_king = false
+
+[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("9_nlqja")]
+position = Vector2(4799, 552)
 
 [node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
 
@@ -155,7 +152,7 @@ shape = SubResource("CapsuleShape2D_tbcdj")
 [node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
-position = Vector2(7484, 982)
+position = Vector2(8000, 982)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ej4tf")
 
@@ -165,23 +162,8 @@ shape = SubResource("CapsuleShape2D_ej4tf")
 position = Vector2(2841, 949)
 shape = SubResource("RectangleShape2D_0epgs")
 
-[node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
-visible = false
-offset_left = 3912.0
-offset_top = 64.0
-offset_right = 4498.0
-offset_bottom = 162.22852
-theme_override_font_sizes/font_size = 60
-text = "Press J to pick rocks"
-
-[node name="ThrowRockLabel" type="Label" parent="." unique_id=1533446544]
-visible = false
-offset_left = 2040.0
-offset_top = 64.0
-offset_right = 2626.0
-offset_bottom = 162.22852
-theme_override_font_sizes/font_size = 60
-text = "Press E to pick rocks"
+[node name="Labels" parent="." unique_id=1888949001 instance=ExtResource("10_0epgs")]
+position = Vector2(3950, 75)
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]

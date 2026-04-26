@@ -46,6 +46,8 @@ func setup_lava_timer():
 	timer.timeout.connect(_on_lava_timeout)
 
 func _on_lava_timeout():
+	if not is_active:
+		return
 	var rock = rock_scene.instantiate()
 	get_tree().current_scene.add_child(rock)
 	throw_at_player(rock,true)

@@ -2,10 +2,17 @@
 
 [ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_wbfnm"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_mmche"]
+[ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="2_pv6vb"]
+[ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="3_3a3r6"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_68k3t"]
+[ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="4_4kp8k"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_cmjri"]
+[ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="5_ndlm4"]
 [ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="6_wbfnm"]
-[ext_resource type="PackedScene" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
+[ext_resource type="PackedScene" uid="uid://bx7h7kqlvkvk4" path="res://scenes/throw/labels.tscn" id="7_7l3cx"]
+[ext_resource type="PackedScene" uid="uid://dvoy7jk4kibkw" path="res://scenes/throw/enemy.tscn" id="7_xrg28"]
+[ext_resource type="PackedScene" uid="uid://cgpuh23ujv3a8" path="res://scenes/left_cave.tscn" id="8_4kp8k"]
+[ext_resource type="PackedScene" uid="uid://dj51eg2lwa2pr" path="res://scenes/right_cave.tscn" id="11_3a3r6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(7680, 20)
@@ -15,9 +22,6 @@ size = Vector2(20, 2160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrcs"]
 size = Vector2(20, 2160)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw6rq"]
-size = Vector2(360, 720)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbfnm"]
 radius = 13.0
@@ -29,10 +33,80 @@ height = 1128.0
 [node name="Throw2" type="Node2D" unique_id=1793107038]
 script = ExtResource("1_wbfnm")
 
+[node name="Parallax_Sky" type="Parallax2D" parent="." unique_id=1729102803]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Sky" unique_id=1639731657]
+offset_top = -1950.0
+offset_right = 3840.0
+offset_bottom = 2370.0
+texture = ExtResource("2_pv6vb")
+
+[node name="Parallax_Clouds" type="Parallax2D" parent="." unique_id=1384463661]
+scroll_scale = Vector2(0.15, 1)
+repeat_size = Vector2(3840, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Clouds" unique_id=865976737]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(0, 850)
+texture = ExtResource("3_3a3r6")
+
+[node name="Parallax_Trees" type="Parallax2D" parent="." unique_id=861030525]
+scroll_scale = Vector2(0.2, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Trees" unique_id=436398333]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_4kp8k")
+
+[node name="Parallax_Ground" type="Parallax2D" parent="." unique_id=1431551687]
+
+[node name="TextureRect" type="TextureRect" parent="Parallax_Ground" unique_id=1637895382]
+offset_left = -1920.0
+offset_right = 7680.0
+offset_bottom = 1080.0
+texture = ExtResource("5_ndlm4")
+metadata/_edit_use_anchors_ = true
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=534412865]
+visible = false
 position = Vector2(3840, 540)
 scale = Vector2(2, 0.5)
 texture = ExtResource("2_mmche")
+
+[node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
+
+[node name="Bottom" type="StaticBody2D" parent="Bounds" unique_id=955624488 groups=["floor"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom" unique_id=1193647301]
+position = Vector2(3840, 990)
+shape = SubResource("RectangleShape2D_my54g")
+
+[node name="LeftFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1267544720]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftFightBarrier" unique_id=429855713]
+position = Vector2(1920, 0)
+shape = SubResource("RectangleShape2D_rl1dt")
+
+[node name="RightFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1683984710]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightFightBarrier" unique_id=140447480]
+position = Vector2(3840, 0)
+shape = SubResource("RectangleShape2D_lfrcs")
+
+[node name="RightCave" parent="Bounds" unique_id=1348247925 instance=ExtResource("11_3a3r6")]
+position = Vector2(6080, 540)
+
+[node name="LeftCave" parent="Bounds" unique_id=272430000 instance=ExtResource("8_4kp8k")]
+position = Vector2(0, 540)
 
 [node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_68k3t")]
 position = Vector2(374, 879)
@@ -62,48 +136,6 @@ is_king = false
 [node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("6_wbfnm")]
 position = Vector2(2880, 552)
 
-[node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
-
-[node name="Bottom" type="StaticBody2D" parent="Bounds" unique_id=955624488 groups=["floor"]]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/Bottom" unique_id=1193647301]
-position = Vector2(3840, 990)
-shape = SubResource("RectangleShape2D_my54g")
-
-[node name="LeftFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1267544720]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftFightBarrier" unique_id=429855713]
-position = Vector2(1920, 0)
-shape = SubResource("RectangleShape2D_rl1dt")
-
-[node name="RightFightBarrier" type="StaticBody2D" parent="Bounds" unique_id=1683984710]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightFightBarrier" unique_id=140447480]
-position = Vector2(3840, 0)
-shape = SubResource("RectangleShape2D_lfrcs")
-
-[node name="LeftCave" type="StaticBody2D" parent="Bounds" unique_id=769643632]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftCave" unique_id=99405067]
-position = Vector2(0, 720)
-shape = SubResource("RectangleShape2D_rw6rq")
-
-[node name="RightCave" type="StaticBody2D" parent="Bounds" unique_id=135647580]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightCave" unique_id=2125337852]
-position = Vector2(6525, 713)
-shape = SubResource("RectangleShape2D_rw6rq")
-
 [node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
 
 [node name="EnterThrowingFight" type="Area2D" parent="TriggerAreas" unique_id=1966908528]
@@ -116,27 +148,12 @@ shape = SubResource("CapsuleShape2D_wbfnm")
 [node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
-position = Vector2(5975, 975)
+position = Vector2(6000, 975)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_7l3cx")
 
-[node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
-visible = false
-offset_left = 2045.0
-offset_top = 128.0
-offset_right = 2631.0
-offset_bottom = 226.22852
-theme_override_font_sizes/font_size = 60
-text = "Press J to pick a rock"
-
-[node name="ThrowRockLabel" type="Label" parent="." unique_id=2139807246]
-visible = false
-offset_left = 2045.0
-offset_top = 128.0
-offset_right = 2631.0
-offset_bottom = 226.22852
-theme_override_font_sizes/font_size = 60
-text = "Press K to throw a rock"
+[node name="Labels" parent="." unique_id=1888949001 instance=ExtResource("7_7l3cx")]
+position = Vector2(3950, 75)
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]

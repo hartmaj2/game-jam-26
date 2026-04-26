@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ioi3n1upg221"]
 
-[ext_resource type="Script" path="res://scripts/throw/throw_level.gd" id="1_mfv0q"]
+[ext_resource type="Script" uid="uid://b4gxejki4h4mc" path="res://scripts/throw/throw_level.gd" id="1_mfv0q"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
 [ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_7l3cx"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="3_pv6vb"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
 [ext_resource type="Texture2D" uid="uid://djfkhaf4xuelo" path="res://assets/img/throw/throw_1/paralax_trees.PNG" id="5_4kp8k"]
 [ext_resource type="Texture2D" uid="uid://bi2wf744xivm0" path="res://assets/img/throw/throw_1/paralax_ground_fixed.PNG" id="6_ndlm4"]
-[ext_resource type="PackedScene" uid="uid://bpuqkhll2utcp" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
-[ext_resource type="PackedScene" uid="uid://bed6ge5p6rkjg" path="res://scenes/throw/wall.tscn" id="10_mfv0q"]
+[ext_resource type="PackedScene" uid="uid://dvoy7jk4kibkw" path="res://scenes/throw/enemy.tscn" id="7_4r5fs"]
+[ext_resource type="PackedScene" uid="uid://dd7xb0joolopr" path="res://scenes/throw/wall.tscn" id="10_mfv0q"]
+[ext_resource type="PackedScene" uid="uid://dj51eg2lwa2pr" path="res://scenes/right_cave.tscn" id="11_eurq2"]
+[ext_resource type="PackedScene" uid="uid://bx7h7kqlvkvk4" path="res://scenes/throw/labels.tscn" id="11_ub7db"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my54g"]
 size = Vector2(7680, 20)
@@ -76,40 +78,6 @@ position = Vector2(3840, 540)
 scale = Vector2(2, 0.5)
 texture = ExtResource("2_x6bfp")
 
-[node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_7l3cx")]
-position = Vector2(292, 877)
-
-[node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
-
-[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_8rivp")]
-position = Vector2(3750, 952)
-
-[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("4_8rivp")]
-position = Vector2(2880, 360)
-thrown_by = "player"
-is_thrown = true
-
-[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_8rivp")]
-position = Vector2(3600, 952)
-
-[node name="Enemies" type="Node2D" parent="." unique_id=767239893]
-
-[node name="Enemy1" parent="Enemies" unique_id=1419214293 instance=ExtResource("7_4r5fs")]
-position = Vector2(3208, 880)
-is_king = false
-
-[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_4r5fs")]
-position = Vector2(3390.625, 880)
-
-[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_4r5fs")]
-position = Vector2(3585.555, 880)
-speed = 50.0
-is_king = false
-is_harmless = true
-
-[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("10_mfv0q")]
-position = Vector2(2880, 554)
-
 [node name="Bounds" type="Node2D" parent="." unique_id=1228570006]
 
 [node name="Bottom" type="StaticBody2D" parent="Bounds" unique_id=955624488 groups=["floor"]]
@@ -144,13 +112,42 @@ collision_mask = 0
 position = Vector2(0, 720)
 shape = SubResource("RectangleShape2D_rw6rq")
 
-[node name="RightCave" type="StaticBody2D" parent="Bounds" unique_id=135647580]
-collision_layer = 2
-collision_mask = 0
+[node name="RightCave" parent="Bounds" unique_id=1348247925 instance=ExtResource("11_eurq2")]
+position = Vector2(6080, 540)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightCave" unique_id=2125337852]
-position = Vector2(6217, 717)
-shape = SubResource("RectangleShape2D_rw6rq")
+[node name="Player" parent="." unique_id=599943824 instance=ExtResource("3_7l3cx")]
+position = Vector2(292, 877)
+
+[node name="Rocks" type="Node2D" parent="." unique_id=1992306530]
+
+[node name="Rock1" parent="Rocks" unique_id=1930867971 instance=ExtResource("4_8rivp")]
+position = Vector2(3750, 952)
+
+[node name="Rock2" parent="Rocks" unique_id=1371884244 instance=ExtResource("4_8rivp")]
+position = Vector2(2880, 360)
+thrown_by = "player"
+is_thrown = true
+
+[node name="Rock3" parent="Rocks" unique_id=1558709691 instance=ExtResource("4_8rivp")]
+position = Vector2(3600, 952)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=767239893]
+
+[node name="Enemy1" parent="Enemies" unique_id=1419214293 instance=ExtResource("7_4r5fs")]
+position = Vector2(3208, 880)
+is_king = false
+
+[node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_4r5fs")]
+position = Vector2(3390.625, 880)
+
+[node name="Enemy3" parent="Enemies" unique_id=978180579 instance=ExtResource("7_4r5fs")]
+position = Vector2(3585.555, 880)
+speed = 50.0
+is_king = false
+is_harmless = true
+
+[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("10_mfv0q")]
+position = Vector2(2880, 554)
 
 [node name="TriggerAreas" type="Node2D" parent="." unique_id=1004320060]
 
@@ -164,27 +161,12 @@ shape = SubResource("CapsuleShape2D_7l3cx")
 [node name="EnterCave" type="Area2D" parent="TriggerAreas" unique_id=1573245680]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TriggerAreas/EnterCave" unique_id=1553549726]
-position = Vector2(5724, 982)
+position = Vector2(5750, 982)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_pv6vb")
 
-[node name="PickRockLabel" type="Label" parent="." unique_id=1691623089]
-visible = false
-offset_left = 2040.0
-offset_top = 64.0
-offset_right = 2626.0
-offset_bottom = 162.22852
-theme_override_font_sizes/font_size = 60
-text = "Press J to pick a rock"
-
-[node name="ThrowRockLabel" type="Label" parent="." unique_id=382336528]
-visible = false
-offset_left = 2040.0
-offset_top = 64.0
-offset_right = 2626.0
-offset_bottom = 162.22852
-theme_override_font_sizes/font_size = 60
-text = "Press K to throw a rock"
+[node name="Labels" parent="." unique_id=1888949001 instance=ExtResource("11_ub7db")]
+position = Vector2(3950, 75)
 
 [connection signal="body_entered" from="TriggerAreas/EnterThrowingFight" to="." method="_on_enter_throwing_fight_body_entered"]
 [connection signal="body_entered" from="TriggerAreas/EnterCave" to="." method="_on_enter_cave_body_entered"]
