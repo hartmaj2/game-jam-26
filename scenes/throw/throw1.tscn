@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c20mysv78v5v6" path="res://scripts/throw/throw_1.gd" id="1_rr2ot"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_x6bfp"]
-[ext_resource type="PackedScene" uid="uid://cngj3psmuserp" path="res://scenes/throw/player.tscn" id="3_7l3cx"]
+[ext_resource type="PackedScene" uid="uid://bxyk4htbx5kvq" path="res://scenes/throw/player.tscn" id="3_7l3cx"]
 [ext_resource type="Texture2D" uid="uid://dtgp8mh46btno" path="res://assets/img/throw/throw_1/paralax_sky.JPG" id="3_pv6vb"]
 [ext_resource type="Texture2D" uid="uid://bns6ae03cekot" path="res://assets/img/throw/throw_1/paralax_clouds.PNG" id="4_3a3r6"]
 [ext_resource type="PackedScene" uid="uid://cfuprq1mv7nbh" path="res://scenes/throw/rock.tscn" id="4_8rivp"]
@@ -97,6 +97,7 @@ position = Vector2(3600, 952)
 
 [node name="Enemy1" parent="Enemies" unique_id=1419214293 node_paths=PackedStringArray("wall") instance=ExtResource("7_4r5fs")]
 position = Vector2(3208, 880)
+wall = NodePath("../../Wall")
 is_king = false
 
 [node name="Enemy2" parent="Enemies" unique_id=2036171141 instance=ExtResource("7_4r5fs")]
@@ -108,7 +109,7 @@ speed = 50.0
 is_king = false
 is_harmless = true
 
-[node name="Wall" parent="." unique_id=2009131024 instance=ExtResource("6_ub7db")]
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1407548462 groups=["wall"]]
 position = Vector2(2880, 550)
 collision_layer = 2
 collision_mask = 0
