@@ -63,7 +63,7 @@ func initiate_rock(pos : Vector2, speed : float, direction : Vector2, who : Stri
 func _on_pickup_area_body_exited(body: Node2D) -> void:
 	#print("somebody exited")
 	if body.is_in_group("player"):
-		GM.trigger_handle_labels.emit()
+		GM.emit_trigger_handle()
 		#get_tree().get_first_node_in_group("player").handle_labels()
 
 
@@ -85,7 +85,7 @@ func _on_pickup_area_body_entered(body: Node2D) -> void:
 	# check if should show label
 	if body.is_in_group("player") and not is_thrown and not was_thrown_recently:
 		#get_tree().get_first_node_in_group("player").handle_labels()
-		GM.trigger_handle_labels.emit()
+		GM.emit_trigger_handle()
 	
 	if body.is_in_group("floor"):
 		if is_lava:

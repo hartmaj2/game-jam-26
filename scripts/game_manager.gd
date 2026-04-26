@@ -29,6 +29,9 @@ var crown_sprites = [preload(path_base + "1_a.PNG"),preload(path_base + "2_a.PNG
 
 signal trigger_handle_labels
 
+func emit_trigger_handle():
+	trigger_handle_labels.emit()
+
 func trigger_shake(strength: float = 15.0, decay: float = 0.5) -> void:
 	current_strength = strength
 	fading = decay
@@ -122,10 +125,3 @@ func collect_crown():
 	path_follower.get_node("Player/Crown/Sprite2D").texture = crown_sprites[GM.crowns_collected]
 	crowns_collected += 1
 	crown_collected.emit()
-
-
-#func _on_trigger_handle_labels() -> void:
-	#pass # Replace with function body.
-#
-#func some_event():
-	#emit_signal("trigger_handle_labels")
