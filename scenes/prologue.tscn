@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://i20reo6cqic3" path="res://assets/img/prologue/montage/og_king_sitting_background.JPG" id="8_l6q3c"]
 [ext_resource type="Texture2D" uid="uid://c212nekg87yws" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_king.PNG" id="9_e3ep0"]
 [ext_resource type="Texture2D" uid="uid://bxq80o4qpepw6" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_enemy.PNG" id="10_18dgh"]
+[ext_resource type="Texture2D" uid="uid://doxrahe8am4mk" path="res://assets/img/epilogue/blue_falling.PNG" id="11_7g2sk"]
 [ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="11_18dgh"]
 [ext_resource type="Texture2D" uid="uid://cpjjwkq4ldp8j" path="res://assets/img/throw/crown_1_a.PNG" id="12_3qt1a"]
 
@@ -128,25 +129,19 @@ text = "PRESS SPACE TO PLAY"
 
 [node name="KickPath" type="Path2D" parent="." unique_id=1573435937]
 visible = false
-position = Vector2(788.50543, 484.72083)
+position = Vector2(1101, 514)
+scale = Vector2(1.3177354, 0.9584858)
 curve = SubResource("Curve2D_7g2sk")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="KickPath" unique_id=139251075]
-scale = Vector2(2.99, 2.99)
+scale = Vector2(4.1, 4.1)
 rotates = false
 
 [node name="Stickman2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=2033189226]
-position = Vector2(2.8716393, 8.624359)
-scale = Vector2(0.21160002, 0.2116)
-texture = ExtResource("11_18dgh")
-flip_h = true
-
-[node name="Crown2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=553809157]
-position = Vector2(5.224462, -33.25975)
-rotation = 0.11688162
-scale = Vector2(0.027666708, 0.0281211)
-texture = ExtResource("12_3qt1a")
-flip_h = true
+position = Vector2(-33.13149, -0.25446606)
+rotation = 0.19368768
+scale = Vector2(0.10882146, 0.10882162)
+texture = ExtResource("11_7g2sk")
 
 [node name="VulcanoFallPath" type="Path2D" parent="." unique_id=357360615]
 visible = false

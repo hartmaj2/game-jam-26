@@ -7,17 +7,97 @@
 [ext_resource type="Texture2D" uid="uid://bjvhmf3il2uwy" path="res://assets/img/prologue/Parallax_Clouds_2.PNG" id="5_nscdx"]
 [ext_resource type="Texture2D" uid="uid://doi008hlydver" path="res://assets/img/prologue/Parallax_Clouds_3.PNG" id="6_rrsvb"]
 [ext_resource type="Texture2D" uid="uid://bcrjvn5b5se3t" path="res://assets/img/prologue/Parallax_Clouds_4.PNG" id="7_2vs10"]
-[ext_resource type="Texture2D" uid="uid://c212nekg87yws" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_king.PNG" id="8_6w3dj"]
-[ext_resource type="Texture2D" uid="uid://bxq80o4qpepw6" path="res://assets/img/prologue/montage/og_king_sitting_closeup_the_enemy.PNG" id="9_lfws4"]
+[ext_resource type="Texture2D" uid="uid://dexkc141mm648" path="res://assets/img/epilogue/red_comeback_closup.PNG" id="8_5tuck"]
+[ext_resource type="Texture2D" uid="uid://c8bdgopopdl4f" path="res://assets/img/epilogue/blue_comeback_closeup.PNG" id="9_pucjr"]
 [ext_resource type="Texture2D" uid="uid://dqm8hoyntdpam" path="res://assets/img/prologue/Vulcane_Smoke.PNG" id="10_067g0"]
-[ext_resource type="Texture2D" uid="uid://1okgauob5cwn" path="res://assets/img/jump/walking/3.PNG" id="11_qpq0c"]
-[ext_resource type="Texture2D" uid="uid://ctb3vuoq8edxt" path="res://assets/img/throw/crown_2_b.PNG" id="12_pucjr"]
+[ext_resource type="Texture2D" uid="uid://dvwv27yfd2iqn" path="res://assets/img/epilogue/red_falling.PNG" id="11_5tuck"]
+[ext_resource type="Texture2D" uid="uid://drefeu5imbhxf" path="res://assets/img/epilogue/Untitled_Artwork-1.png" id="12_wasxj"]
+[ext_resource type="Texture2D" uid="uid://cefsqckhpvtwl" path="res://assets/img/epilogue/Untitled_Artwork-2.png" id="13_sugac"]
+[ext_resource type="Texture2D" uid="uid://bnwp4vq4s3pgl" path="res://assets/img/epilogue/Untitled_Artwork-3.png" id="14_wdbyc"]
+[ext_resource type="Texture2D" uid="uid://d7cssth4kt02" path="res://assets/img/epilogue/Untitled_Artwork-4.png" id="15_bmrwn"]
+[ext_resource type="Texture2D" uid="uid://fhnqmlvolf2i" path="res://assets/img/epilogue/Untitled_Artwork-5.png" id="16_q1stv"]
+[ext_resource type="Texture2D" uid="uid://dhl6u1q4qt5h6" path="res://assets/img/epilogue/Untitled_Artwork-6.png" id="17_srhlr"]
+[ext_resource type="Texture2D" uid="uid://cwkmae2jqs1ep" path="res://assets/img/epilogue/Untitled_Artwork-7.png" id="18_bx4n2"]
+[ext_resource type="Texture2D" uid="uid://cgyepp2anrkx8" path="res://assets/img/epilogue/Untitled_Artwork-8.png" id="19_tqjoa"]
+[ext_resource type="Texture2D" uid="uid://sobc00h3qgh" path="res://assets/img/epilogue/Untitled_Artwork-9.png" id="20_d5c2q"]
+[ext_resource type="Texture2D" uid="uid://cvgmtidwoi70g" path="res://assets/img/epilogue/Untitled_Artwork-10.png" id="21_dii4p"]
+[ext_resource type="Texture2D" uid="uid://cyiw471dvk2p4" path="res://assets/img/epilogue/Untitled_Artwork-11.png" id="22_3y6kj"]
+[ext_resource type="Texture2D" uid="uid://boxnyt6nxoseq" path="res://assets/img/epilogue/Untitled_Artwork-12.png" id="23_a652l"]
+[ext_resource type="Texture2D" uid="uid://bwnpe8wuw4py4" path="res://assets/img/epilogue/Untitled_Artwork-13.png" id="24_g1se2"]
+[ext_resource type="Texture2D" uid="uid://dletl33hgfels" path="res://assets/img/epilogue/Untitled_Artwork-14.png" id="25_prjpj"]
+[ext_resource type="Texture2D" uid="uid://b8j0u5jl5csvp" path="res://assets/img/epilogue/Untitled_Artwork-15.png" id="26_0prg0"]
+[ext_resource type="Texture2D" uid="uid://crl3um1f52wln" path="res://assets/img/epilogue/Untitled_Artwork-16.png" id="27_vbfye"]
+[ext_resource type="Texture2D" uid="uid://cmepseusqrhc7" path="res://assets/img/epilogue/Untitled_Artwork-17.png" id="28_27sw3"]
 
-[sub_resource type="Curve2D" id="Curve2D_d46tg"]
+[sub_resource type="Curve2D" id="Curve2D_pucjr"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 190.99382, -133.22408, -190.99382, 133.22408, -719.50543, 132.27917, 0, 0, 0, 0, -983.50543, 705.2792)
 }
 point_count = 3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kfqnr"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_wasxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sugac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wdbyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_bmrwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_q1stv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_srhlr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_bx4n2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_tqjoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_d5c2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_dii4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_3y6kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_a652l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_g1se2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_prjpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_0prg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_vbfye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_27sw3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 11.0
+}]
 
 [node name="Epilogue" type="Node2D" unique_id=1296033417]
 script = ExtResource("1_kmtq4")
@@ -84,7 +164,7 @@ visible = false
 offset_right = 3840.0
 offset_bottom = 2160.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_6w3dj")
+texture = ExtResource("8_5tuck")
 
 [node name="King_On_Vulkan_Closeup_Enemy" type="TextureRect" parent="." unique_id=1989609674]
 visible = false
@@ -92,7 +172,7 @@ offset_left = -760.0
 offset_right = 3080.0
 offset_bottom = 2160.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_lfws4")
+texture = ExtResource("9_pucjr")
 
 [node name="Smoke" type="TextureRect" parent="." unique_id=300542969]
 visible = false
@@ -112,24 +192,26 @@ offset_right = 951.0
 offset_bottom = 526.0
 text = "PRESS SPACE TO SKIP"
 
-[node name="KickPath" type="Path2D" parent="." unique_id=1036942891]
+[node name="KickPath" type="Path2D" parent="." unique_id=2142538024]
 visible = false
-position = Vector2(788.50543, 484.72083)
-curve = SubResource("Curve2D_d46tg")
+position = Vector2(1101, 514)
+scale = Vector2(1.3177354, 0.9584858)
+curve = SubResource("Curve2D_pucjr")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="KickPath" unique_id=656527239]
-scale = Vector2(2.99, 2.99)
+[node name="PathFollow2D" type="PathFollow2D" parent="KickPath" unique_id=1685627160]
+scale = Vector2(4.1, 4.1)
 rotates = false
 
-[node name="Stickman2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=1065856473]
-position = Vector2(2.8716393, 8.624359)
-scale = Vector2(0.21160002, 0.2116)
-texture = ExtResource("11_qpq0c")
-flip_h = true
+[node name="Stickman2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=1879236954]
+position = Vector2(-33.13149, -0.25446606)
+rotation = 0.19368768
+scale = Vector2(0.10882146, 0.10882162)
+texture = ExtResource("11_5tuck")
 
-[node name="Crown2" type="Sprite2D" parent="KickPath/PathFollow2D" unique_id=1445685071]
-position = Vector2(5.224462, -33.25975)
-rotation = 0.11688162
-scale = Vector2(0.027666708, 0.0281211)
-texture = ExtResource("12_pucjr")
-flip_h = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1802390638]
+visible = false
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_kfqnr")
+animation = &"idle"
+frame_progress = 0.79730946
