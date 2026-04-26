@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dp3ibkbm0gvt6"]
 
 [ext_resource type="Script" uid="uid://bbx82dl1tyami" path="res://scripts/game_manager.gd" id="1_hwd4i"]
-[ext_resource type="AudioStream" uid="uid://c0gu2mid4v6vq" path="res://assets/sounds/music/adventure.ogg" id="2_glms7"]
 [ext_resource type="Texture2D" uid="uid://cp76fjo0tml7y" path="res://assets/img/trans/cave.jpg" id="2_udu3i"]
 [ext_resource type="Texture2D" uid="uid://c7tv7d3bb4ep5" path="res://icon.svg" id="3_oo155"]
+[ext_resource type="AudioStream" uid="uid://da5vna7h7hr7p" path="res://assets/sounds/sfx/wind.ogg" id="4_oo155"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_udu3i"]
 load_path = "res://.godot/imported/map.jpg-1d147e29e470ca7b34d773a0d12dc4c7.ctex"
@@ -55,5 +55,5 @@ texture = ExtResource("3_oo155")
 curve = SubResource("Curve2D_oo155")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=761979931]
-stream = ExtResource("2_glms7")
+stream = ExtResource("4_oo155")
 autoplay = true

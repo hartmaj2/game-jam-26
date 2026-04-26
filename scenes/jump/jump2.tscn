@@ -7,6 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rslrf"]
 size = Vector2(72, 139)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l1tbu"]
+
 [node name="Jump2" type="Node2D" unique_id=528972990]
 script = ExtResource("1_l1tbu")
 
@@ -27,4 +29,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End" unique_id=706093383]
 shape = SubResource("RectangleShape2D_rslrf")
 
+[node name="Death" type="Area2D" parent="." unique_id=1793050647]
+position = Vector2(946, 891)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death" unique_id=883694106]
+shape = SubResource("WorldBoundaryShape2D_l1tbu")
+
 [connection signal="body_entered" from="End" to="." method="_on_end_body_entered"]
+[connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
