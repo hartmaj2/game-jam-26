@@ -7,8 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://iuejohpw4tgv" path="res://assets/sounds/sfx/baby_cry.wav" id="5_ynopp"]
 [ext_resource type="AudioStream" uid="uid://dsko6ufb1cv3j" path="res://assets/sounds/sfx/impact1.wav" id="6_ynopp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1dgyr"]
-radius = 40.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynopp"]
+radius = 37.0
+height = 86.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_intit"]
 radius = 47.0
@@ -23,7 +24,7 @@ scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_1dgyr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1952421957]
-shape = SubResource("CircleShape2D_1dgyr")
+shape = SubResource("CapsuleShape2D_ynopp")
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=2075445204 groups=["rocks"]]
 collision_layer = 8

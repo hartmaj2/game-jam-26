@@ -29,7 +29,7 @@ scale = Vector2(0.72, 0.72)
 shape = SubResource("ConvexPolygonShape2D_4jtqv")
 
 [node name="EnemyWallTop" type="Node2D" parent="." unique_id=827213133]
-position = Vector2(0, -160)
+position = Vector2(0, -200)
 
 [node name="OpenGate" type="AudioStreamPlayer" parent="." unique_id=1021615913]
 stream = ExtResource("4_qplqw")
