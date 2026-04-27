@@ -6,7 +6,7 @@
 
 [node name="Crown" type="RigidBody2D" unique_id=681452533]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_gg83n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1091627854]
