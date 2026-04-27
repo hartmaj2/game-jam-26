@@ -8,7 +8,7 @@ signal enemy_died
 @export var rock_scene: PackedScene
 @export var crown_scene : PackedScene
 @export var wall : StaticBody2D
-@export var throw_speed: float = 1300.0
+@export var throw_speed: float = 1350.0
 @export var health: int = 1
 
 @onready var crushed = $Crushed
@@ -169,6 +169,7 @@ func will_hit_wall(dir):
 func throw_at_player(rock: Node2D, is_lava : bool = false):
 	# var dir = (target_player.global_position - global_position).normalized()
 	var dir = find_throw_direction()
+	dir = dir.rotated(deg_to_rad(15))
 	rock.initiate_rock(global_position, throw_speed, dir,"enemy",is_lava)
 	has_rock = false
 	await get_tree().create_timer(0.2).timeout

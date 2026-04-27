@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://m4i4ngp4kyii" path="res://assets/sounds/sfx/gate.wav" id="4_qplqw"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4jtqv"]
-points = PackedVector2Array(-16.667, -280, 30, -280, 80, -130, 80, 700, -70, 700, -70, -130)
+points = PackedVector2Array(-16.667, -280, 30, -280, 68.05556, -129.16666, 84.72222, 448.61115, 256.94446, 701.389, 80, 700, -70, 700, -70, -130, -38.88889, -252.77779)
 
 [node name="Wall" type="StaticBody2D" unique_id=2009131024 groups=["wall"]]
 collision_layer = 2
