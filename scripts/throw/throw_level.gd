@@ -94,4 +94,4 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_enter_map_scene_body_entered(_body: Node2D) -> void:
-	GM.to_map()
+	GM.collect_crown()

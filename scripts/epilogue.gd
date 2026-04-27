@@ -1,5 +1,7 @@
 extends Node2D
 
+var final_texture = preload("res://assets/img/epilogue/final_foreground.PNG")
+
 var textures = [
 	preload("res://assets/img/epilogue/red_sitting.PNG"), #1
 	preload("res://assets/img/prologue/montage/og_king_sitting_closeup_background.JPG"), #2
@@ -23,6 +25,7 @@ var current = -1 # SHOULD BE -1
 @onready var cam = $Camera2D
 @onready var skip_label = $Camera2D/Label
 @onready var clouds = $Make_Clouds_Invisible_Again
+@onready var end_label = $Label
 var started = false
 
 func _ready() -> void:
@@ -96,6 +99,20 @@ func final():
 	$AnimatedSprite2D.visible = true
 	#$AnimatedSprite2D.animation = "idle"
 	$AnimatedSprite2D.sprite_frames.set_animation_loop("idle", false)
-	$AnimatedSprite2D.play("idle")
+	$AnimatedSprite2D.frame = 0
+	await get_tree().create_timer(2).timeout
+	for i in range(1,8):
+		$AnimatedSprite2D.frame = i
+		await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(1).timeout
+	for i in range(8,17):
+		$AnimatedSprite2D.frame = i
+		await get_tree().create_timer(0.1).timeout
+	#$AnimatedSprite2D.play("idle")
+	$AnimatedSprite2D.visible = false
+	texture.texture = final_texture
+	texture.visible = true
+	await get_tree().create_timer(3).timeout
+	end_label.visible = true
 	pass
 	#TODO: END GAME HERE

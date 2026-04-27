@@ -104,22 +104,23 @@ func fade_out():
 	controllable = true
 	
 func to_map():
-	print("Current index:", str(current_index))
-	controllable = false
-	var tw = get_tree().create_tween()
-	tw.tween_property(map, "modulate:a",1,fade_time)
-	await tw.finished
-	tw = get_tree().create_tween()
-	tw.tween_property(path_follower, "progress_ratio", 1.0, 1.5)
-	await tw.finished
-	tw = get_tree().create_tween()
-	tw.tween_property(map, "modulate:a",0,fade_time)
-	await tw.finished
+	#print("Current index:", str(current_index))
+	#controllable = false
+	#var tw = get_tree().create_tween()
+	#tw.tween_property(map, "modulate:a",1,fade_time)
+	#await tw.finished
+	#tw = get_tree().create_tween()
+	#tw.tween_property(path_follower, "progress_ratio", 1.0, 1.5)
+	#await tw.finished
+	#tw = get_tree().create_tween()
+	#tw.tween_property(map, "modulate:a",0,fade_time)
+	#await tw.finished
 	current_index += 1
-	if current_index <= 1:
-		path_follower.reparent(paths[current_index+1])
-		path_follower.progress_ratio = 0
-	controllable = true
+	#if current_index <= 1:
+		#path_follower.reparent(paths[current_index+1])
+		#path_follower.progress_ratio = 0
+	#controllable = true
+	pass
 
 func collect_crown():
 	path_follower.get_node("Player/Crown/Sprite2D").texture = crown_sprites[GM.crowns_collected]

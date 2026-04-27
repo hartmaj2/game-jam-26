@@ -116,6 +116,15 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_pqn56")
 stretch_mode = 4
 
+[node name="Label" type="Label" parent="." unique_id=228750895]
+visible = false
+offset_right = 914.0
+offset_bottom = 787.0
+theme_override_font_sizes/font_size = 100
+text = "THE END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Make_Clouds_Invisible_Again" type="Node2D" parent="." unique_id=726344786]
 
 [node name="Cloud_1" type="Parallax2D" parent="Make_Clouds_Invisible_Again" unique_id=260089589]
@@ -154,8 +163,8 @@ repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(-20, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Make_Clouds_Invisible_Again/Cloud_4" unique_id=500881599]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 3840.0
+offset_bottom = 4320.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_2vs10")
 
@@ -214,4 +223,4 @@ position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_kfqnr")
 animation = &"idle"
-frame_progress = 0.79730946
+frame = 7
